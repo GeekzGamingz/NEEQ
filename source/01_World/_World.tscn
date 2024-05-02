@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3w52oi4bxmxt"]
+
+[ext_resource type="PackedScene" uid="uid://bekp2m3jwhlbu" path="res://source/01_World/00_Levels/00_Debug/Level_Debug.tscn" id="1_ice5l"]
+[ext_resource type="PackedScene" uid="uid://bnc03qphek87j" path="res://source/02_Actors/00_Neeq/Neeq.tscn" id="2_gefwp"]
+
+[node name="WorldRoot" type="Node2D"]
+
+[node name="Level_Debug" parent="." instance=ExtResource("1_ice5l")]
+
+[node name="Neeq" parent="." instance=ExtResource("2_gefwp")]
+position = Vector2(236, 219)
