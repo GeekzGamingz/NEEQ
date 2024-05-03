@@ -19,7 +19,7 @@ var skidding: bool = false
 @onready var wall_detector2 = $Facing/WorldDetectors/WallDetectors/WallDetector2
 @onready var ledge_detector = $Facing/WorldDetectors/WallDetectors/LedgeDetector
 @onready var groundDetectors = $Facing/WorldDetectors/GroundDetectors
-@onready var safeFall = $Facing/WorldDetectors/SafeFallDetector
+@onready var safe_fall = $Facing/WorldDetectors/SafeFallDetector
 #Animation Nodes
 @onready var sprite_player = $AnimationPlayers/SpritePlayer
 @onready var anim_tree = $AnimationPlayers/AnimationTree
@@ -31,6 +31,7 @@ var skidding: bool = false
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void:
+	anim_tree.active = true
 	gravity = 2 * max_jump_height / pow(jump_duration, 2)
 	min_jump_velocity = -sqrt(2 * gravity * min_jump_height)
 	max_jump_velocity = -sqrt(2 * gravity * max_jump_height)
@@ -78,7 +79,7 @@ func handle_movement():
 		if max_speed == run_speed: skidding = true
 #------------------------------------------------------------------------------#
 #Ledge Jump
-func ledgeBreak():
+func ledge_break():
 	if ledge:
 		ledgeTimer.start()
 		ledge_detector.enabled = false
@@ -108,13 +109,13 @@ func check_grounded():
 func check_wall():
 	if (wall_detector2.is_colliding() &&
 		ledge_detector.is_colliding() &&
-		!safeFall.is_colliding()): return true
+		!safe_fall.is_colliding()): return true
 	return false
 #Ledge Detection
 func check_ledge():
 	if (!ledge_detector.is_colliding() &&
 		 wall_detector1.is_colliding() &&
-		!safeFall.is_colliding()): return true
+		!safe_fall.is_colliding()): return true
 	return false
 #------------------------------------------------------------------------------#
 #Enemy Detection

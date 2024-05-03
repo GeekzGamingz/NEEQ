@@ -38,5 +38,5 @@ func state_set(state_new):
 	if state_new != null:
 		state_enter(state_new, state_prev)
 #Add State
-func state_add(stateName):
-	states[stateName] = states.size()
+func state_add(state_name):
+	states[state_name] = states.size()
