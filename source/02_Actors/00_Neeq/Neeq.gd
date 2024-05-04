@@ -70,13 +70,6 @@ func handle_movement():
 	velocity.x = lerp(velocity.x, float(max_speed * direction), weight())
 	if direction > 0: set_facing(FACING_RIGHT)
 	elif direction < 0: set_facing(FACING_LEFT)
-	if Input.is_action_pressed("action_run"): max_speed = run_speed
-	if Input.is_action_just_released("action_run"):
-		max_speed = walk_speed
-		if grounded && !ledge && velocity.x != 0:
-			skidding = true
-	if (dir_prev > dir_new || dir_prev < dir_new):
-		if max_speed == run_speed: skidding = true
 #------------------------------------------------------------------------------#
 #Ledge Jump
 func ledge_break():

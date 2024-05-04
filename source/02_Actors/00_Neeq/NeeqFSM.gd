@@ -26,20 +26,30 @@ func _process(_delta: float) -> void:
 #-------------------------------------------------------------------------------------------------#
 #Input Handler
 func _input(event: InputEvent) -> void:
+	#Horizontal Movement
+	if Input.is_action_just_pressed("action_run"): p.max_speed = p.run_speed
+	elif Input.is_action_just_released("action_run"):
+		p.max_speed = p.walk_speed
+		if p.grounded && !p.ledge && p.velocity.x != 0:
+			p.skidding = true
+	elif (p.dir_prev > p.dir_new || p.dir_prev < p.dir_new):
+		if p.max_speed == p.run_speed: p.skidding = true
 	if [states.idle, states.walk, states.run, states.ledge,
-		states.wall_slide, states.fall].has(state) && !p.jumping:
-		#Jumping
-		if event.is_action_pressed("action_jump"):
-			if p.grounded || p.ledge || !p.coyoteTimer.is_stopped():
-				p.coyoteTimer.stop()
-				if states.ledge: p.ledge_break()
-			elif state == states.wall_slide:
-				p.velocity.x = (-p.walk_speed if p.facing.x ==
-									p.FACING_RIGHT else p.walk_speed)
-			p.velocity.y = p.max_jump_velocity
-			p.wall_detector2.enabled = false
+		states.wall_slide, states.fall].has(state):
+		#Verticle Movement
+		if !p.jumping:
+			if event.is_action_pressed("action_jump"):
+				if p.grounded || p.ledge || !p.coyoteTimer.is_stopped():
+					p.coyoteTimer.stop()
+					if states.ledge: p.ledge_break()
+				elif state == states.wall_slide:
+					p.velocity.x = -p.max_speed if p.facing.x == p.FACING_RIGHT else p.max_speed
+					if p.facing.x == p.FACING_RIGHT: p.set_facing(p.FACING_LEFT)
+					elif p.facing.x == p.FACING_LEFT: p.set_facing(p.FACING_RIGHT)
+				p.velocity.y = p.max_jump_velocity
+				p.wall_detector2.enabled = false
 	if [states.jump, states.wall_jump, states.ledge_jump].has(state):
-	#Jump Interrupt
+	#Verticle Interrupt
 		if event.is_action_released("action_jump") && p.velocity.y < p.min_jump_velocity:
 			p.velocity.y = p.min_jump_velocity
 	#Slide From Ledge
@@ -50,7 +60,7 @@ func _input(event: InputEvent) -> void:
 #State Logistics
 func state_logic(delta):
 	p.moveDirection()
-	if ![states.wall_slide, states.ledge].has(state):
+	if ![states.wall_slide, states.wall_jump, states.ledge].has(state):
 		p.handle_movement()
 	p.apply_gravity(delta)
 	p.apply_movement()
