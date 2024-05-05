@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnc03qphek87j"]
+
+[ext_resource type="Texture2D" uid="uid://wf6wa7dkd7iw" path="res://icon.png" id="1_346tv"]
+[ext_resource type="Script" path="res://source/02_Actors/00_Neeq/Neeq.gd" id="1_tae4i"]
+[ext_resource type="Script" path="res://source/02_Actors/00_Neeq/NeeqFSM.gd" id="2_vranr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
+radius = 3.0
+height = 16.0
+
+[node name="Neeq" type="CharacterBody2D"]
+script = ExtResource("1_tae4i")
+
+[node name="NeeqFSM" type="Node2D" parent="."]
+script = ExtResource("2_vranr")
+
+[node name="Facing" type="Node2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="Facing"]
+
+[node name="Sprite_Neeq" type="Sprite2D" parent="Facing/Sprites"]
+position = Vector2(0, -12)
+texture = ExtResource("1_346tv")
+
+[node name="WorldDetectors" type="Node2D" parent="Facing"]
+
+[node name="GroundDetectors" type="Node2D" parent="Facing/WorldDetectors"]
+
+[node name="GroundDetector1" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
+position = Vector2(-3, -2)
+
+[node name="GroundDetector2" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
+position = Vector2(3, -2)
+
+[node name="GroundDetector3" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
+
+[node name="WallDetectors" type="Node2D" parent="Facing/WorldDetectors"]
+
+[node name="WallDetector1" type="RayCast2D" parent="Facing/WorldDetectors/WallDetectors"]
+position = Vector2(3, -13)
+scale = Vector2(1, 0.25)
+target_position = Vector2(5, 0)
+
+[node name="WallDetector2" type="RayCast2D" parent="Facing/WorldDetectors/WallDetectors"]
+position = Vector2(3, 12)
+scale = Vector2(1, 0.25)
+target_position = Vector2(5, 0)
+
+[node name="LedgeDetector" type="RayCast2D" parent="Facing/WorldDetectors/WallDetectors"]
+position = Vector2(3, -24)
+scale = Vector2(1, 0.25)
+target_position = Vector2(5, 0)
+
+[node name="SafeFallDetector" type="RayCast2D" parent="Facing/WorldDetectors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_83gcn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)

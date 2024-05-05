@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wf6wa7dkd7iw"
-path="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"
+uid="uid://bm1rq02ui6pce"
+path="res://.godot/imported/NeeqCompiled.png-de696bf82938d7e091cd3443180598f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex"]
+source_file="res://assets/01_Actors/00_Neeq/NeeqCompiled.png"
+dest_files=["res://.godot/imported/NeeqCompiled.png-de696bf82938d7e091cd3443180598f2.ctex"]
 
 [params]
 
