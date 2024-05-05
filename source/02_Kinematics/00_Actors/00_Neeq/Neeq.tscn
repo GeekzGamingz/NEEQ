@@ -1,7 +1,7 @@
 [gd_scene load_steps=48 format=3 uid="uid://bnc03qphek87j"]
 
-[ext_resource type="Script" path="res://source/02_Actors/00_Neeq/Neeq.gd" id="1_tae4i"]
-[ext_resource type="Script" path="res://source/02_Actors/00_Neeq/NeeqFSM.gd" id="2_vranr"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/02_NeeqMovement.gd" id="1_fn8wx"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/03_NeeqFSM_Presence.gd" id="2_86ct0"]
 [ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/01_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
@@ -994,6 +994,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88wjk"]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onuui"]
 
@@ -1052,7 +1053,7 @@ states/wall_ledge/position = Vector2(629, 341)
 states/wall_slide/node = SubResource("AnimationNodeAnimation_u26r0")
 states/wall_slide/position = Vector2(431, 341)
 transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk")]
-graph_offset = Vector2(-132, -91.146)
+graph_offset = Vector2(-130, -78.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -1062,10 +1063,10 @@ shadow_color = Color(0, 0, 0, 0.588235)
 
 [node name="Neeq" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_tae4i")
+script = ExtResource("1_fn8wx")
 
 [node name="NeeqFSM" type="Node2D" parent="."]
-script = ExtResource("2_vranr")
+script = ExtResource("2_86ct0")
 
 [node name="Facing" type="Node2D" parent="."]
 
@@ -1106,6 +1107,7 @@ target_position = Vector2(5, 0)
 position = Vector2(3, 3)
 scale = Vector2(1, 0.25)
 target_position = Vector2(5, 0)
+hit_from_inside = true
 
 [node name="LedgeDetector" type="RayCast2D" parent="Facing/WorldDetectors/WallDetectors"]
 position = Vector2(3, -22)
