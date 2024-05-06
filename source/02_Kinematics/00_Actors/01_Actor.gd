@@ -12,7 +12,10 @@ var ledge: bool = false
 #Detector Nodes
 @onready var world_detectors: Node2D = $Facing/WorldDetectors
 #Ground Detectors
-@onready var groundDetectors: Node2D = world_detectors.get_node("GroundDetectors")
+@onready var ground_detectors: Node2D = world_detectors.get_node("GroundDetectors")
+@onready var ground_detector1: RayCast2D = ground_detectors.get_node("GroundDetector1")
+@onready var ground_detector2: RayCast2D = ground_detectors.get_node("GroundDetector2")
+@onready var ground_detector3: RayCast2D = ground_detectors.get_node("GroundDetector3")
 @onready var safe_fall: RayCast2D = world_detectors.get_node("SafeFallDetector")
 #Wall Detectors
 @onready var wall_detectors: Node2D = world_detectors.get_node("WallDetectors")
@@ -35,8 +38,8 @@ func _ready() -> void:
 #World Detection
 #Ground Detection
 func check_grounded() -> bool:
-	for groundDetector in groundDetectors.get_children():
-		if groundDetector.is_colliding(): return true
+	for detector in ground_detectors.get_children():
+		if detector.is_colliding(): return true
 	return false
 #Wall Detection
 func check_wall() -> bool:

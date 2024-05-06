@@ -445,7 +445,7 @@ outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
 [node name="Enemy_GiantRat" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_w7vuf")
 direction = -1.0
 
@@ -469,16 +469,16 @@ vframes = 2
 [node name="GroundDetector1" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
 position = Vector2(-3, -2)
 scale = Vector2(0.25, 1)
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 12)
 
 [node name="GroundDetector2" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
-position = Vector2(3, -2)
 scale = Vector2(0.25, 1)
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 12)
 
 [node name="GroundDetector3" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
+position = Vector2(3, -2)
 scale = Vector2(0.25, 1)
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 12)
 
 [node name="WallDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
@@ -544,3 +544,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Timers" type="Node2D" parent="."]
+
+[node name="DirectionTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true

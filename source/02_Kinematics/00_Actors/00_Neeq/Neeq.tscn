@@ -1088,11 +1088,11 @@ scale = Vector2(0.25, 1)
 target_position = Vector2(0, 5)
 
 [node name="GroundDetector2" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
-position = Vector2(3, -2)
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 5)
 
 [node name="GroundDetector3" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
+position = Vector2(3, -2)
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 5)
 

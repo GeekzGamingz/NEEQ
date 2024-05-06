@@ -34,8 +34,14 @@ func transitions(delta):
 		#Idle
 		states.idle: if p.velocity.x != 0: return states.walk_right
 		#Walk
-		states.walk_left: if p.wall_detector1.is_colliding(): return states.walk_right
-		states.walk_right: if p.wall_detector1.is_colliding(): return states.walk_left
+		states.walk_left:
+			if p.wall_detector1.is_colliding(): return states.walk_right
+			if !p.ground_detector3.is_colliding():
+				if p.direction_timer.is_stopped(): return states.walk_right
+		states.walk_right:
+			if p.wall_detector1.is_colliding(): return states.walk_left
+			if !p.ground_detector3.is_colliding():
+				if p.direction_timer.is_stopped(): return states.walk_left
 		#Chase
 		states.chase: pass
 		#Attack
@@ -49,9 +55,11 @@ func state_enter(new_state, old_state):
 		states.walk_left:
 			p.playback.travel("walk")
 			p.swap_direction()
+			p.direction_timer.start()
 		states.walk_right:
 			p.playback.travel("walk")
 			p.swap_direction()
+			p.direction_timer.start()
 		states.chase: p.playback.travel("walk")
 		states.attack: p.playback.start("attack")
 #Exit State
