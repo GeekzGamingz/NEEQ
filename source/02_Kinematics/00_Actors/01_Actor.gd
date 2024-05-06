@@ -25,6 +25,13 @@ var ledge: bool = false
 @onready var playback = anim_tree.get("parameters/playback")
 @onready var pb_state = playback.get_current_node()
 #------------------------------------------------------------------------------#
+#Ready Method
+func _ready() -> void:
+	anim_tree.active = true #Active Animation Tree
+	gravity = 2 * max_jump_height / pow(jump_duration, 2) #Redefine Gravity
+	min_jump_velocity = -sqrt(2 * gravity * min_jump_height) #Min Jump
+	max_jump_velocity = -sqrt(2 * gravity * max_jump_height) #Max Jump
+#------------------------------------------------------------------------------#
 #World Detection
 #Ground Detection
 func check_grounded() -> bool:

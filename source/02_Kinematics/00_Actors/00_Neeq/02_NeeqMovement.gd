@@ -13,13 +13,6 @@ var controllable: bool = true
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
 #------------------------------------------------------------------------------#
-#Ready Method
-func _ready() -> void:
-	anim_tree.active = true #Active Animation Tree
-	gravity = 2 * max_jump_height / pow(jump_duration, 2) #Redefine Gravity
-	min_jump_velocity = -sqrt(2 * gravity * min_jump_height) #Min Jump
-	max_jump_velocity = -sqrt(2 * gravity * max_jump_height) #Max Jump
-#------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:
 	var was_on_floor = grounded
