@@ -29,7 +29,7 @@ func apply_movement() -> void:
 		wall_detector1.enabled = true
 	move_and_slide()
 #Move Direction
-func moveDirection() -> void:
+func move_direction() -> void:
 	dir_prev = direction
 	direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	dir_new = direction

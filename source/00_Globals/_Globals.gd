@@ -5,4 +5,4 @@ extends Node
 const TILE_SIZE: int = 24
 #------------------------------------------------------------------------------#
 #Variables
-var WIND: float = 1
+var WIND: float = 0

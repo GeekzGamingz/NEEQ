@@ -11,7 +11,7 @@ script = ExtResource("1_3y2lr")
 [node name="Level_Debug" parent="." instance=ExtResource("1_ice5l")]
 
 [node name="Neeq" parent="." instance=ExtResource("2_gefwp")]
-position = Vector2(236, 219)
+position = Vector2(263, 284)
 
 [node name="Enemy_GiantRat" parent="." instance=ExtResource("4_0ubes")]
 position = Vector2(288, 217)
