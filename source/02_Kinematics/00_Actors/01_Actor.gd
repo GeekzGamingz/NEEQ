@@ -2,6 +2,8 @@
 extends Kinematic
 class_name Actor
 #------------------------------------------------------------------------------#
+const EMOTES = preload("res://source/05_UserInterface/00_Emotes/Emotes.tscn")
+#------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
 var grounded: bool = false
@@ -9,10 +11,16 @@ var jumping: bool = false
 var wall: bool = false
 var ledge: bool = false
 #OnReady Variables
+#Emotes
+@onready var emotes_marker: Marker2D = $Facing/EmotesMarker
+@onready var emote_timer: Timer = $Timers/EmoteTimer
 #Detector Nodes
 @onready var world_detectors: Node2D = $Facing/WorldDetectors
 #Ground Detectors
-@onready var groundDetectors: Node2D = world_detectors.get_node("GroundDetectors")
+@onready var ground_detectors: Node2D = world_detectors.get_node("GroundDetectors")
+@onready var ground_detector1: RayCast2D = ground_detectors.get_node("GroundDetector1")
+@onready var ground_detector2: RayCast2D = ground_detectors.get_node("GroundDetector2")
+@onready var ground_detector3: RayCast2D = ground_detectors.get_node("GroundDetector3")
 @onready var safe_fall: RayCast2D = world_detectors.get_node("SafeFallDetector")
 #Wall Detectors
 @onready var wall_detectors: Node2D = world_detectors.get_node("WallDetectors")
@@ -25,11 +33,18 @@ var ledge: bool = false
 @onready var playback = anim_tree.get("parameters/playback")
 @onready var pb_state = playback.get_current_node()
 #------------------------------------------------------------------------------#
+#Ready Method
+func _ready() -> void:
+	anim_tree.active = true #Active Animation Tree
+	gravity = 2 * max_jump_height / pow(jump_duration, 2) #Redefine Gravity
+	min_jump_velocity = -sqrt(2 * gravity * min_jump_height) #Min Jump
+	max_jump_velocity = -sqrt(2 * gravity * max_jump_height) #Max Jump
+#------------------------------------------------------------------------------#
 #World Detection
 #Ground Detection
 func check_grounded() -> bool:
-	for groundDetector in groundDetectors.get_children():
-		if groundDetector.is_colliding(): return true
+	for detector in ground_detectors.get_children():
+		if detector.is_colliding(): return true
 	return false
 #Wall Detection
 func check_wall() -> bool:
@@ -44,3 +59,11 @@ func check_ledge() -> bool:
 		!safe_fall.is_colliding()): return true
 	return false
 #------------------------------------------------------------------------------#
+#Emote
+func play_emote(emote: String):
+	if emote_timer.is_stopped():
+		emote_timer.start()
+		var emote_scene = EMOTES.instantiate()
+		emote_scene.position = emotes_marker.position
+		emote_scene.emote = emote
+		add_child(emote_scene)

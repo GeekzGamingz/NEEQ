@@ -1,22 +1,18 @@
 #Inherits Actor Code
 extends Actor
-class_name NeeqMovement
+class_name EnemyMovement
 #------------------------------------------------------------------------------#
 #Variables
-var direction: float = 0
 var dir_prev: float = 0
 var dir_new: float = 0
+#Exported Variables
+@export var direction: float = 0
 #Bool Variables
-var controllable: bool = true
-@export_enum("Explorer", "Combat", "Sneeq", "Magic") var MODE: String
 #OnReady Variables
-#Timers
-@onready var coyote_timer: Timer = $Timers/CoyoteTimer
-@onready var ledge_timer: Timer = $Timers/LedgeTimer
+@onready var direction_timer = $Timers/DirectionTimer
 #------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:
-	var was_on_floor = grounded
 	grounded = check_grounded()
 	ledge = check_ledge()
 	wall = check_wall()
@@ -24,15 +20,11 @@ func apply_movement() -> void:
 	if wall && !ledge:
 		velocity.x = 0.0
 		velocity.y = max_speed
-	if !grounded && was_on_floor: coyote_timer.start()
-	if ledge_timer.is_stopped():
-		ledge_detector.enabled = true
-		wall_detector1.enabled = true
 	move_and_slide()
 #Move Direction
-func move_direction() -> void:
+func swap_direction() -> void:
 	dir_prev = direction
-	direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	direction *= -1
 	dir_new = direction
 #Movement Handler
 func handle_movement() -> void:
@@ -43,7 +35,7 @@ func handle_movement() -> void:
 #Player Weight
 func weight() -> float:
 	#Ground Weight
-	if grounded || !coyote_timer.is_stopped():
+	if grounded:
 		if direction == 0: return 0.15 #Slow-to-Stop
 		elif velocity.x != 0 && max_speed == run_speed: return 0.05 #Running
 		else: return 0.2 #Walking
@@ -53,6 +45,5 @@ func weight() -> float:
 #Ledge Jump
 func ledge_break() -> void:
 	if ledge:
-		ledge_timer.start()
 		ledge_detector.enabled = false
 		wall_detector1.enabled = false
