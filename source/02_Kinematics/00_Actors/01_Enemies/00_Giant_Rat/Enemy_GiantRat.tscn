@@ -623,6 +623,7 @@ wait_time = 0.64
 one_shot = true
 
 [node name="EmoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="Facing/WorldDetectors/SightDetector" to="." method="_on_sight_detector_body_entered"]

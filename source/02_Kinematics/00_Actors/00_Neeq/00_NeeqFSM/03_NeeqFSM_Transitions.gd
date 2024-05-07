@@ -16,7 +16,7 @@ func transitions(delta):
 				elif p.max_speed == p.run_speed: return states.run
 		#Walk & Run
 		states.walk, states.run:
-			if Input.is_action_just_released("action_run"): return states.skid
+			if Input.is_action_just_released("action_quick"): return states.skid
 			if (p.dir_prev > p.dir_new || p.dir_prev < p.dir_new):
 				if p.max_speed == p.run_speed: return states.skid
 			if !p.grounded:

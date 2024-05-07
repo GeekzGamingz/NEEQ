@@ -30,13 +30,13 @@ func _process(_delta: float) -> void:
 #Input Handler
 func _input(event: InputEvent) -> void:
 	#Horizontal Movement
-	if event.is_action_pressed("action_run"): p.max_speed = p.run_speed
-	elif event.is_action_released("action_run"): p.max_speed = p.walk_speed
+	if event.is_action_pressed("action_quick"): p.max_speed = p.run_speed
+	elif event.is_action_released("action_quick"): p.max_speed = p.walk_speed
 	#Verticle Movement
 	if [states.idle, states.walk, states.run, states.ledge,
 		states.wall_slide, states.fall].has(state):
 		if !p.jumping:
-			if event.is_action_pressed("action_jump"):
+			if event.is_action_pressed("action_travel"):
 				if p.grounded || p.ledge || !p.coyote_timer.is_stopped():
 					p.coyote_timer.stop()
 					if states.ledge: p.ledge_break()
@@ -48,7 +48,7 @@ func _input(event: InputEvent) -> void:
 				p.wall_detector2.enabled = false
 	if [states.jump, states.wall_jump, states.ledge_jump].has(state):
 	#Verticle Interrupt
-		if event.is_action_released("action_jump") && p.velocity.y < p.min_jump_velocity:
+		if event.is_action_released("action_travel") && p.velocity.y < p.min_jump_velocity:
 			p.velocity.y = p.min_jump_velocity
 	#Slide From Ledge
 	if states.ledge: if event.is_action_pressed("move_down"): p.ledge_break()
