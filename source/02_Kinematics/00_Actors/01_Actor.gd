@@ -2,6 +2,8 @@
 extends Kinematic
 class_name Actor
 #------------------------------------------------------------------------------#
+const EMOTES = preload("res://source/05_UserInterface/00_Emotes/Emotes.tscn")
+#------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
 var grounded: bool = false
@@ -9,6 +11,9 @@ var jumping: bool = false
 var wall: bool = false
 var ledge: bool = false
 #OnReady Variables
+#Emotes
+@onready var emotes_marker: Marker2D = $Facing/EmotesMarker
+@onready var emote_timer: Timer = $Timers/EmoteTimer
 #Detector Nodes
 @onready var world_detectors: Node2D = $Facing/WorldDetectors
 #Ground Detectors
@@ -54,3 +59,11 @@ func check_ledge() -> bool:
 		!safe_fall.is_colliding()): return true
 	return false
 #------------------------------------------------------------------------------#
+#Emote
+func play_emote(emote: String):
+	if emote_timer.is_stopped():
+		emote_timer.start()
+		var emote_scene = EMOTES.instantiate()
+		emote_scene.position = emotes_marker.position
+		emote_scene.emote = emote
+		add_child(emote_scene)

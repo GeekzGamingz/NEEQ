@@ -1,17 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3w52oi4bxmxt"]
+[gd_scene load_steps=3 format=3 uid="uid://d3w52oi4bxmxt"]
 
 [ext_resource type="Script" path="res://source/01_World/_World.gd" id="1_3y2lr"]
 [ext_resource type="PackedScene" uid="uid://bekp2m3jwhlbu" path="res://source/01_World/00_Levels/00_Debug/Level_Debug.tscn" id="1_ice5l"]
-[ext_resource type="PackedScene" uid="uid://bnc03qphek87j" path="res://source/02_Kinematics/00_Actors/00_Neeq/Neeq.tscn" id="2_gefwp"]
-[ext_resource type="PackedScene" uid="uid://m0dqd1swvgoa" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/Enemy_GiantRat.tscn" id="4_0ubes"]
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource("1_3y2lr")
 
 [node name="Level_Debug" parent="." instance=ExtResource("1_ice5l")]
 
-[node name="Neeq" parent="." instance=ExtResource("2_gefwp")]
-position = Vector2(263, 284)
-
-[node name="Enemy_GiantRat" parent="." instance=ExtResource("4_0ubes")]
-position = Vector2(288, 217)
+[node name="OrphanNodes" type="Node2D" parent="."]

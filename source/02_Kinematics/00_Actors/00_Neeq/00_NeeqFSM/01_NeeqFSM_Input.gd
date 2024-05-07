@@ -6,6 +6,7 @@ class_name NeeqFSM_Input
 #OnReady Variables
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
+@onready var mode_label: Label = p.get_node("Outputs/ModeOutput")
 #-------------------------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _ready() -> void:
 #State Label
 func _process(_delta: float) -> void:
 	state_label.text = str(states.keys()[state])
+	mode_label.text = str(p.MODE)
 #-------------------------------------------------------------------------------------------------#
 #Input Handler
 func _input(event: InputEvent) -> void:

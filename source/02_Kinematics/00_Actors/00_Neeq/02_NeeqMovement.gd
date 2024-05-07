@@ -8,6 +8,7 @@ var dir_prev: float = 0
 var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
+@export_enum("Explorer", "Combat", "Sneeq", "Magic") var MODE: String
 #OnReady Variables
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
