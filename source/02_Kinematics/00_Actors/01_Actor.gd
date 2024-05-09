@@ -67,3 +67,6 @@ func play_emote(emote: String):
 		emote_scene.position = emotes_marker.position
 		emote_scene.emote = emote
 		add_child(emote_scene)
+		if facing.x == FACING_LEFT:
+			emote_scene.position.x = -emotes_marker.position.x
+			emote_scene.chat_bubble.flip_h = true

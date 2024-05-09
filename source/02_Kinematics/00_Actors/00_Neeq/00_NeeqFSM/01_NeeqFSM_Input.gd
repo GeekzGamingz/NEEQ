@@ -20,6 +20,8 @@ func _ready() -> void:
 	state_add("wall_slide")
 	state_add("wall_jump")
 	state_add("skid")
+	state_add("combat_idle")
+	state_add("combat_strike")
 	call_deferred("state_set", states.idle)
 #-------------------------------------------------------------------------------------------------#
 #State Label
