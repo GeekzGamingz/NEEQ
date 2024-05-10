@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br0vki7kt2thi"
-path="res://.godot/imported/Forest.png-8267fc4cc27837d30898650019b4149f.ctex"
+uid="uid://bm1rq02ui6pce"
+path="res://.godot/imported/NeeqCompiled.png-bc4a044a7d94894f8b1fdb421afc0b67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/00_Tilesets/Forest.png"
-dest_files=["res://.godot/imported/Forest.png-8267fc4cc27837d30898650019b4149f.ctex"]
+source_file="res://assets/02_Actors/00_Neeq/NeeqCompiled.png"
+dest_files=["res://.godot/imported/NeeqCompiled.png-bc4a044a7d94894f8b1fdb421afc0b67.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

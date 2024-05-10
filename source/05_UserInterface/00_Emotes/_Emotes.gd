@@ -6,6 +6,7 @@ extends Node2D
 @export_enum("Exclaim", "Question") var emote: String
 #OnReady Variables
 @onready var anim_player = $AnimationPlayers/AnimationPlayer
+@onready var chat_bubble = $ChatBubble
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:

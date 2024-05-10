@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://m0dqd1swvgoa"]
 
-[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/01_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="1_5tlb7"]
+[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="1_5tlb7"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/03_GiantRatMovement.gd" id="1_w7vuf"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/01_GiantRatFSM.gd" id="2_g2amc"]
 
@@ -569,14 +569,11 @@ target_position = Vector2(24, 0)
 collision_mask = 2
 
 [node name="EmotesMarker" type="Marker2D" parent="Facing"]
-position = Vector2(0, -36)
+position = Vector2(5, -36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_83gcn")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -623,6 +620,7 @@ wait_time = 0.64
 one_shot = true
 
 [node name="EmoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="Facing/WorldDetectors/SightDetector" to="." method="_on_sight_detector_body_entered"]

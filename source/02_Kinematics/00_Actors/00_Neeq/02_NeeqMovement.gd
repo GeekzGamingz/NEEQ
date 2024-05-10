@@ -8,11 +8,12 @@ var dir_prev: float = 0
 var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
-@export_enum("Explorer", "Combat", "Sneeq", "Magic") var MODE: String
 #OnReady Variables
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
+@onready var skid_timer: Timer = $Timers/SkidTimer
+@onready var attack_timer: Timer = $Timers/AttackTimer
 #------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:

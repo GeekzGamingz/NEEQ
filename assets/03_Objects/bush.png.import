@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifoykmedw518"
-path="res://.godot/imported/giantrat-Sheet.png-209ecc116ad9c6c93e827145449d6901.ctex"
+uid="uid://c0qfg0v2p0wtm"
+path="res://.godot/imported/bush.png-7c22662e91b351d1c933145209b349c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/01_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png"
-dest_files=["res://.godot/imported/giantrat-Sheet.png-209ecc116ad9c6c93e827145449d6901.ctex"]
+source_file="res://assets/03_Objects/bush.png"
+dest_files=["res://.godot/imported/bush.png-7c22662e91b351d1c933145209b349c4.ctex"]
 
 [params]
 

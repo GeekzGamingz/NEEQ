@@ -6,6 +6,7 @@ class_name NeeqFSM_Presence
 @warning_ignore("unused_parameter")
 func state_enter(new_state, old_state):
 	match(new_state):
+	#Explorer Mode
 		states.idle: p.playback.travel("idle")
 		states.walk: p.playback.travel("walk")
 		states.run: p.playback.travel("run")
@@ -29,9 +30,14 @@ func state_enter(new_state, old_state):
 			p.playback.start("jump_fall")
 			p.jumping = true if p.coyote_timer.is_stopped() else false
 			p.wall_detector2.enabled = true
+	#Combat Mode
+		states.combat_idle: p.playback.travel("combat_idle")
+		states.combat_strike: p.playback.start("combat_strike")
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):
 	match(old_state):
 		states.wall_slide: p.safe_fall.enabled = true
 		states.fall: p.jumping = false
+		states.skid: p.skid_timer.start()
+		states.combat_strike: p.attack_timer.start()

@@ -79,7 +79,8 @@ func state_enter(new_state, old_state):
 		states.interested:
 			p.playback.travel ("idle")
 			p.direction = 0
-			p.play_emote("Question")
+			if p.player.facing.x == p.facing.x: p.play_emote("Exclaim")
+			else: p.play_emote("Question")
 		states.chase:
 			p.playback.travel("chase")
 			p.direction = 1 if p.facing.x == p.FACING_RIGHT else -1
