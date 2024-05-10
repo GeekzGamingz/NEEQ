@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1sb3r4k5i3a8"
-path="res://.godot/imported/Daungun.png-e65e9d93794b584a5feebf9eb272cd93.ctex"
+uid="uid://b2oaqs7qo2c7b"
+path="res://.godot/imported/overmap_sprites.png-009d7dbfa8531698c3e881b748393346.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/01_Tilesets/Daungun.png"
-dest_files=["res://.godot/imported/Daungun.png-e65e9d93794b584a5feebf9eb272cd93.ctex"]
+source_file="res://assets/02_Actors/00_Neeq/overmap_sprites.png"
+dest_files=["res://.godot/imported/overmap_sprites.png-009d7dbfa8531698c3e881b748393346.ctex"]
 
 [params]
 

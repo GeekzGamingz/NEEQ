@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3oa180qqu0kv"]
+
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
+[ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
+radius = 6.0
+
+[node name="Neeq_Overworld" type="CharacterBody2D"]
+script = ExtResource("1_8ivlu")
+
+[node name="Neeq_OWFSM" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x0t63")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("2_tb6in")
+hframes = 4
+vframes = 3
+
+[node name="MoveDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 12)
+hit_from_inside = true
+collide_with_areas = true

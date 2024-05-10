@@ -4,7 +4,6 @@ extends Camera2D
 #Variables
 #Exported Variables
 @export var focus: CharacterBody2D = null
-@export var focus_secondary: Node2D = null
 #------------------------------------------------------------------------------#
 func _process(_delta) -> void:
 	global_position = focus.global_position
