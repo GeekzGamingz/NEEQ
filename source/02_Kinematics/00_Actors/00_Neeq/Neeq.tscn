@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/03_NeeqCombat.gd" id="1_hm6a4"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
-[ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/01_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
+[ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
@@ -14,14 +14,14 @@ length = 0.32
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -62,22 +62,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1280,7 +1268,7 @@ scale = Vector2(1, 0.25)
 target_position = Vector2(5, 0)
 
 [node name="WallDetector2" type="RayCast2D" parent="Facing/WorldDetectors/WallDetectors"]
-position = Vector2(3, 3)
+position = Vector2(3, 0)
 scale = Vector2(1, 0.25)
 target_position = Vector2(5, 0)
 hit_from_inside = true

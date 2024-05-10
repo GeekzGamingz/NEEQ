@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://m0dqd1swvgoa"]
 
-[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/01_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="1_5tlb7"]
+[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="1_5tlb7"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/03_GiantRatMovement.gd" id="1_w7vuf"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/01_GiantRatFSM.gd" id="2_g2amc"]
 

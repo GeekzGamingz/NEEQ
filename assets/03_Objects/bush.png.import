@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br0vki7kt2thi"
-path="res://.godot/imported/Forest.png-8267fc4cc27837d30898650019b4149f.ctex"
+uid="uid://c0qfg0v2p0wtm"
+path="res://.godot/imported/bush.png-7c22662e91b351d1c933145209b349c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/00_Tilesets/Forest.png"
-dest_files=["res://.godot/imported/Forest.png-8267fc4cc27837d30898650019b4149f.ctex"]
+source_file="res://assets/03_Objects/bush.png"
+dest_files=["res://.godot/imported/bush.png-7c22662e91b351d1c933145209b349c4.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

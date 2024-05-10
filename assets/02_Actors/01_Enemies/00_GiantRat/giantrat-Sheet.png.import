@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm1rq02ui6pce"
-path="res://.godot/imported/NeeqCompiled.png-de696bf82938d7e091cd3443180598f2.ctex"
+uid="uid://bifoykmedw518"
+path="res://.godot/imported/giantrat-Sheet.png-22205eca2d59a8d3a32ed6d89c977f0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/01_Actors/00_Neeq/NeeqCompiled.png"
-dest_files=["res://.godot/imported/NeeqCompiled.png-de696bf82938d7e091cd3443180598f2.ctex"]
+source_file="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png"
+dest_files=["res://.godot/imported/giantrat-Sheet.png-22205eca2d59a8d3a32ed6d89c977f0b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0qfg0v2p0wtm"
-path="res://.godot/imported/bush.png-328c84e7e3e22c4b182f2758d35dff8c.ctex"
+uid="uid://bm1rq02ui6pce"
+path="res://.godot/imported/NeeqCompiled.png-bc4a044a7d94894f8b1fdb421afc0b67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/02_Objects/bush.png"
-dest_files=["res://.godot/imported/bush.png-328c84e7e3e22c4b182f2758d35dff8c.ctex"]
+source_file="res://assets/02_Actors/00_Neeq/NeeqCompiled.png"
+dest_files=["res://.godot/imported/NeeqCompiled.png-bc4a044a7d94894f8b1fdb421afc0b67.ctex"]
 
 [params]
 

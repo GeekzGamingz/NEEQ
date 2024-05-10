@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1sb3r4k5i3a8"
-path="res://.godot/imported/Daungun.png-0b40b5b94d5aa0aaacfc8c22d84db854.ctex"
+uid="uid://bwu2jm8dc7pjg"
+path="res://.godot/imported/excl-Sheet.png-9b6fa0afcc91c2751d70087065191394.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/00_Tilesets/Daungun.png"
-dest_files=["res://.godot/imported/Daungun.png-0b40b5b94d5aa0aaacfc8c22d84db854.ctex"]
+source_file="res://assets/04_UserInterface/00_Emotes/excl-Sheet.png"
+dest_files=["res://.godot/imported/excl-Sheet.png-9b6fa0afcc91c2751d70087065191394.ctex"]
 
 [params]
 
