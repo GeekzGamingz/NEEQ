@@ -14,7 +14,7 @@ var moving: bool = false
 @onready var anim_player = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
 func _ready():
-	move_detector.target_position = Vector2.DOWN * G.TILE_SIZE_OW
+	move_detector.target_position = Vector2.DOWN * (float(G.TILE_SIZE_OW) / 2)
 #------------------------------------------------------------------------------#
 #Apply Movement
 func apply_movement(dir: Vector2) -> void:
@@ -25,7 +25,7 @@ func apply_movement(dir: Vector2) -> void:
 		elif dir.x > 0: movement = Vector2.RIGHT
 		elif dir.x < 0: movement = Vector2.LEFT
 		#Update Raycast
-		move_detector.target_position = movement * G.TILE_SIZE_OW
+		move_detector.target_position = movement * (float(G.TILE_SIZE_OW)/ 2)
 		move_detector.force_raycast_update()
 		if !move_detector.is_colliding():
 			grid_direction = movement

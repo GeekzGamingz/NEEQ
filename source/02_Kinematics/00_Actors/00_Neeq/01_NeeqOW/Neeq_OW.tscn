@@ -217,7 +217,6 @@ disabled = true
 
 [node name="MoveDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)
-hit_from_inside = true
 collide_with_areas = true
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
