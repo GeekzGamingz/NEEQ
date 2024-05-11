@@ -4,14 +4,18 @@ class_name OW_Kinematic
 #------------------------------------------------------------------------------#
 #Variables
 var grid_direction: Vector2 = Vector2.ZERO
+#Bool Variables
+var moving: bool = false
 #Exported Variables
 @export var speed: float = 0.35
 @export var delay: float = 0.1
 #OnReady Variables
 @onready var move_detector = $MoveDetector
+@onready var anim_player = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
 func _ready():
 	move_detector.target_position = Vector2.DOWN * G.TILE_SIZE_OW
+#------------------------------------------------------------------------------#
 #Apply Movement
 func apply_movement(dir: Vector2) -> void:
 	if grid_direction.length() == 0 && dir.length() > 0:
@@ -29,3 +33,4 @@ func apply_movement(dir: Vector2) -> void:
 			var tween = create_tween()
 			tween.tween_property(self, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_callback(func(): grid_direction = Vector2.ZERO).set_delay(delay)
+			tween.tween_callback(func(): moving = false)

@@ -12,9 +12,8 @@ func _ready() -> void:
 	position = position.snapped(Vector2.ONE * G.TILE_SIZE_OW)
 	position -= Vector2.ONE * (float(G.TILE_SIZE_OW) / 2)
 #------------------------------------------------------------------------------#
-#Player Movement
-func _process(_delta):
+#Player Direction
+func move_direction():
 	direction = Vector2(
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down"))
-	apply_movement(direction)
