@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bekp2m3jwhlbu"]
+[gd_scene load_steps=24 format=3 uid="uid://bekp2m3jwhlbu"]
 
 [ext_resource type="Texture2D" uid="uid://cy3yvp4ryefgo" path="res://assets/00_Backgrounds/Sky.png" id="1_4df7e"]
 [ext_resource type="Texture2D" uid="uid://b08mmngorcwo7" path="res://assets/00_Backgrounds/Forest.png" id="2_gor3k"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="9_pbnxu"]
 [ext_resource type="PackedScene" uid="uid://d08ra2rdb7skc" path="res://source/05_UserInterface/00_Camera/_CameraChange.tscn" id="10_42mbv"]
 [ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="11_nfx1y"]
+[ext_resource type="PackedScene" uid="uid://dww73oeea8i86" path="res://source/03_Objects/00_PowerUps/00_ExtraLife/ExtraLife.tscn" id="12_cg72i"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7phvf"]
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4u8w1"]
 resource_name = "Dungeon"
@@ -194,6 +198,7 @@ texture_region_size = Vector2i(24, 24)
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 1
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_7phvf")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
@@ -2671,6 +2676,7 @@ texture_region_size = Vector2i(24, 24)
 
 [sub_resource type="TileSet" id="TileSet_qbvkn"]
 tile_size = Vector2i(24, 24)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grasslands"
@@ -2680,9 +2686,21 @@ terrain_set_0/terrain_1/color = Color(1, 0, 0, 1)
 sources/1 = SubResource("TileSetAtlasSource_5q3wx")
 sources/0 = SubResource("TileSetAtlasSource_4u8w1")
 
+[sub_resource type="Gradient" id="Gradient_xr1ei"]
+offsets = PackedFloat32Array(0, 0.59447)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vqgtp"]
+gradient = SubResource("Gradient_xr1ei")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq14t"]
 resource_local_to_scene = true
-size = Vector2(170, 48)
+size = Vector2(192, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lo6e1"]
 resource_local_to_scene = true
@@ -2696,20 +2714,32 @@ size = Vector2(96, 24)
 resource_local_to_scene = true
 size = Vector2(48, 24)
 
+[sub_resource type="Environment" id="Environment_s2dn1"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
+adjustment_enabled = true
+
 [node name="Level_Debug" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [720.0, 24.0]
+metadata/_edit_horizontal_guides_ = [720.0, 24.0, 672.0]
+metadata/_edit_vertical_guides_ = [528.0, 912.0]
 
 [node name="Sky" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(539, 371)
 scale = Vector2(0.721667, 0.721667)
 texture = ExtResource("1_4df7e")
 
 [node name="Forest" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(1122, 550)
 scale = Vector2(0.570008, 0.570008)
 texture = ExtResource("2_gor3k")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
+z_index = -100
 position = Vector2(411.929, 550.5)
 scale = Vector2(0.775298, 0.775298)
 texture = ExtResource("3_ffiod")
@@ -2722,14 +2752,31 @@ layer_0/tile_data = PackedInt32Array(21, 65537, 2, 20, 65537, 2, 19, 65537, 9, 1
 [node name="Neeq" parent="." instance=ExtResource("6_31wll")]
 position = Vector2(339, 230)
 
+[node name="Torch" type="PointLight2D" parent="Neeq"]
+z_index = -100
+color = Color(0.701961, 0.47451, 0.215686, 1)
+texture = SubResource("GradientTexture2D_vqgtp")
+
 [node name="Enemy_GiantRat" parent="." instance=ExtResource("7_4uwd1")]
 position = Vector2(662, 779)
+
+[node name="Torch" type="PointLight2D" parent="Enemy_GiantRat"]
+z_index = -100
+color = Color(0.701961, 0.47451, 0.215686, 1)
+texture = SubResource("GradientTexture2D_vqgtp")
 
 [node name="Inconspicuous Bush" type="Sprite2D" parent="."]
 position = Vector2(309, 228)
 texture = ExtResource("8_kw2lr")
 
-[node name="MainCamera" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("9_pbnxu")]
+[node name="Torch" type="PointLight2D" parent="Inconspicuous Bush"]
+z_index = -100
+color = Color(0.701961, 0.47451, 0.215686, 1)
+texture = SubResource("GradientTexture2D_vqgtp")
+
+[node name="Camera" type="Node2D" parent="."]
+
+[node name="MainCamera" parent="Camera" node_paths=PackedStringArray("focus") instance=ExtResource("9_pbnxu")]
 position = Vector2(339, 222)
 limit_left = 0
 limit_top = 0
@@ -2737,62 +2784,63 @@ limit_right = 512
 limit_bottom = 312
 limit_smoothed = true
 position_smoothing_enabled = true
-focus = NodePath("../Neeq")
+focus = NodePath("../../Neeq")
 
-[node name="CameraChange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+[node name="CameraChange" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
 position = Vector2(720, 276)
 camera = NodePath("../MainCamera")
 panning = "Verticle"
 
-[node name="CameraChange5" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
-position = Vector2(733, 672)
+[node name="CameraChange5" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+position = Vector2(720, 672)
 camera = NodePath("../MainCamera")
 panning = "Verticle"
 
-[node name="CollisionShape2D" parent="CameraChange5" index="0"]
+[node name="CollisionShape2D" parent="Camera/CameraChange5" index="0"]
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_vq14t")
 
-[node name="CameraChange3" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
-position = Vector2(830, 672)
+[node name="CameraChange3" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+position = Vector2(900, 672)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 panning = "Forward"
 
-[node name="CameraChange2" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
-position = Vector2(636, 672)
+[node name="CameraChange2" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+position = Vector2(540, 672)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 panning = "Backward"
 
-[node name="CameraChange7" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+[node name="CameraChange7" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
 position = Vector2(132, 672)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 
-[node name="CameraChange4" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+[node name="CameraChange4" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
 position = Vector2(468, 264)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 
-[node name="CollisionShape2D" parent="CameraChange4" index="0"]
+[node name="CollisionShape2D" parent="Camera/CameraChange4" index="0"]
 position = Vector2(-108, -0.00012207)
 shape = SubResource("RectangleShape2D_lo6e1")
 
-[node name="CameraChange6" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+[node name="CameraChange6" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
 position = Vector2(132, 768)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 
-[node name="CollisionShape2D" parent="CameraChange6" index="0"]
+[node name="CollisionShape2D" parent="Camera/CameraChange6" index="0"]
 position = Vector2(-24, 0)
 shape = SubResource("RectangleShape2D_ylib2")
 
-[node name="CameraChange8" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
+[node name="CameraChange8" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("10_42mbv")]
 position = Vector2(708, 264)
 rotation = 1.5708
 camera = NodePath("../MainCamera")
 
-[node name="CollisionShape2D" parent="CameraChange8" index="0"]
+[node name="CollisionShape2D" parent="Camera/CameraChange8" index="0"]
 position = Vector2(-24, 1.04907e-06)
 shape = SubResource("RectangleShape2D_7cwfl")
 
@@ -2800,7 +2848,32 @@ shape = SubResource("RectangleShape2D_7cwfl")
 position = Vector2(6, 660)
 LEVEL = "Overworld"
 
-[editable path="CameraChange5"]
-[editable path="CameraChange4"]
-[editable path="CameraChange6"]
-[editable path="CameraChange8"]
+[node name="ExtraLife" parent="." instance=ExtResource("12_cg72i")]
+position = Vector2(135, 562)
+
+[node name="Torch" type="PointLight2D" parent="ExtraLife"]
+z_index = -100
+color = Color(0.701961, 0.47451, 0.215686, 1)
+texture = SubResource("GradientTexture2D_vqgtp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s2dn1")
+
+[node name="BGLightSource" type="PointLight2D" parent="."]
+z_index = -100
+position = Vector2(206, 683)
+color = Color(0.701961, 0.47451, 0.215686, 1)
+energy = 1.99
+range_z_min = -100
+range_z_max = -1
+range_layer_min = -1
+texture = SubResource("GradientTexture2D_vqgtp")
+
+[node name="Darkness" type="DirectionalLight2D" parent="."]
+visible = false
+blend_mode = 1
+
+[editable path="Camera/CameraChange5"]
+[editable path="Camera/CameraChange4"]
+[editable path="Camera/CameraChange6"]
+[editable path="Camera/CameraChange8"]

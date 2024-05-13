@@ -25,12 +25,14 @@ func apply_movement(dir: Vector2) -> void:
 		elif dir.x > 0: movement = Vector2.RIGHT
 		elif dir.x < 0: movement = Vector2.LEFT
 		#Update Raycast
-		move_detector.target_position = movement * (float(G.TILE_SIZE_OW)/ 2)
+		move_detector.target_position = movement * (float(G.TILE_SIZE_OW) / 2)
 		move_detector.force_raycast_update()
 		if !move_detector.is_colliding():
 			grid_direction = movement
 			var new_position = global_position + (grid_direction * G.TILE_SIZE_OW)
+			#Tween Position
 			var tween = create_tween()
 			tween.tween_property(self, "position", new_position, speed).set_trans(Tween.TRANS_LINEAR)
+			#Tween Callbacks
 			tween.tween_callback(func(): grid_direction = Vector2.ZERO).set_delay(delay)
 			tween.tween_callback(func(): moving = false)
