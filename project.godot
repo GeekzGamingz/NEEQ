@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 G="*res://source/00_Globals/_Globals.gd"
+S="*res://source/00_Globals/_Signals.gd"
 
 [display]
 

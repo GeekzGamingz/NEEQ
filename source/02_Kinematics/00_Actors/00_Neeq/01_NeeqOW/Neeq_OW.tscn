@@ -199,6 +199,8 @@ outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
 [node name="Neeq_Overworld" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_8ivlu")
 
 [node name="Neeq_OWFSM" type="Node2D" parent="."]
@@ -213,7 +215,6 @@ frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x0t63")
-disabled = true
 
 [node name="MoveDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)

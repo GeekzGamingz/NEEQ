@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dtofvl26nqyba"]
 
-[ext_resource type="Script" path="res://source/05_UserInterface/00_Emotes/_Emotes.gd" id="1_0o0r8"]
-[ext_resource type="Texture2D" uid="uid://3rgcetr8y2ga" path="res://assets/03_UserInterface/00_Emotes/bubb-Sheet.png" id="1_q3jbj"]
-[ext_resource type="Texture2D" uid="uid://bwu2jm8dc7pjg" path="res://assets/03_UserInterface/00_Emotes/excl-Sheet.png" id="2_nujmt"]
-[ext_resource type="Texture2D" uid="uid://f08uj50lx1jf" path="res://assets/03_UserInterface/00_Emotes/ques-Sheet.png" id="3_hfoqg"]
+[ext_resource type="Script" path="res://source/05_UserInterface/01_Emotes/_Emotes.gd" id="1_0o0r8"]
+[ext_resource type="Texture2D" uid="uid://3rgcetr8y2ga" path="res://assets/04_UserInterface/00_Emotes/bubb-Sheet.png" id="1_q3jbj"]
+[ext_resource type="Texture2D" uid="uid://bwu2jm8dc7pjg" path="res://assets/04_UserInterface/00_Emotes/excl-Sheet.png" id="2_nujmt"]
+[ext_resource type="Texture2D" uid="uid://f08uj50lx1jf" path="res://assets/04_UserInterface/00_Emotes/ques-Sheet.png" id="3_hfoqg"]
 
 [sub_resource type="Animation" id="Animation_daw48"]
 length = 0.001

@@ -2,7 +2,7 @@
 extends Kinematic
 class_name Actor
 #------------------------------------------------------------------------------#
-const EMOTES = preload("res://source/05_UserInterface/00_Emotes/_Emotes.tscn")
+const EMOTES = preload("res://source/05_UserInterface/01_Emotes/_Emotes.tscn")
 #------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
