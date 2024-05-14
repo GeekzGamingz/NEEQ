@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfm2iuctmie1h"]
 
-[ext_resource type="Texture2D" uid="uid://cynyl6yutv8bc" path="res://assets/dust.png" id="1_0qxqb"]
+[ext_resource type="Texture2D" uid="uid://cynyl6yutv8bc" path="res://assets/03_Objects/dust.png" id="1_44ltn"]
 [ext_resource type="Script" path="res://source/03_Objects/01_Particles/00_DustParticles/FX_Jump.gd" id="2_likbu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0732w"]
@@ -23,7 +23,7 @@ scale_max = 0.5
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_0732w")
-texture = ExtResource("1_0qxqb")
+texture = ExtResource("1_44ltn")
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0

@@ -10,7 +10,7 @@ func transitions(delta):
 		#Idle
 		states.idle:
 			if p.MODE == "Combat": return states.combat_idle
-			if !p.grounded:
+			elif !p.grounded:
 				if p.velocity.y < 0: return states.jump
 				elif p.velocity.y > 0: return states.fall
 			elif p.velocity.x != 0:

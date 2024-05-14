@@ -31,7 +31,8 @@ func state_enter(new_state, old_state):
 			p.jumping = true if p.coyote_timer.is_stopped() else false
 			p.wall_detector2.enabled = true
 	#Combat Mode
-		states.combat_idle: p.playback.travel("combat_idle")
+		states.combat_idle:
+			p.playback.travel("combat_idle")
 		states.combat_quick1: p.playback.start("combat_quick1")
 #Exit State
 @warning_ignore("unused_parameter")
