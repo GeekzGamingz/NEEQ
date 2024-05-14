@@ -12,4 +12,3 @@ func _on_body_entered(body):
 		anim_player.play("obtain")
 		await anim_player.animation_finished
 		queue_free()
-		

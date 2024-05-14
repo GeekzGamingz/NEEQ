@@ -2,6 +2,9 @@
 extends Actor
 class_name NeeqMovement
 #------------------------------------------------------------------------------#
+#Constants
+const FX_JUMP = preload("res://source/03_Objects/01_Particles/00_DustParticles/FX_Jump.tscn")
+#------------------------------------------------------------------------------#
 #Variables
 var direction: float = 0
 var dir_prev: float = 0
@@ -57,3 +60,8 @@ func ledge_break() -> void:
 		ledge_timer.start()
 		ledge_detector.enabled = false
 		wall_detector1.enabled = false
+#------------------------------------------------------------------------------#
+func jump_particles():
+	var jump_particle = FX_JUMP.instantiate()
+	jump_particle.global_position = global_position
+	G.ORPHANS.add_child(jump_particle)

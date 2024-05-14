@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 #State Logistics
 func state_logic(delta):
 	p.handle_movement()
-	p.moveDirection()
+	p.move_direction()
 	p.apply_gravity(delta)
 	p.apply_movement()
 	match(state):

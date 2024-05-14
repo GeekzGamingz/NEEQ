@@ -12,7 +12,7 @@ var wall: bool = false
 var ledge: bool = false
 #OnReady Variables
 #Emotes
-@onready var emotes_marker: Marker2D = $Facing/EmotesMarker
+@onready var emotes_marker: Marker2D = $Facing/Markers/EmotesMarker
 @onready var emote_timer: Timer = $Timers/EmoteTimer
 #Detector Nodes
 @onready var world_detectors: Node2D = $Facing/WorldDetectors

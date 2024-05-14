@@ -18,6 +18,7 @@ func transitions(delta):
 				elif p.max_speed == p.run_speed: return states.run
 		#Walk & Run
 		states.walk, states.run:
+			if p.MODE == "Combat": return states.combat_idle
 			if Input.is_action_just_released("action_quick"): return states.skid
 			if (p.dir_prev > p.dir_new || p.dir_prev < p.dir_new):
 				if p.max_speed == p.run_speed:
@@ -32,12 +33,14 @@ func transitions(delta):
 		states.skid: return states.idle
 		#Jumping
 		states.jump, states.wall_jump, states.ledge_jump: 
+			if p.MODE == "Combat": return states.combat_idle
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
 			elif p.velocity.y >= 0: return states.fall
 		#Falling
 		states.fall: 
+			if p.MODE == "Combat": return states.combat_idle
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
@@ -56,7 +59,7 @@ func transitions(delta):
 		states.combat_idle:
 			if p.MODE == "Explorer": return states.idle
 			if Input.get_action_strength("action_quick") > 0:
-				if p.attack_timer.is_stopped(): return states.combat_strike
+				if p.attack_timer.is_stopped(): return states.combat_quick1
 		#Combat Strike
-		states.combat_strike: return states.idle
+		states.combat_quick1: return states.idle
 	return null

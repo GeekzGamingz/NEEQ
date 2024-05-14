@@ -32,7 +32,7 @@ func state_enter(new_state, old_state):
 			p.wall_detector2.enabled = true
 	#Combat Mode
 		states.combat_idle: p.playback.travel("combat_idle")
-		states.combat_strike: p.playback.start("combat_strike")
+		states.combat_quick1: p.playback.start("combat_quick1")
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):
@@ -40,4 +40,4 @@ func state_exit(old_state, new_state):
 		states.wall_slide: p.safe_fall.enabled = true
 		states.fall: p.jumping = false
 		states.skid: p.skid_timer.start()
-		states.combat_strike: p.attack_timer.start()
+		states.combat_quick1: p.attack_timer.start()

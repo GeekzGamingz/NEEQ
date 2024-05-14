@@ -21,7 +21,9 @@ func _ready() -> void:
 	state_add("wall_jump")
 	state_add("skid")
 	state_add("combat_idle")
-	state_add("combat_strike")
+	state_add("combat_quick1")
+	state_add("combat_quick2")
+	state_add("combat_quick3")
 	call_deferred("state_set", states.idle)
 #-------------------------------------------------------------------------------------------------#
 #State Label
@@ -39,6 +41,7 @@ func _input(event: InputEvent) -> void:
 		states.wall_slide, states.fall].has(state):
 		if !p.jumping:
 			if event.is_action_pressed("action_travel"):
+				p.jump_particles()
 				if p.grounded || p.ledge || !p.coyote_timer.is_stopped():
 					p.coyote_timer.stop()
 					if states.ledge: p.ledge_break()

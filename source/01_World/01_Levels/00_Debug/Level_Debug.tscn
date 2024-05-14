@@ -2686,12 +2686,12 @@ terrain_set_0/terrain_1/color = Color(1, 0, 0, 1)
 sources/1 = SubResource("TileSetAtlasSource_5q3wx")
 sources/0 = SubResource("TileSetAtlasSource_4u8w1")
 
-[sub_resource type="Gradient" id="Gradient_xr1ei"]
+[sub_resource type="Gradient" id="Gradient_hlc3b"]
 offsets = PackedFloat32Array(0, 0.59447)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vqgtp"]
-gradient = SubResource("Gradient_xr1ei")
+gradient = SubResource("Gradient_hlc3b")
 width = 100
 height = 100
 fill = 1
@@ -2716,6 +2716,7 @@ size = Vector2(48, 24)
 
 [sub_resource type="Environment" id="Environment_s2dn1"]
 background_mode = 3
+background_canvas_max_layer = -1
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
@@ -2753,26 +2754,17 @@ layer_0/tile_data = PackedInt32Array(21, 65537, 2, 20, 65537, 2, 19, 65537, 9, 1
 position = Vector2(339, 230)
 
 [node name="Torch" type="PointLight2D" parent="Neeq"]
-z_index = -100
+visible = false
+position = Vector2(0, -5)
 color = Color(0.701961, 0.47451, 0.215686, 1)
 texture = SubResource("GradientTexture2D_vqgtp")
 
 [node name="Enemy_GiantRat" parent="." instance=ExtResource("7_4uwd1")]
 position = Vector2(662, 779)
 
-[node name="Torch" type="PointLight2D" parent="Enemy_GiantRat"]
-z_index = -100
-color = Color(0.701961, 0.47451, 0.215686, 1)
-texture = SubResource("GradientTexture2D_vqgtp")
-
 [node name="Inconspicuous Bush" type="Sprite2D" parent="."]
 position = Vector2(309, 228)
 texture = ExtResource("8_kw2lr")
-
-[node name="Torch" type="PointLight2D" parent="Inconspicuous Bush"]
-z_index = -100
-color = Color(0.701961, 0.47451, 0.215686, 1)
-texture = SubResource("GradientTexture2D_vqgtp")
 
 [node name="Camera" type="Node2D" parent="."]
 
@@ -2852,14 +2844,16 @@ LEVEL = "Overworld"
 position = Vector2(135, 562)
 
 [node name="Torch" type="PointLight2D" parent="ExtraLife"]
-z_index = -100
+visible = false
 color = Color(0.701961, 0.47451, 0.215686, 1)
 texture = SubResource("GradientTexture2D_vqgtp")
+texture_scale = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s2dn1")
 
 [node name="BGLightSource" type="PointLight2D" parent="."]
+visible = false
 z_index = -100
 position = Vector2(206, 683)
 color = Color(0.701961, 0.47451, 0.215686, 1)

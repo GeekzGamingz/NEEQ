@@ -50,12 +50,14 @@ func transitions(delta):
 		#Interested
 		states.interested:
 			if p.player == null: return states.idle
+			elif p.player.MODE == "Combat": return states.chase
 			elif p.player.facing.x == p.facing.x: return states.chase
 			elif p.bite_detector.is_colliding(): return states.attack
 		#Chase
 		states.chase:
 			if p.player == null: return states.idle
-			elif p.player.facing.x != p.facing.x: return states.interested
+			elif p.player.facing.x != p.facing.x:
+				if p.player.MODE != "Combat": return states.interested
 			elif p.bite_detector.is_colliding(): return states.attack
 		#Attack
 		states.attack:
@@ -80,6 +82,7 @@ func state_enter(new_state, old_state):
 			p.playback.travel ("idle")
 			p.direction = 0
 			if p.player.facing.x == p.facing.x: p.play_emote("Exclaim")
+			elif p.player.MODE == "Combat": p.play_emote("Exclaim")
 			else: p.play_emote("Question")
 		states.chase:
 			p.playback.travel("chase")
