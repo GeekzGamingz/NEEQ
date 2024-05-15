@@ -62,26 +62,33 @@ func transitions(delta):
 	#Combat
 		#Combat Idle
 		states.combat_idle:
+			if !p.grounded: return states.combat_thrust
 			if p.MODE == "Explorer": return states.idle
 			if Input.get_action_strength("action_quick") > 0:
 				if p.MODE == "Explorer": return states.run
 				return states.combat_quick1
 		#Combat Strike
 		states.combat_quick1:
-			if Input.get_action_strength("action_quick") > 0:
-				if p.MODE == "Explorer": return states.run
-				if p.attack_timer.is_stopped(): return states.combat_quick2
-			elif p.attack_timer.is_stopped(): return states.combat_idle
+			if !p.grounded: return states.combat_thrust
+			if p.attack_timer.is_stopped():
+				if Input.get_action_strength("action_quick") > 0:
+					if p.MODE == "Explorer": return states.run
+					else: return states.combat_quick2
+				else: return states.combat_idle
 		states.combat_quick2:
-			if Input.get_action_strength("action_quick") > 0:
-				if p.MODE == "Explorer": return states.run
-				if p.attack_timer.is_stopped(): return states.combat_quick3
-			elif p.attack_timer.is_stopped(): return states.combat_idle
+			if !p.grounded: return states.combat_thrust
+			if p.attack_timer.is_stopped():
+				if Input.get_action_strength("action_quick") > 0:
+					if p.MODE == "Explorer": return states.run
+					else: return states.combat_quick3
+				else: return states.combat_idle
 		states.combat_quick3:
-			if Input.get_action_strength("action_quick") > 0:
-				if p.MODE == "Explorer": return states.run
-				if p.attack_timer.is_stopped(): return states.combat_quick1
-			elif p.attack_timer.is_stopped(): return states.combat_idle
+			if !p.grounded: return states.combat_thrust
+			if p.attack_timer.is_stopped():
+				if Input.get_action_strength("action_quick") > 0:
+					if p.MODE == "Explorer": return states.run
+					else: return states.combat_quick1
+				else: return states.combat_idle
 		states.combat_thrust:
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
