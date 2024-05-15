@@ -54,13 +54,14 @@ func weight() -> float:
 	#Air Weight
 	else: return 0.1
 #------------------------------------------------------------------------------#
-#Ledge Jump
+#Ledge Break
 func ledge_break() -> void:
 	if ledge:
 		ledge_timer.start()
 		ledge_detector.enabled = false
 		wall_detector1.enabled = false
 #------------------------------------------------------------------------------#
+#Particle Effects
 func jump_particles():
 	var jump_particle = FX_JUMP.instantiate()
 	jump_particle.global_position = global_position
