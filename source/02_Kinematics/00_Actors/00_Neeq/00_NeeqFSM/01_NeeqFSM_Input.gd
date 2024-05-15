@@ -18,12 +18,14 @@ func _ready() -> void:
 	state_add("ledge")
 	state_add("ledge_jump")
 	state_add("wall_slide")
+	state_add("wall_slide_quick")
 	state_add("wall_jump")
 	state_add("skid")
 	state_add("combat_idle")
 	state_add("combat_quick1")
 	state_add("combat_quick2")
 	state_add("combat_quick3")
+	state_add("combat_thrust")
 	call_deferred("state_set", states.idle)
 #-------------------------------------------------------------------------------------------------#
 #State Label
@@ -38,14 +40,14 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("action_quick"): p.max_speed = p.walk_speed
 	#Verticle Movement
 	if [states.idle, states.walk, states.run, states.ledge,
-		states.wall_slide, states.fall].has(state):
+		states.wall_slide, states.wall_slide_quick, states.fall].has(state):
 		if !p.jumping:
 			if event.is_action_pressed("action_travel"):
 				if p.grounded || p.ledge || !p.coyote_timer.is_stopped():
 					p.coyote_timer.stop()
 					if p.grounded: p.jump_particles()
 					if states.ledge: p.ledge_break()
-				elif state == states.wall_slide:
+				elif state == states.wall_slide || state == states.wall_slide_quick:
 					p.velocity.x = -p.max_speed if p.facing.x == p.FACING_RIGHT else p.max_speed
 					if p.facing.x == p.FACING_RIGHT: p.set_facing(p.FACING_LEFT)
 					elif p.facing.x == p.FACING_LEFT: p.set_facing(p.FACING_RIGHT)
