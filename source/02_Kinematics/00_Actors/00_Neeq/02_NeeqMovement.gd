@@ -21,6 +21,7 @@ var controllable: bool = true
 #------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:
+	if velocity.y >= 0: wall_detector2.enabled = true
 	var was_on_floor = grounded
 	grounded = check_grounded()
 	ledge = check_ledge()

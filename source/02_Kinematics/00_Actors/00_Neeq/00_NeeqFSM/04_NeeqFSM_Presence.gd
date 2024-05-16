@@ -12,7 +12,7 @@ func state_enter(new_state, old_state):
 		states.run: p.playback.travel("run")
 		states.skid:
 			p.playback.start("skid")
-			p.particles_marker.position = Vector2(-10, 0)
+			p.particles_marker.position = Vector2(10, 0)
 		states.jump:
 			p.playback.start("jump_takeoff")
 			p.jumping = true
@@ -33,7 +33,6 @@ func state_enter(new_state, old_state):
 			p.particles_marker.position = Vector2(7, -7)
 		states.fall:
 			p.playback.start("jump_fall")
-			p.jumping = true if p.coyote_timer.is_stopped() else false
 			p.wall_detector2.enabled = true
 	#Combat Mode
 		states.combat_idle: p.playback.travel("combat_idle")
@@ -50,12 +49,9 @@ func state_enter(new_state, old_state):
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):
+	p.particles_marker.position = Vector2.ZERO
 	match(old_state):
-		states.wall_slide, states.wall_slide_quick:
-			p.safe_fall.enabled = true
-			p.particles_marker.position = Vector2.ZERO
+		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.fall: p.jumping = false
-		states.skid:
-			p.skid_timer.start()
-			p.particles_marker.position = Vector2.ZERO
+		states.skid: p.skid_timer.start()
 		states.combat_thrust: p.gravity /= 5.0

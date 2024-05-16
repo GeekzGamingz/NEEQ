@@ -14,6 +14,7 @@ func state_logic(delta):
 		p.apply_movement()
 	match(state):
 		states.idle: pass
+		states.fall: p.jumping = true if p.coyote_timer.is_stopped() else false
 		states.wall_slide, states.wall_slide_quick, states.skid: p.jump_particles()
 		states.combat_idle, states.combat_thrust: p.velocity.x = 0
 		states.combat_quick1, states.combat_quick2, states.combat_quick3: p.velocity.x = 0
