@@ -34,6 +34,10 @@ func state_enter(new_state, old_state):
 		states.fall:
 			p.playback.start("jump_fall")
 			p.wall_detector2.enabled = true
+		states.dodge, states.dodge_air:
+			p.playback.start("dodge")
+			p.attack_timer.start()
+			p.particles_marker.position = Vector2(0, -16)
 	#Combat Mode
 		states.combat_idle: p.playback.travel("combat_idle")
 		states.combat_quick1:
@@ -51,7 +55,7 @@ func state_enter(new_state, old_state):
 func state_exit(old_state, new_state):
 	p.particles_marker.position = Vector2.ZERO
 	match(old_state):
-		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.fall: p.jumping = false
+		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.skid: p.skid_timer.start()
 		states.combat_thrust: p.gravity /= 5.0

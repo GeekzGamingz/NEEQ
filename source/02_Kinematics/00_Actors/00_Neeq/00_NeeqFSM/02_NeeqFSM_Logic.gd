@@ -16,5 +16,10 @@ func state_logic(delta):
 		states.idle: pass
 		states.fall: p.jumping = true if p.coyote_timer.is_stopped() else false
 		states.wall_slide, states.wall_slide_quick, states.skid: p.jump_particles()
+		states.dodge, states.dodge_air:
+			if p.facing.x == p.FACING_RIGHT: p.velocity.x = -10 * G.TILE_SIZE
+			else: p.velocity.x = 10 * G.TILE_SIZE
+			p.dodge_particles()
+			if state == states.dodge: p.jump_particles()
 		states.combat_idle, states.combat_thrust: p.velocity.x = 0
 		states.combat_quick1, states.combat_quick2, states.combat_quick3: p.velocity.x = 0

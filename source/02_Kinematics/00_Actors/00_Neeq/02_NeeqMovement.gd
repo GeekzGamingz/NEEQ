@@ -4,6 +4,9 @@ class_name NeeqMovement
 #------------------------------------------------------------------------------#
 #Constants
 const FX_JUMP = preload("res://source/03_Objects/01_Particles/00_DustParticles/FX_Jump.tscn")
+const FX_DODGE = preload("res://source/03_Objects/01_Particles/01_DodgeParticles/FX_Dodge.tscn")
+const DODGE_RIGHT: Rect2 = Rect2(160, 160, 32, 32)
+const DODGE_LEFT: Rect2 = Rect2(192, 160, 32, 32)
 #------------------------------------------------------------------------------#
 #Variables
 var direction: float = 0
@@ -64,6 +67,7 @@ func ledge_break() -> void:
 		wall_detector1.enabled = false
 #------------------------------------------------------------------------------#
 #Particle Effects
+#Jump Particles
 func jump_particles():
 	var jump_particle = FX_JUMP.instantiate()
 	jump_particle.global_position = particles_marker.global_position
@@ -73,4 +77,18 @@ func jump_particles():
 		fsm.states.wall_slide: jump_particle.lifetime = 0.5
 		fsm.states.skid: if max_speed == run_speed:
 				jump_particle.process_material.gravity.x = velocity.x / 2
+		fsm.states.dodge:
+			jump_particle.lifetime = 0.5
+			jump_particle.global_position.y = jump_particle.global_position.y + 16
 	G.ORPHANS.add_child(jump_particle)
+#Dodge Particles
+func dodge_particles():
+	var dodge_particle = FX_DODGE.instantiate()
+	dodge_particle.global_position = particles_marker.global_position
+	if facing.x == FACING_RIGHT:
+		dodge_particle.texture.region = DODGE_RIGHT
+		dodge_particle.process_material.gravity.x = 98
+	else:
+		dodge_particle.texture.region = DODGE_LEFT
+		dodge_particle.process_material.gravity.x = -98
+	G.ORPHANS.add_child(dodge_particle)

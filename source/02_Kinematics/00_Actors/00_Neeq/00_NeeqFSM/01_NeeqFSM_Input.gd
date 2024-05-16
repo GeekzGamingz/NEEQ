@@ -21,6 +21,8 @@ func _ready() -> void:
 	state_add("wall_slide_quick")
 	state_add("wall_jump")
 	state_add("skid")
+	state_add("dodge")
+	state_add("dodge_air")
 	state_add("combat_idle")
 	state_add("combat_quick1")
 	state_add("combat_quick2")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfm2iuctmie1h"]
 
 [ext_resource type="Texture2D" uid="uid://cynyl6yutv8bc" path="res://assets/03_Objects/dust.png" id="1_44ltn"]
-[ext_resource type="Script" path="res://source/03_Objects/01_Particles/00_DustParticles/FX_Jump.gd" id="2_likbu"]
+[ext_resource type="Script" path="res://source/03_Objects/01_Particles/FX_Particles.gd" id="2_likbu"]
 
 [sub_resource type="Curve" id="Curve_fap3v"]
 max_value = 1.25
