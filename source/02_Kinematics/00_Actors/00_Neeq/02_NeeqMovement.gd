@@ -12,6 +12,7 @@ var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
 #OnReady Variables
+@onready var particles_marker = $Facing/Markers/ParticlesMarker
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
@@ -64,5 +65,11 @@ func ledge_break() -> void:
 #Particle Effects
 func jump_particles():
 	var jump_particle = FX_JUMP.instantiate()
-	jump_particle.global_position = global_position
+	jump_particle.global_position = particles_marker.global_position
+	jump_particle.amount = 3 if max_speed == run_speed || fsm.state == fsm.states.skid else 1
+	jump_particle.process_material.gravity.x = -velocity.x / 2
+	match(fsm.state):
+		fsm.states.wall_slide: jump_particle.lifetime = 0.5
+		fsm.states.skid: if max_speed == run_speed:
+				jump_particle.process_material.gravity.x = velocity.x / 2
 	G.ORPHANS.add_child(jump_particle)

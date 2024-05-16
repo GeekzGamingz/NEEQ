@@ -1,3 +1,4 @@
+#Attach to Actor Inherited Nodes
 #Inherits GPUParticles2D Code
 extends GPUParticles2D
 #------------------------------------------------------------------------------#

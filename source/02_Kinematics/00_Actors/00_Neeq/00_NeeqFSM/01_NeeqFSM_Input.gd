@@ -43,9 +43,9 @@ func _input(event: InputEvent) -> void:
 		states.wall_slide, states.wall_slide_quick, states.fall].has(state):
 		if !p.jumping:
 			if event.is_action_pressed("action_travel"):
+				p.jump_particles()
 				if p.grounded || p.ledge || !p.coyote_timer.is_stopped():
 					p.coyote_timer.stop()
-					if p.grounded: p.jump_particles()
 					if states.ledge: p.ledge_break()
 				elif state == states.wall_slide || state == states.wall_slide_quick:
 					p.velocity.x = -p.max_speed if p.facing.x == p.FACING_RIGHT else p.max_speed
