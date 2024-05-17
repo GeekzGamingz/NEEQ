@@ -77,7 +77,7 @@ func jump_particles():
 		fsm.states.wall_slide: jump_particle.lifetime = 0.5
 		fsm.states.skid: if max_speed == run_speed:
 				jump_particle.process_material.gravity.x = velocity.x / 2
-		fsm.states.dodge:
+		fsm.states.dodge, fsm.states.dodge_air:
 			jump_particle.lifetime = 0.5
 			jump_particle.global_position.y = jump_particle.global_position.y + 16
 	G.ORPHANS.add_child(jump_particle)

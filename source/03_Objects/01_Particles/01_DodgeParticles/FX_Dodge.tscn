@@ -28,3 +28,5 @@ texture = SubResource("AtlasTexture_dtkvq")
 lifetime = 0.25
 one_shot = true
 script = ExtResource("2_bml58")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -20,7 +20,7 @@ func state_logic(delta):
 			if p.facing.x == p.FACING_RIGHT: p.velocity.x = -10 * G.TILE_SIZE
 			else: p.velocity.x = 10 * G.TILE_SIZE
 			p.dodge_particles()
-			if state == states.dodge: p.jump_particles()
+			if p.grounded: p.jump_particles()
 		states.combat_walk: p.max_speed = p.walk_speed
 		states.combat_downthrust, states.combat_jump_charge, states.combat_jump_fall:
 			p.velocity.x = 0
