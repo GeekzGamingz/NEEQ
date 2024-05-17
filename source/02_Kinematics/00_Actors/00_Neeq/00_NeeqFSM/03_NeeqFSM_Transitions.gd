@@ -48,7 +48,7 @@ func transitions(delta):
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
-			elif p.MODE == "Combat": return states.combat_thrust
+			elif p.MODE == "Combat": return states.combat_downthrust
 		#Dodge
 		states.dodge: if p.attack_timer.is_stopped(): return states.run
 		states.dodge_air: if p.attack_timer.is_stopped(): return states.fall
@@ -69,34 +69,49 @@ func transitions(delta):
 	#Combat
 		#Combat Idle
 		states.combat_idle:
-			if !p.grounded: return states.combat_thrust
 			if p.MODE == "Explorer": return states.idle
 			if Input.get_action_strength("action_quick") > 0:
 				if p.MODE == "Explorer": return states.run
 				return states.combat_quick1
+			elif p.velocity.x != 0: return states.combat_walk
+			if Input.get_action_strength("action_travel") > 0:
+				return states.combat_jump_charge
+		#Combat Walk
+		states.combat_walk:
+			if p.MODE == "Explorer": return states.walk
+			if Input.get_action_strength("action_quick") > 0:
+				return states.combat_quick1
+			if Input.get_action_strength("action_travel") > 0:
+				return states.combat_jump_charge
+			if p.velocity.x == 0: return states.combat_idle
+		#Combat Jump
+		states.combat_jump_charge: if Input.is_action_just_released("action_travel"):
+			return states.combat_jump_fall
+		states.combat_jump_fall: if p.attack_timer.is_stopped() && p.grounded:
+			return states.combat_idle
 		#Combat Strike
 		states.combat_quick1:
-			if !p.grounded: return states.combat_thrust
+			if !p.grounded: return states.combat_downthrust
 			if p.attack_timer.is_stopped():
 				if Input.get_action_strength("action_quick") > 0:
 					if p.MODE == "Explorer": return states.run
 					else: return states.combat_quick2
 				else: return states.combat_idle
 		states.combat_quick2:
-			if !p.grounded: return states.combat_thrust
+			if !p.grounded: return states.combat_downthrust
 			if p.attack_timer.is_stopped():
 				if Input.get_action_strength("action_quick") > 0:
 					if p.MODE == "Explorer": return states.run
 					else: return states.combat_quick3
 				else: return states.combat_idle
 		states.combat_quick3:
-			if !p.grounded: return states.combat_thrust
+			if !p.grounded: return states.combat_downthrust
 			if p.attack_timer.is_stopped():
 				if Input.get_action_strength("action_quick") > 0:
 					if p.MODE == "Explorer": return states.run
 					else: return states.combat_quick1
 				else: return states.combat_idle
-		states.combat_thrust:
+		states.combat_downthrust:
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle

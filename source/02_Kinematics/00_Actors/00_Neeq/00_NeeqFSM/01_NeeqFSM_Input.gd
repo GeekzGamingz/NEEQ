@@ -24,10 +24,13 @@ func _ready() -> void:
 	state_add("dodge")
 	state_add("dodge_air")
 	state_add("combat_idle")
+	state_add("combat_walk")
 	state_add("combat_quick1")
 	state_add("combat_quick2")
 	state_add("combat_quick3")
-	state_add("combat_thrust")
+	state_add("combat_downthrust")
+	state_add("combat_jump_charge")
+	state_add("combat_jump_fall")
 	call_deferred("state_set", states.idle)
 #-------------------------------------------------------------------------------------------------#
 #State Label
