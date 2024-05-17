@@ -1,0 +1,249 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3oa180qqu0kv"]
+
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
+[ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_fk36u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f0gsw"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cgvo4"]
+resource_name = "walk_east"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hr4dg"]
+resource_name = "walk_north"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hidf2"]
+resource_name = "walk_south"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mm8ed"]
+resource_name = "walk_west"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jb6sv"]
+_data = {
+"RESET": SubResource("Animation_fk36u"),
+"idle": SubResource("Animation_f0gsw"),
+"walk_east": SubResource("Animation_cgvo4"),
+"walk_north": SubResource("Animation_hr4dg"),
+"walk_south": SubResource("Animation_hidf2"),
+"walk_west": SubResource("Animation_mm8ed")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_hdst0"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0, 0.607843, 0, 1)
+shadow_color = Color(0, 0, 0, 0.588235)
+
+[node name="Neeq_Overworld" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource("1_8ivlu")
+
+[node name="Neeq_OWFSM" type="Node2D" parent="."]
+script = ExtResource("2_32x13")
+
+[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("2_tb6in")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x0t63")
+
+[node name="MoveDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 12)
+collide_with_areas = true
+
+[node name="AnimationPlayers" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_jb6sv")
+}
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="StateOutput" type="Label" parent="Outputs"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 25.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "state"
+label_settings = SubResource("LabelSettings_hdst0")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

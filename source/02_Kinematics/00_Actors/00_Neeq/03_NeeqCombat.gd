@@ -4,6 +4,7 @@ class_name NeeqCombat
 #------------------------------------------------------------------------------#
 #Variables
 #Exported Variables
+@export var combat_jump_multiplier: float = 1.0
 @export_enum("Explorer", "Combat", "Sneeq", "Magic") var MODE: String
 #------------------------------------------------------------------------------#
 func handle_mode():

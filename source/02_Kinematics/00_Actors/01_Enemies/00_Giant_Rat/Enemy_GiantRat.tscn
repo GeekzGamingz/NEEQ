@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://m0dqd1swvgoa"]
+[gd_scene load_steps=30 format=3 uid="uid://m0dqd1swvgoa"]
 
 [ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="1_5tlb7"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/03_GiantRatMovement.gd" id="1_w7vuf"]
@@ -9,6 +9,18 @@ height = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duveq"]
 radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_5fehe"]
+offsets = PackedFloat32Array(0, 0.59447)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aed6g"]
+gradient = SubResource("Gradient_5fehe")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
 radius = 3.0
@@ -87,6 +99,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Torch:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.5, -16.5)]
 }
 
 [sub_resource type="Animation" id="Animation_s7r1j"]
@@ -401,7 +425,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -16)]
 }
 tracks/5/type = "value"
@@ -415,6 +439,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Torch:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4.5, -16.5), Vector2(4.5, -17.5), Vector2(4.5, -18.5), Vector2(4.5, -17.5), Vector2(4.5, -16.5), Vector2(4.5, -17.5), Vector2(4.5, -18.5), Vector2(4.5, -17.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
@@ -568,8 +604,17 @@ position = Vector2(4, -14)
 target_position = Vector2(24, 0)
 collision_mask = 2
 
-[node name="EmotesMarker" type="Marker2D" parent="Facing"]
+[node name="Markers" type="Node2D" parent="Facing"]
+
+[node name="EmotesMarker" type="Marker2D" parent="Facing/Markers"]
 position = Vector2(5, -36)
+
+[node name="Torch" type="PointLight2D" parent="Facing"]
+z_index = -100
+position = Vector2(4.5, -16.5)
+scale = Vector2(0.145, 0.145)
+color = Color(0.701961, 0.47451, 0.215686, 1)
+texture = SubResource("GradientTexture2D_aed6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -583,6 +628,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayers"]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_gbof1")
 }

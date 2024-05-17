@@ -11,7 +11,7 @@ var dir_new: float = 0
 #OnReady Variables
 @onready var direction_timer = $Timers/DirectionTimer
 #------------------------------------------------------------------------------#
-#Player Movement
+#Enemy Movement
 func apply_movement() -> void:
 	grounded = check_grounded()
 	ledge = check_ledge()

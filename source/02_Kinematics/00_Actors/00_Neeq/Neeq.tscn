@@ -1,8 +1,9 @@
-[gd_scene load_steps=56 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=75 format=3 uid="uid://bnc03qphek87j"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/03_NeeqCombat.gd" id="1_hm6a4"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
 [ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
+[ext_resource type="Texture2D" uid="uid://bwcobc7deglhx" path="res://assets/02_Actors/00_Neeq/WHIP_Combat_Compiled.png" id="4_duc1e"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
@@ -14,7 +15,7 @@ length = 0.32
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,34 +39,58 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -80,19 +105,19 @@ step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2, 1.32, 1.44, 1.56, 1.68, 1.8, 1.92, 2.04, 2.16, 2.28, 2.4, 2.52, 2.64, 2.76, 2.88, 3, 3.12, 3.24, 3.36, 3.48, 3.6, 3.72, 3.84, 3.96, 4.08, 4.2, 4.32, 4.44, 4.56, 4.68),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [170, 171, 172, 173, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 170, 171, 172, 173, 170, 171, 172, 173, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 170, 171, 172, 173]
+"values": [180, 181, 182, 183, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 180, 181, 182, 183, 180, 181, 182, 183, 180, 181, 182, 183, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,31 +129,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -140,7 +165,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -149,26 +174,39 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="Animation" id="Animation_sp0dd"]
-resource_name = "combat_strike"
-length = 0.4
+[sub_resource type="Animation" id="Animation_52wj7"]
+resource_name = "combat_quick1"
+length = 0.32
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [183, 184, 185, 186]
+"values": [193, 194, 195, 196]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -180,31 +218,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -216,10 +254,415 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wycwb"]
+resource_name = "combat_quick2"
+length = 0.32
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [193, 194, 195, 196]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w21ln")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w75uo"]
+resource_name = "combat_quick3"
+length = 0.32
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [193, 194, 195, 196]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w21ln")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_itin5"]
+resource_name = "combat_walk"
+length = 4.8
+loop_mode = 1
+step = 0.12
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2, 1.32, 1.44, 1.56, 1.68, 1.8, 1.92, 2.04, 2.16, 2.28, 2.4, 2.52, 2.64, 2.76, 2.88, 3, 3.12, 3.24, 3.36, 3.48, 3.6, 3.72, 3.84, 3.96, 4.08, 4.2, 4.32, 4.44, 4.56, 4.68),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [198, 199, 200, 201, 202, 203, 204, 205, 207, 208, 209, 210, 211, 212, 213, 214, 198, 199, 200, 201, 202, 203, 204, 205, 198, 199, 200, 201, 202, 203, 204, 205, 207, 208, 209, 210, 211, 212, 213, 214]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w21ln")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_g8los"]
+resource_name = "dodge"
+length = 0.16
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w21ln")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -234,7 +677,7 @@ step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -246,7 +689,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -258,31 +701,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -294,10 +737,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -312,19 +767,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [65, 66, 67]
+"values": [68, 69, 70]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -336,31 +791,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -372,10 +827,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -389,19 +856,19 @@ step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [68, 69, 70, 71]
+"values": [72, 73, 74, 75]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -413,31 +880,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -449,10 +916,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -466,19 +945,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [58, 59, 60, 61, 62, 63]
+"values": [61, 62, 63, 64, 65, 66]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -490,31 +969,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -526,10 +1005,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -543,19 +1034,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [51, 52, 53, 54, 55, 56]
+"values": [54, 55, 56, 57, 58, 59]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -567,31 +1058,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -603,10 +1094,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -621,19 +1124,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.6, 1.68, 1.76, 1.84, 1.92, 2, 2.08, 2.16, 2.24, 2.32, 2.4, 2.48, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
+"times": PackedFloat32Array(0.00305027, 0.0830503, 0.16305, 0.24305, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.59695, 1.67695, 1.75695, 1.83695, 1.92, 2, 2.08, 2.16, 2.23695, 2.31695, 2.39695, 2.47695, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50, 34, 35, 36, 37, 38, 39, 40, 41, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50]
+"values": [36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 36, 37, 38, 39, 40, 41, 42, 43, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -645,31 +1148,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -681,10 +1184,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -698,19 +1213,19 @@ step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [85, 86, 87, 88]
+"values": [90, 91, 92, 93]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -722,31 +1237,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -758,10 +1273,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -776,19 +1303,19 @@ step = 0.12
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96, 1.08, 1.2, 1.32, 1.44, 1.56, 1.68, 1.8, 1.92, 2.04, 2.16, 2.28, 2.4, 2.52, 2.64, 2.76, 2.88, 3, 3.12, 3.24, 3.36, 3.48, 3.6, 3.72, 3.84, 3.96, 4.08, 4.2, 4.32, 4.44, 4.56, 4.68),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 17, 18, 19, 20, 21, 22, 23, 24, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33]
+"values": [18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 18, 19, 20, 21, 22, 23, 24, 25, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -800,31 +1327,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -836,10 +1363,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -853,19 +1392,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [73, 74, 75, 76, 77]
+"values": [77, 78, 79, 80, 81]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -877,31 +1416,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -913,7 +1452,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -921,6 +1460,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qhdnn"]
@@ -931,19 +1482,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.6, 1.68, 1.76, 1.84, 1.92, 2, 2.08, 2.16, 2.24, 2.32, 2.4, 2.48, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [153, 154, 155, 156, 157, 158, 159, 160, 162, 163, 164, 165, 166, 167, 168, 169, 153, 154, 155, 156, 157, 158, 159, 160, 153, 154, 155, 156, 157, 158, 159, 160, 162, 163, 164, 165, 166, 167, 168, 169]
+"values": [162, 163, 164, 165, 166, 167, 168, 169, 171, 172, 173, 174, 175, 176, 177, 178, 162, 163, 164, 165, 166, 167, 168, 169, 162, 163, 164, 165, 166, 167, 168, 169, 171, 172, 173, 174, 175, 176, 177, 178]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -955,31 +1506,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -991,10 +1542,22 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1009,19 +1572,19 @@ step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Neeq:frame")
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [79, 80, 81, 82]
+"values": [83, 84, 85, 86]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Neeq:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1033,31 +1596,31 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/Sprite_Neeq:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [18]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/Sprite_Neeq:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [11]
+"values": [18]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/Sprite_Neeq:position")
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1069,10 +1632,112 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/Sprite_Neeq:flip_h")
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sampe"]
+resource_name = "wall_slide_quick"
+length = 0.32
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [101, 102, 103, 104]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w21ln")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1083,7 +1748,11 @@ tracks/5/keys = {
 _data = {
 "RESET": SubResource("Animation_2kt2i"),
 "combat_idle": SubResource("Animation_cj1yg"),
-"combat_strike": SubResource("Animation_sp0dd"),
+"combat_quick1": SubResource("Animation_52wj7"),
+"combat_quick2": SubResource("Animation_wycwb"),
+"combat_quick3": SubResource("Animation_w75uo"),
+"combat_walk": SubResource("Animation_itin5"),
+"dodge": SubResource("Animation_g8los"),
 "idle": SubResource("Animation_jmlw4"),
 "jump_fall": SubResource("Animation_2jw16"),
 "jump_land": SubResource("Animation_n5wcc"),
@@ -1094,14 +1763,27 @@ _data = {
 "walk": SubResource("Animation_juktq"),
 "wall_jump": SubResource("Animation_ofmmq"),
 "wall_ledge": SubResource("Animation_qhdnn"),
-"wall_slide": SubResource("Animation_bbryl")
+"wall_slide": SubResource("Animation_bbryl"),
+"wall_slide_quick": SubResource("Animation_sampe")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6aoqp"]
 animation = &"combat_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dcnc2"]
-animation = &"combat_strike"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msjec"]
+animation = &"combat_quick1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5kxc3"]
+animation = &"combat_quick2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n057x"]
+animation = &"combat_quick3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pyjn2"]
+animation = &"combat_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bvo0w"]
+animation = &"dodge"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n1kv1"]
 animation = &"idle"
@@ -1135,6 +1817,9 @@ animation = &"wall_ledge"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u26r0"]
 animation = &"wall_slide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_43yco"]
+animation = &"wall_slide_quick"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jlfpp"]
 switch_mode = 2
@@ -1180,19 +1865,46 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_np7sl"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k2ar6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ikpw"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l47yt"]
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4a7os"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7m2y6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0cuj"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4dgp3"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_46dnh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cxdcc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwxal"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7xsvx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y6ur7"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
-states/End/position = Vector2(801, 31)
-states/Start/position = Vector2(289, 31)
+states/End/position = Vector2(714, 31)
+states/Start/position = Vector2(375, 31)
 states/combat_idle/node = SubResource("AnimationNodeAnimation_6aoqp")
 states/combat_idle/position = Vector2(801, 111)
-states/combat_strike/node = SubResource("AnimationNodeAnimation_dcnc2")
-states/combat_strike/position = Vector2(801, 190)
+states/combat_quick1/node = SubResource("AnimationNodeAnimation_msjec")
+states/combat_quick1/position = Vector2(801, 190)
+states/combat_quick2/node = SubResource("AnimationNodeAnimation_5kxc3")
+states/combat_quick2/position = Vector2(965, 190)
+states/combat_quick3/node = SubResource("AnimationNodeAnimation_n057x")
+states/combat_quick3/position = Vector2(1138, 190)
+states/combat_walk/node = SubResource("AnimationNodeAnimation_pyjn2")
+states/combat_walk/position = Vector2(965, 111)
+states/dodge/node = SubResource("AnimationNodeAnimation_bvo0w")
+states/dodge/position = Vector2(375, 111)
 states/idle/node = SubResource("AnimationNodeAnimation_n1kv1")
 states/idle/position = Vector2(540, 31)
 states/jump_fall/node = SubResource("AnimationNodeAnimation_q0pva")
@@ -1202,7 +1914,7 @@ states/jump_land/position = Vector2(540, 111)
 states/jump_ledge/node = SubResource("AnimationNodeAnimation_vmof2")
 states/jump_ledge/position = Vector2(714, 268)
 states/jump_takeoff/node = SubResource("AnimationNodeAnimation_yuuik")
-states/jump_takeoff/position = Vector2(380, 268)
+states/jump_takeoff/position = Vector2(375, 190)
 states/run/node = SubResource("AnimationNodeAnimation_btdu4")
 states/run/position = Vector2(666, -49)
 states/skid/node = SubResource("AnimationNodeAnimation_bj0jy")
@@ -1212,11 +1924,13 @@ states/walk/position = Vector2(417, -49)
 states/wall_jump/node = SubResource("AnimationNodeAnimation_di1m2")
 states/wall_jump/position = Vector2(540, 268)
 states/wall_ledge/node = SubResource("AnimationNodeAnimation_dxei4")
-states/wall_ledge/position = Vector2(629, 341)
+states/wall_ledge/position = Vector2(714, 341)
 states/wall_slide/node = SubResource("AnimationNodeAnimation_u26r0")
-states/wall_slide/position = Vector2(431, 341)
-transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_idle", "idle", SubResource("AnimationNodeStateMachineTransition_np7sl"), "combat_idle", "combat_strike", SubResource("AnimationNodeStateMachineTransition_k2ar6"), "combat_strike", "combat_idle", SubResource("AnimationNodeStateMachineTransition_3ikpw")]
-graph_offset = Vector2(-67, -68.146)
+states/wall_slide/position = Vector2(375, 341)
+states/wall_slide_quick/node = SubResource("AnimationNodeAnimation_43yco")
+states/wall_slide_quick/position = Vector2(218, 341)
+transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_idle", "idle", SubResource("AnimationNodeStateMachineTransition_np7sl"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7")]
+graph_offset = Vector2(32, -44.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -1226,6 +1940,7 @@ shadow_color = Color(0, 0, 0, 0.588235)
 
 [node name="Neeq" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_hm6a4")
 MODE = "Explorer"
 
@@ -1236,11 +1951,18 @@ script = ExtResource("2_86ct0")
 
 [node name="Sprites" type="Node2D" parent="Facing"]
 
-[node name="Sprite_Neeq" type="Sprite2D" parent="Facing/Sprites"]
+[node name="NeeqSprite" type="Sprite2D" parent="Facing/Sprites"]
 position = Vector2(0, -16)
 texture = ExtResource("3_w21ln")
-hframes = 17
-vframes = 11
+hframes = 18
+vframes = 18
+
+[node name="WhipSprite" type="Sprite2D" parent="Facing/Sprites"]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("4_duc1e")
+hframes = 4
+vframes = 3
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
 
@@ -1282,9 +2004,13 @@ target_position = Vector2(5, 0)
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 48)
 
-[node name="EmotesMarker" type="Marker2D" parent="Facing"]
+[node name="Markers" type="Node2D" parent="Facing"]
+
+[node name="EmotesMarker" type="Marker2D" parent="Facing/Markers"]
 position = Vector2(8, -32)
 script = ExtResource("4_v4hut")
+
+[node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -1361,5 +2087,5 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 0.5
+wait_time = 0.32
 one_shot = true

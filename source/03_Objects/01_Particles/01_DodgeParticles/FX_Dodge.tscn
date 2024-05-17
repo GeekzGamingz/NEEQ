@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkwxusfrwo7iv"]
+
+[ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="1_dapsy"]
+[ext_resource type="Script" path="res://source/03_Objects/01_Particles/FX_Particles.gd" id="2_bml58"]
+
+[sub_resource type="Curve" id="Curve_gfhcq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ou73w"]
+curve = SubResource("Curve_gfhcq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ovord"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+gravity = Vector3(98, 0, 0)
+alpha_curve = SubResource("CurveTexture_ou73w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtkvq"]
+atlas = ExtResource("1_dapsy")
+region = Rect2(160, 160, 32, 32)
+
+[node name="FX_Dodge" type="GPUParticles2D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_ovord")
+texture = SubResource("AtlasTexture_dtkvq")
+lifetime = 0.25
+one_shot = true
+script = ExtResource("2_bml58")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

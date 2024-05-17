@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfbvndk3w8bbx"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/02_EnemyMovement.gd" id="1_7r74k"]
-[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/01_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="2_1mcbc"]
+[ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="2_1mcbc"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_EnemyFSM.gd" id="2_yrfdw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
@@ -235,7 +235,9 @@ target_position = Vector2(5, 0)
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 48)
 
-[node name="EmotesMarker" type="Marker2D" parent="Facing"]
+[node name="Markers" type="Node2D" parent="Facing"]
+
+[node name="EmotesMarker" type="Marker2D" parent="Facing/Markers"]
 position = Vector2(0, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

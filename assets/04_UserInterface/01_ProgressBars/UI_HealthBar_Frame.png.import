@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1sb3r4k5i3a8"
-path="res://.godot/imported/Daungun.png-e65e9d93794b584a5feebf9eb272cd93.ctex"
+uid="uid://d0kh01na8kfgu"
+path="res://.godot/imported/UI_HealthBar_Frame.png-662f3ca793467f5f4c3753a9930a2701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/01_Tilesets/Daungun.png"
-dest_files=["res://.godot/imported/Daungun.png-e65e9d93794b584a5feebf9eb272cd93.ctex"]
+source_file="res://assets/04_UserInterface/01_ProgressBars/UI_HealthBar_Frame.png"
+dest_files=["res://.godot/imported/UI_HealthBar_Frame.png-662f3ca793467f5f4c3753a9930a2701.ctex"]
 
 [params]
 

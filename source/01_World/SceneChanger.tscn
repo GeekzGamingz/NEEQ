@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0f5j0gr4v8fc"]
+
+[ext_resource type="Script" path="res://source/01_World/SceneChanger.gd" id="1_puju4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvm31"]
+resource_local_to_scene = true
+size = Vector2(12, 12)
+
+[node name="SceneChanger" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_puju4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pvm31")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,7 @@
 extends Kinematic
 class_name Actor
 #------------------------------------------------------------------------------#
-const EMOTES = preload("res://source/05_UserInterface/00_Emotes/_Emotes.tscn")
+const EMOTES = preload("res://source/05_UserInterface/01_Emotes/_Emotes.tscn")
 #------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
@@ -11,8 +11,9 @@ var jumping: bool = false
 var wall: bool = false
 var ledge: bool = false
 #OnReady Variables
+@onready var fsm: Node2D = get_child(0)
 #Emotes
-@onready var emotes_marker: Marker2D = $Facing/EmotesMarker
+@onready var emotes_marker: Marker2D = $Facing/Markers/EmotesMarker
 @onready var emote_timer: Timer = $Timers/EmoteTimer
 #Detector Nodes
 @onready var world_detectors: Node2D = $Facing/WorldDetectors
