@@ -12,6 +12,7 @@ func state_logic(delta):
 			p.handle_movement()
 		p.apply_gravity(delta)
 		p.apply_movement()
+		p.update_last_action()
 	match(state):
 		states.idle: pass
 		states.fall: p.jumping = true if p.coyote_timer.is_stopped() else false
@@ -27,3 +28,4 @@ func state_logic(delta):
 			if state == states.combat_jump_charge:
 				p.combat_jump_multiplier += 0.01
 		states.combat_quick1, states.combat_quick2, states.combat_quick3: p.velocity.x = 0
+		states.combat_strong1, states.combat_strong2, states.combat_strong3: p.velocity.x = 0

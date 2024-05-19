@@ -20,7 +20,6 @@ var controllable: bool = true
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
 @onready var skid_timer: Timer = $Timers/SkidTimer
-@onready var attack_timer: Timer = $Timers/AttackTimer
 #------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:
