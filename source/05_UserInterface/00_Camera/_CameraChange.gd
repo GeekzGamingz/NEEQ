@@ -40,4 +40,5 @@ func _on_body_entered(body):
 				right = global_position.x + view_width / camera.zoom.x / 2
 			"Custom": pass
 		camera.set_panning(top, bottom, left, right)
+		camera.panning = panning
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bekp2m3jwhlbu"]
+[gd_scene load_steps=25 format=3 uid="uid://bekp2m3jwhlbu"]
 
 [ext_resource type="Texture2D" uid="uid://cy3yvp4ryefgo" path="res://assets/00_Backgrounds/Sky.png" id="1_4df7e"]
 [ext_resource type="Texture2D" uid="uid://b08mmngorcwo7" path="res://assets/00_Backgrounds/Forest.png" id="2_gor3k"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d08ra2rdb7skc" path="res://source/05_UserInterface/00_Camera/_CameraChange.tscn" id="10_42mbv"]
 [ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="11_nfx1y"]
 [ext_resource type="PackedScene" uid="uid://dww73oeea8i86" path="res://source/03_Objects/00_PowerUps/00_ExtraLife/ExtraLife.tscn" id="12_cg72i"]
+[ext_resource type="PackedScene" uid="uid://ddm2fw1pp3ebs" path="res://source/05_UserInterface/_Debuggers/Mode_Debug.tscn" id="13_1gd73"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7phvf"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
@@ -2727,6 +2728,12 @@ adjustment_enabled = true
 metadata/_edit_horizontal_guides_ = [720.0, 24.0, 672.0]
 metadata/_edit_vertical_guides_ = [528.0, 912.0]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Mode_Debug" parent="CanvasLayer" node_paths=PackedStringArray("player", "camera") instance=ExtResource("13_1gd73")]
+player = NodePath("../../Neeq")
+camera = NodePath("../../Camera/MainCamera")
+
 [node name="Sky" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(539, 371)
@@ -2866,6 +2873,11 @@ texture = SubResource("GradientTexture2D_vqgtp")
 [node name="Darkness" type="DirectionalLight2D" parent="."]
 visible = false
 blend_mode = 1
+
+[connection signal="health_damage" from="Neeq" to="Neeq/ProgressBars" method="health_damage"]
+[connection signal="health_heal" from="Neeq" to="Neeq/ProgressBars" method="health_heal"]
+[connection signal="health_damage" from="Enemy_GiantRat" to="Enemy_GiantRat/ProgressBars" method="health_damage"]
+[connection signal="health_heal" from="Enemy_GiantRat" to="Enemy_GiantRat/ProgressBars" method="health_heal"]
 
 [editable path="Camera/CameraChange5"]
 [editable path="Camera/CameraChange4"]

@@ -4,6 +4,7 @@ extends Camera2D
 #Variables
 #Exported Variables
 @export var focus: CharacterBody2D = null
+@export_enum("Horizontal", "Verticle", "Forward", "Backward", "Custom") var panning: String = "Custom"
 #------------------------------------------------------------------------------#
 func _process(_delta) -> void:
 	global_position = focus.global_position
