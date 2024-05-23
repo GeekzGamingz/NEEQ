@@ -33,6 +33,7 @@ func apply_movement() -> void:
 		velocity.x = 0.0
 		velocity.y = max_speed
 	if !grounded && was_on_floor: coyote_timer.start()
+	if grounded && !was_on_floor: jump_particles()
 	if ledge_timer.is_stopped():
 		ledge_detector.enabled = true
 		wall_detector1.enabled = true

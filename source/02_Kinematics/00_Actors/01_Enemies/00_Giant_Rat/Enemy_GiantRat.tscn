@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/03_GiantRatMovement.gd" id="1_w7vuf"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/01_GiantRatFSM.gd" id="2_g2amc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ma0ld"]
-height = 150.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_duveq"]
 radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ma0ld"]
+height = 150.0
 
 [sub_resource type="Gradient" id="Gradient_5fehe"]
 offsets = PackedFloat32Array(0, 0.59447)
@@ -539,28 +539,6 @@ vframes = 3
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
 
-[node name="SightDetector" type="Area2D" parent="Facing/WorldDetectors"]
-position = Vector2(3, -16)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/SightDetector"]
-position = Vector2(75, 0)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ma0ld")
-debug_color = Color(1, 1, 0.0352941, 0.419608)
-
-[node name="Atkbox_Light" type="Area2D" parent="Facing/WorldDetectors"]
-position = Vector2(10, -14)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/Atkbox_Light"]
-shape = SubResource("CircleShape2D_duveq")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-
 [node name="GroundDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
 [node name="GroundDetector1" type="RayCast2D" parent="Facing/WorldDetectors/GroundDetectors"]
@@ -599,7 +577,31 @@ target_position = Vector2(5, 0)
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 48)
 
-[node name="BiteDetector" type="RayCast2D" parent="Facing/WorldDetectors"]
+[node name="CombatDetectors" type="Node2D" parent="Facing/WorldDetectors"]
+
+[node name="Atkbox_Light" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+position = Vector2(10, -14)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Atkbox_Light"]
+shape = SubResource("CircleShape2D_duveq")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="SightDetector" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+position = Vector2(3, -16)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/SightDetector"]
+position = Vector2(75, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ma0ld")
+debug_color = Color(1, 1, 0.0352941, 0.419608)
+
+[node name="BiteDetector" type="RayCast2D" parent="Facing/WorldDetectors/CombatDetectors"]
 position = Vector2(4, -14)
 target_position = Vector2(24, 0)
 collision_mask = 2
@@ -669,5 +671,5 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="Facing/WorldDetectors/SightDetector" to="." method="_on_sight_detector_body_entered"]
-[connection signal="body_exited" from="Facing/WorldDetectors/SightDetector" to="." method="_on_sight_detector_body_exited"]
+[connection signal="body_entered" from="Facing/WorldDetectors/CombatDetectors/SightDetector" to="." method="_on_sight_detector_body_entered"]
+[connection signal="body_exited" from="Facing/WorldDetectors/CombatDetectors/SightDetector" to="." method="_on_sight_detector_body_exited"]

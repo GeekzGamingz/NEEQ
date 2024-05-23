@@ -7,9 +7,10 @@ var player: CharacterBody2D = null
 #Bool Variables
 var atk_toggle: bool = true
 #OnReady Variables
-@onready var sight_detector: Area2D = $Facing/WorldDetectors/SightDetector
-@onready var bite_detector: RayCast2D = $Facing/WorldDetectors/BiteDetector
-@onready var atkbox: CollisionShape2D = $Facing/WorldDetectors/Atkbox_Light/CollisionShape2D
+@onready var combat_detectors = $Facing/WorldDetectors/CombatDetectors
+@onready var sight_detector: Area2D = combat_detectors.get_node("SightDetector")
+@onready var bite_detector: RayCast2D = combat_detectors.get_node("BiteDetector")
+@onready var atkbox: CollisionShape2D = combat_detectors.get_node("Atkbox_Light/CollisionShape2D")
 @onready var atk_timer: Timer = $Timers/AttackTimer
 #------------------------------------------------------------------------------#
 #Neeq Spotted

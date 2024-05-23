@@ -1,15 +1,16 @@
 #Inherits StateMachine Code
 extends StateMachine
 class_name NeeqFSM_Input
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
 @onready var mode_label: Label = p.get_node("Outputs/ModeOutput")
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
+	#Explorer
 	state_add("idle")
 	state_add("walk")
 	state_add("run")
@@ -23,6 +24,7 @@ func _ready() -> void:
 	state_add("skid")
 	state_add("dodge")
 	state_add("dodge_air")
+	#Combat
 	state_add("combat_idle")
 	state_add("combat_walk")
 	state_add("combat_quick1")
@@ -34,13 +36,14 @@ func _ready() -> void:
 	state_add("combat_downthrust")
 	state_add("combat_jump_charge")
 	state_add("combat_jump_fall")
+	#Call Deferred
 	call_deferred("state_set", states.idle)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Label
 func _process(_delta: float) -> void:
 	state_label.text = str(states.keys()[state])
 	mode_label.text = str(p.MODE)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Input Handler
 func _input(event: InputEvent) -> void:
 	#Horizontal Movement

@@ -1,7 +1,7 @@
 #Inherits StateMachine Code
 extends NeeqFSM_Transitions
 class_name NeeqFSM_Presence
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Enter State
 @warning_ignore("unused_parameter")
 func state_enter(new_state, old_state):

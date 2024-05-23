@@ -1,7 +1,7 @@
 #Inherits StateMachine Code
 extends NeeqFSM_Logic
 class_name NeeqFSM_Transitions
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Transitions
 @warning_ignore("unused_parameter")
 func transitions(delta):

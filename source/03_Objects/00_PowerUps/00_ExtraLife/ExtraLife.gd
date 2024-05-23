@@ -9,6 +9,7 @@ extends Area2D
 func _on_body_entered(body):
 	if body.name == "Neeq":
 		S.set_life_count(+1)
+		body.heal(100)
 		anim_player.play("obtain")
 		await anim_player.animation_finished
 		queue_free()

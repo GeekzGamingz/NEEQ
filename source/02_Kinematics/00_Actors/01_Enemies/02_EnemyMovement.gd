@@ -32,7 +32,7 @@ func handle_movement() -> void:
 	if direction > 0: set_facing(FACING_RIGHT)
 	elif direction < 0: set_facing(FACING_LEFT)
 #------------------------------------------------------------------------------#
-#Player Weight
+#Enemy Weight
 func weight() -> float:
 	#Ground Weight
 	if grounded:
