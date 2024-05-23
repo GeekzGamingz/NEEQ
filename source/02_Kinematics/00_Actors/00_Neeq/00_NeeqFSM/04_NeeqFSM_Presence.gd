@@ -70,6 +70,14 @@ func state_enter(new_state, old_state):
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0
+	#Damage
+		states.damage_hit:
+			p.damage_timer.start()
+			p.playback.start("damage_hit")
+		states.damage_air:
+			p.damage_timer.start()
+			p.playback.start("damage_air")
+		states.damage_death: p.playback.start("damage_death")
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):
@@ -85,3 +93,4 @@ func state_exit(old_state, new_state):
 			p.quick_attack_timer.start()
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
+		states.damage_hit, states.damage_air: p.is_hurting = false

@@ -12,6 +12,7 @@ var last_action: String = ""
 @onready var quick_attack_timer: Timer = $Timers/QuickAttackTimer
 @onready var strong_attack_timer: Timer = $Timers/StrongAttackTimer
 @onready var combo_timer: Timer = $Timers/ComboTimer
+@onready var damage_timer = $Timers/DamageTimer
 #------------------------------------------------------------------------------#
 #Combat Input
 #Handle Mode
@@ -39,7 +40,8 @@ func update_last_action():
 			combo_timer.start()
 		else: last_action = ""
 #------------------------------------------------------------------------------#
-func _on_hitbox_neeq_area_entered(area):
+#Hitbox
+func _on_hitbox_area_entered(area):
 	match(area.name):
 		"Atkbox_Ping": damage(1)
 		"Atkbox_Light": damage(5) #Add Strength?
@@ -47,3 +49,11 @@ func _on_hitbox_neeq_area_entered(area):
 		"Atkbox_Moderate": damage(15)
 		"Atkbox_Strong": damage(20)
 		"Atkbox_Elite": damage(25)
+#------------------------------------------------------------------------------#
+#Health Functions
+#Heal Switch
+func healing(): is_healing = true
+#Damage Switch
+func hurting(): is_hurting = true
+#Kill Switch
+func kill(): is_dead = true

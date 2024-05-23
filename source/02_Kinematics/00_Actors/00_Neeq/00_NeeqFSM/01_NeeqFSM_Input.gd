@@ -36,6 +36,10 @@ func _ready() -> void:
 	state_add("combat_downthrust")
 	state_add("combat_jump_charge")
 	state_add("combat_jump_fall")
+	#Damage
+	state_add("damage_hit")
+	state_add("damage_air")
+	state_add("damage_death")
 	#Call Deferred
 	call_deferred("state_set", states.idle)
 #------------------------------------------------------------------------------#

@@ -4,15 +4,15 @@ class_name NeeqFSM_Logic
 #------------------------------------------------------------------------------#
 #State Logistics
 func state_logic(delta):
-	if p.controllable:
-		p.handle_mode()
-		p.move_direction()
-		p.update_last_action()
-		if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
-			states.ledge, states.combat_downthrust, states.combat_jump_fall].has(state):
-			p.handle_movement()
-		p.apply_gravity(delta)
-		p.apply_movement()
+	p.handle_mode()
+	p.move_direction()
+	p.update_last_action()
+	if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
+		states.ledge, states.combat_downthrust, states.combat_jump_fall,
+		states.damage_hit, states.damage_air, states.damage_death].has(state):
+		p.handle_movement()
+	p.apply_gravity(delta)
+	p.apply_movement()
 	match(state):
 		states.idle: pass
 		states.fall: p.jumping = true if p.coyote_timer.is_stopped() else false
@@ -29,3 +29,7 @@ func state_logic(delta):
 				p.combat_jump_multiplier += p.charge_strength
 		states.combat_quick1, states.combat_quick2, states.combat_quick3: p.velocity.x = 0
 		states.combat_strong1, states.combat_strong2, states.combat_strong3: p.velocity.x = 0
+		states.damage_hit, states.damage_air:
+			if p.facing.x == p.FACING_RIGHT: p.velocity.x = -G.TILE_SIZE
+			else: p.velocity.x = G.TILE_SIZE
+		states.damage_death: p.velocity.x = 0

@@ -16,6 +16,10 @@ var facing: Vector2 = Vector2(FACING_RIGHT, 1)
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var min_jump_velocity: float = 0.0
 var max_jump_velocity: float = 0.0
+#Bool Variables
+var is_healing: bool = false
+var is_hurting: bool = false
+var is_dead: bool = false
 #Exported Variables
 @export var max_health: float = 100
 @export var speed: float = 3.5
@@ -55,9 +59,11 @@ func set_health(value):
 	var health_prev = health
 	health = clamp(value, 0, max_health)
 	if health > health_prev:
+		healing()
 		if health == 100: pass
 		emit_signal("health_heal", health)
 	if health < health_prev:
+		hurting()
 		emit_signal("health_damage", health)
 		if health == 0:
 			kill()
@@ -65,5 +71,9 @@ func set_health(value):
 			await get_tree().create_timer(0.1).timeout
 			Engine.time_scale = 1
 		#else: if enemy_bars != null: enemy_bars.visible = true
+#Heal Switch
+func healing(): pass
+#Damage Switch
+func hurting(): pass
 #Kill Switch
 func kill(): pass
