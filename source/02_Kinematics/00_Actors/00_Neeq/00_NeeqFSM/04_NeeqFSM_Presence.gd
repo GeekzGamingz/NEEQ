@@ -68,6 +68,7 @@ func state_enter(new_state, old_state):
 		states.combat_jump_charge: pass #Charge Code
 		states.combat_jump_fall:
 			await get_tree().create_timer(p.jump_duration).timeout
+			p.playback.travel("combat_jump_fall")
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0
 	#Damage
@@ -87,6 +88,7 @@ func state_exit(old_state, new_state):
 		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.skid: p.skid_timer.start()
 		states.combat_jump_charge:
+			p.playback.start("combat_jump")
 			p.combat_jump_multiplier = min(p.combat_jump_multiplier, 2)
 			p.velocity.y = p.max_jump_velocity * p.combat_jump_multiplier
 			p.combat_jump_multiplier = 1.0
