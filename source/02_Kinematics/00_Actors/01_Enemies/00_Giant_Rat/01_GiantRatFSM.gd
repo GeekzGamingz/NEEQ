@@ -124,4 +124,6 @@ func state_exit(old_state, new_state):
 			await get_tree().create_timer(0.1).timeout
 			p.wall_detector1.enabled = true
 		states.chase: p.max_speed = p.walk_speed
-		states.hit: p.is_hurting = false
+		states.hit:
+			if p.player == null: p.direction = -p.direction
+			p.is_hurting = false
