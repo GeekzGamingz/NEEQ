@@ -74,4 +74,29 @@ func random_encounter():
 	p.encounter_timer.wait_time = max(p.speed, p.speed * p.repellent)
 	p.encounter_timer.start()
 	var encounter_chance = p.rng.randi_range(0, 100)
-	print(encounter_chance)
+	print_rich("[b]Encounter Value[/b] [d100]: ", encounter_chance)
+	if range(0, 9).has(encounter_chance):
+		print_rich("[b]Encounter Name[/b]: [wave][rainbow]Mystery[/rainbow][/wave]")
+		print_rich("[b]Encounter Chance[/b]: 10%")
+	elif range(75, 89).has(encounter_chance):
+		print_rich("[b]Encounter Name[/b]: Minor")
+		print_rich("[b]Encounter Chance[/b]: 15%")
+		print_rich("[b]Encounter Threat[/b]: Negliable")
+	elif range(90, 94).has(encounter_chance):
+		print_rich("[b]Encounter Name[/b]: Moderate")
+		print_rich("[b]Encounter Chance[/b]: 5%")
+		print_rich("[b]Encounter Threat[/b]: Fair")
+	elif range(95, 99).has(encounter_chance):
+		print_rich("[b]Encounter Name[/b]: Master")
+		print_rich("[b]Encounter Chance[/b]: 5%")
+		print_rich("[b]Encounter Threat[/b]: Potent")
+	elif [100].has(encounter_chance):
+		print_rich("[b]Encounter Name[/b]: Dragon")
+		print_rich("[b]Encounter Chance[/b]: 1%")
+		print_rich("[b]Encounter Threat[/b]: [shake][color=red]DRAGON[/color][/shake]")
+	else:
+		print_rich("[b]Encounter Name[/b]: [s]Null[/s]")
+		print_rich("[b]Encounter Chance[/b]: 75%")
+		print_rich("[b]Encounter Threat[/b]: Zero")
+	print("#-------------------------#")
+	
