@@ -63,15 +63,8 @@ func state_exit(old_state, new_state):
 #------------------------------------------------------------------------------#
 func map_move():
 	if p.grid_direction != Vector2.ZERO && !p.moving:
-		if p.encounter_timer.is_stopped(): random_encounter()
 		if p.direction.y < 0: return states.walk_north
-		elif p.direction.y > 0: return states.walk_south
-		elif p.direction.x < 0: return states.walk_west
-		elif p.direction.x > 0: return states.walk_east
+		if p.direction.y > 0: return states.walk_south
+		if p.direction.x < 0: return states.walk_west
+		if p.direction.x > 0: return states.walk_east
 	elif p.grid_direction == Vector2.ZERO: return states.idle
-#------------------------------------------------------------------------------#
-func random_encounter():
-	p.encounter_timer.wait_time = max(p.speed, p.speed * p.repellent)
-	p.encounter_timer.start()
-	var encounter_chance = p.rng.randi_range(0, 100)
-	print(encounter_chance)

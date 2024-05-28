@@ -5,6 +5,10 @@ extends OW_Kinematic
 var direction: Vector2 = Vector2.ZERO
 #Bool Variables
 var controllable: bool = true
+#Exported Variables
+@export_range(1, 5, 0.5) var repellent: float
+#OnReady Variables
+@onready var encounter_timer = $Timers/EncounterTimer
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:

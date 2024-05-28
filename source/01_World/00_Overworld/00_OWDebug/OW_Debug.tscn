@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpgyr4t2c751m"]
+[gd_scene load_steps=7 format=3 uid="uid://cpgyr4t2c751m"]
 
 [ext_resource type="PackedScene" uid="uid://b3oa180qqu0kv" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Neeq_OW.tscn" id="1_k2v6i"]
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="2_i7epc"]
 [ext_resource type="Texture2D" uid="uid://bwnlh6tt5rqg" path="res://assets/01_Tilesets/Overmap/overworld_tileset.png" id="3_1seml"]
-[ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="4_mntjo"]
+[ext_resource type="PackedScene" uid="uid://cwsdta7ni67tg" path="res://source/02_Kinematics/01_OWActors/Actor_OW.tscn" id="5_dvv11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h0ilf"]
 texture = ExtResource("3_1seml")
@@ -2006,10 +2006,6 @@ terrain_set_0/terrain_3/name = "Grass-Sand"
 terrain_set_0/terrain_3/color = Color(1, 1, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_h0ilf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_btj5y"]
-resource_local_to_scene = true
-size = Vector2(12, 37)
-
 [node name="OW_Debug" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-800.0, 800.0, 1200.0, -1200.0]
 metadata/_edit_vertical_guides_ = [1200.0, -1200.0]
@@ -2031,17 +2027,23 @@ layer_3/tile_data = PackedInt32Array(-65541, 0, 5, -5, 0, 6, 65531, 0, 6, 131067
 zoom = Vector2(5, 5)
 limit_smoothed = true
 position_smoothing_enabled = true
-focus = NodePath("../Neeq_Overworld")
+focus = NodePath("../Kinematics/Neeq_Overworld")
 
-[node name="Neeq_Overworld" parent="." instance=ExtResource("1_k2v6i")]
-position = Vector2(-5, 13)
+[node name="Kinematics" type="Node2D" parent="."]
 
-[node name="Area2D" parent="." instance=ExtResource("4_mntjo")]
-position = Vector2(-48, -13)
-LEVEL = "Debug"
+[node name="Neeq_Overworld" parent="Kinematics" instance=ExtResource("1_k2v6i")]
+position = Vector2(-3, -3)
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(0, 12.5)
-shape = SubResource("RectangleShape2D_btj5y")
+[node name="Actor_Overworld" parent="Kinematics" instance=ExtResource("5_dvv11")]
+position = Vector2(33, -5)
+speed = null
 
-[editable path="Area2D"]
+[node name="Actor_Overworld2" parent="Kinematics" instance=ExtResource("5_dvv11")]
+position = Vector2(-83, 18)
+LEVEL = "Moderate"
+speed = null
+
+[node name="Actor_Overworld3" parent="Kinematics" instance=ExtResource("5_dvv11")]
+position = Vector2(34, 78)
+LEVEL = "Master"
+speed = null

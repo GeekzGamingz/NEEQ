@@ -14,5 +14,5 @@ func _on_body_entered(body):
 			"Overworld": level_scene = load("res://source/01_World/00_Overworld/00_OWDebug/OW_Debug.tscn")
 			"Debug": level_scene = load("res://source/01_World/01_Levels/00_Debug/Level_Debug.tscn")
 		level_scene = level_scene.instantiate()
-		G.WORLD.call_deferred("add_child", level_scene)
-		p.call_deferred("free")
+		G.LEVELS.get_child(0).call_deferred("free")
+		G.LEVELS.call_deferred("add_child", level_scene)

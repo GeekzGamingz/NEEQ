@@ -9,4 +9,5 @@ const TILE_SIZE_OW: int = 12
 var WIND: float = 0
 #OnReady Variables
 @onready var WORLD = get_tree().get_root().get_node("WorldRoot")
-@onready var ORPHANS = WORLD.get_node("OrphanNodes")
+@onready var ORPHANS = WORLD.get_node("Orphans")
+@onready var LEVELS = WORLD.get_node("Levels")

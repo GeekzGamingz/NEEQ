@@ -4,6 +4,7 @@ class_name OW_Kinematic
 #------------------------------------------------------------------------------#
 #Variables
 var grid_direction: Vector2 = Vector2.ZERO
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 #Bool Variables
 var moving: bool = false
 #Exported Variables

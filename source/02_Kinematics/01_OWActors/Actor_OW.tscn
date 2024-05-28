@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3oa180qqu0kv"]
+[gd_scene load_steps=15 format=3 uid="uid://cwsdta7ni67tg"]
 
-[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
-[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
-[ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
+[ext_resource type="Script" path="res://source/02_Kinematics/01_OWActors/Actor_OW.gd" id="1_nkgbn"]
+[ext_resource type="Script" path="res://source/02_Kinematics/01_OWActors/Actor_OWFSM.gd" id="2_smyti"]
+[ext_resource type="Texture2D" uid="uid://1qvgmvkyh25c" path="res://assets/02_Actors/_Overworld/overworld_minor_enemy.png" id="3_8eki1"]
+[ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="4_dx0jv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
 radius = 6.0
@@ -12,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +41,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +71,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -100,7 +101,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -112,7 +113,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -130,7 +131,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -142,7 +143,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,7 +161,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite_NeeqOW:frame")
+tracks/0/path = NodePath("Sprite_OW:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -172,7 +173,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite_NeeqOW:flip_h")
+tracks/1/path = NodePath("Sprite_OW:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -198,18 +199,23 @@ outline_size = 1
 outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
-[node name="Neeq_Overworld" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jace"]
+radius = 3.0
+
+[node name="Actor_Overworld" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 33
-script = ExtResource("1_8ivlu")
-repellent = 5.0
+script = ExtResource("1_nkgbn")
+LEVEL = "Minor"
+speed = null
+delay = 0.001
 
-[node name="Neeq_OWFSM" type="Node2D" parent="."]
-script = ExtResource("2_32x13")
+[node name="Actor_OWFSM" type="Node2D" parent="."]
+script = ExtResource("2_smyti")
 
-[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
+[node name="Sprite_OW" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
-texture = ExtResource("2_tb6in")
+texture = ExtResource("3_8eki1")
 hframes = 4
 vframes = 3
 frame = 4
@@ -250,18 +256,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Markers" type="Node2D" parent="."]
+[node name="SceneChanger" parent="." instance=ExtResource("4_dx0jv")]
+position = Vector2(0, -3)
+LEVEL = "Debug"
 
-[node name="NorthMarker" type="Marker2D" parent="Markers"]
-position = Vector2(0, -36)
+[node name="CollisionShape2D" parent="SceneChanger" index="0"]
+shape = SubResource("CircleShape2D_0jace")
 
-[node name="EastMarker" type="Marker2D" parent="Markers"]
-position = Vector2(36, 0)
-
-[node name="WestMarker" type="Marker2D" parent="Markers"]
-position = Vector2(-36, 0)
-
-[node name="Timers" type="Node2D" parent="."]
-
-[node name="EncounterTimer" type="Timer" parent="Timers"]
-one_shot = true
+[editable path="SceneChanger"]
