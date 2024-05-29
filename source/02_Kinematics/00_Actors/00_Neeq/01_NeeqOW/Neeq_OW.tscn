@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3oa180qqu0kv"]
+[gd_scene load_steps=14 format=3 uid="uid://b3oa180qqu0kv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
 [ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Encounters.gd" id="3_u8xy8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
 radius = 6.0
@@ -206,6 +207,9 @@ repellent = 5.0
 
 [node name="Neeq_OWFSM" type="Node2D" parent="."]
 script = ExtResource("2_32x13")
+
+[node name="Encounters" type="Node2D" parent="."]
+script = ExtResource("3_u8xy8")
 
 [node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
 position = Vector2(0, -6)

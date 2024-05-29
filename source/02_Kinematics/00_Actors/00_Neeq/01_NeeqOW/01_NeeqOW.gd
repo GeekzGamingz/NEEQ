@@ -8,7 +8,9 @@ var controllable: bool = true
 #Exported Variables
 @export_range(1, 5, 0.5) var repellent: float
 #OnReady Variables
+@onready var encounters = $Encounters
 @onready var encounter_timer = $Timers/EncounterTimer
+@onready var markers = $Markers
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:

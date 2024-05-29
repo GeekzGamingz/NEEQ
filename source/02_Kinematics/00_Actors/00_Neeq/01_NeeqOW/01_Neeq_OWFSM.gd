@@ -63,40 +63,9 @@ func state_exit(old_state, new_state):
 #------------------------------------------------------------------------------#
 func map_move():
 	if p.grid_direction != Vector2.ZERO && !p.moving:
-		if p.encounter_timer.is_stopped(): random_encounter()
+		if p.encounter_timer.is_stopped(): p.encounters.random_encounter()
 		if p.direction.y < 0: return states.walk_north
 		elif p.direction.y > 0: return states.walk_south
 		elif p.direction.x < 0: return states.walk_west
 		elif p.direction.x > 0: return states.walk_east
 	elif p.grid_direction == Vector2.ZERO: return states.idle
-#------------------------------------------------------------------------------#
-func random_encounter():
-	p.encounter_timer.wait_time = max(p.speed, p.speed * p.repellent)
-	p.encounter_timer.start()
-	var encounter_chance = p.rng.randi_range(0, 100)
-	print_rich("[b]Encounter Value[/b] [d100]: ", encounter_chance)
-	if range(0, 9).has(encounter_chance):
-		print_rich("[b]Encounter Name[/b]: [wave][rainbow]Mystery[/rainbow][/wave]")
-		print_rich("[b]Encounter Chance[/b]: 10%")
-	elif range(75, 89).has(encounter_chance):
-		print_rich("[b]Encounter Name[/b]: Minor")
-		print_rich("[b]Encounter Chance[/b]: 15%")
-		print_rich("[b]Encounter Threat[/b]: Negliable")
-	elif range(90, 94).has(encounter_chance):
-		print_rich("[b]Encounter Name[/b]: Moderate")
-		print_rich("[b]Encounter Chance[/b]: 5%")
-		print_rich("[b]Encounter Threat[/b]: Fair")
-	elif range(95, 99).has(encounter_chance):
-		print_rich("[b]Encounter Name[/b]: Master")
-		print_rich("[b]Encounter Chance[/b]: 5%")
-		print_rich("[b]Encounter Threat[/b]: Potent")
-	elif [100].has(encounter_chance):
-		print_rich("[b]Encounter Name[/b]: Dragon")
-		print_rich("[b]Encounter Chance[/b]: 1%")
-		print_rich("[b]Encounter Threat[/b]: [shake][color=red]DRAGON[/color][/shake]")
-	else:
-		print_rich("[b]Encounter Name[/b]: [s]Null[/s]")
-		print_rich("[b]Encounter Chance[/b]: 75%")
-		print_rich("[b]Encounter Threat[/b]: Zero")
-	print("#-------------------------#")
-	

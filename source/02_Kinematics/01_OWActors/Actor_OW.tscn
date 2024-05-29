@@ -8,6 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jace"]
+radius = 3.0
+
 [sub_resource type="Animation" id="Animation_fk36u"]
 length = 0.001
 tracks/0/type = "value"
@@ -199,15 +202,11 @@ outline_size = 1
 outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0jace"]
-radius = 3.0
-
 [node name="Actor_Overworld" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_nkgbn")
 LEVEL = "Minor"
-speed = null
 delay = 0.001
 
 [node name="Actor_OWFSM" type="Node2D" parent="."]
@@ -222,6 +221,13 @@ frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_x0t63")
+
+[node name="SceneChanger" parent="." instance=ExtResource("4_dx0jv")]
+position = Vector2(0, -3)
+LEVEL = "Debug"
+
+[node name="CollisionShape2D" parent="SceneChanger" index="0"]
+shape = SubResource("CircleShape2D_0jace")
 
 [node name="MoveDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)
@@ -256,11 +262,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SceneChanger" parent="." instance=ExtResource("4_dx0jv")]
-position = Vector2(0, -3)
-LEVEL = "Debug"
+[node name="Timers" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" parent="SceneChanger" index="0"]
-shape = SubResource("CircleShape2D_0jace")
+[node name="DespawnTimer" type="Timer" parent="Timers"]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timers/DespawnTimer" to="." method="_on_despawn_timer_timeout"]
 
 [editable path="SceneChanger"]
