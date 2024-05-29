@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6q55u17fu8wn"]
+
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/TerrainDetector.gd" id="1_ndpl7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3bf4"]
+size = Vector2(6, 6)
+
+[node name="TerrainDetector" type="Area2D"]
+collision_layer = 2
+collision_mask = 32
+script = ExtResource("1_ndpl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a3bf4")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3oa180qqu0kv"]
+[gd_scene load_steps=15 format=3 uid="uid://b3oa180qqu0kv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
 [ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Encounters.gd" id="3_u8xy8"]
+[ext_resource type="PackedScene" uid="uid://b6q55u17fu8wn" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Terrain_Detector.tscn" id="4_hruvq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
 radius = 6.0
@@ -211,6 +212,8 @@ script = ExtResource("2_32x13")
 [node name="Encounters" type="Node2D" parent="."]
 script = ExtResource("3_u8xy8")
 
+[node name="TerrainDetector" parent="Encounters" instance=ExtResource("4_hruvq")]
+
 [node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
 texture = ExtResource("2_tb6in")
@@ -259,11 +262,22 @@ uppercase = true
 [node name="NorthMarker" type="Marker2D" parent="Markers"]
 position = Vector2(0, -36)
 
+[node name="TerrainDetector" parent="Markers/NorthMarker" instance=ExtResource("4_hruvq")]
+
+[node name="SouthMarker" type="Marker2D" parent="Markers"]
+position = Vector2(0, 36)
+
+[node name="TerrainDetector" parent="Markers/SouthMarker" instance=ExtResource("4_hruvq")]
+
 [node name="EastMarker" type="Marker2D" parent="Markers"]
 position = Vector2(36, 0)
 
+[node name="TerrainDetector" parent="Markers/EastMarker" instance=ExtResource("4_hruvq")]
+
 [node name="WestMarker" type="Marker2D" parent="Markers"]
 position = Vector2(-36, 0)
+
+[node name="TerrainDetector" parent="Markers/WestMarker" instance=ExtResource("4_hruvq")]
 
 [node name="Timers" type="Node2D" parent="."]
 

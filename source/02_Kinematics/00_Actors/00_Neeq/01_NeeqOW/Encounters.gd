@@ -7,10 +7,17 @@ const ACTOR_OW = preload("res://source/02_Kinematics/01_OWActors/Actor_OW.tscn")
 #Variables
 #OnReady Variables
 @onready var p = get_parent()
+@onready var terrain_detector = $TerrainDetector
+@onready var north_detector = $"../Markers/NorthMarker/TerrainDetector"
+@onready var south_detector = $"../Markers/SouthMarker/TerrainDetector"
+@onready var east_detector = $"../Markers/EastMarker/TerrainDetector"
+@onready var west_detector = $"../Markers/WestMarker/TerrainDetector"
 #------------------------------------------------------------------------------#
 func random_encounter():
 	for marker in p.markers.get_children():
-		if p.get_parent().get_children().size() < 4:
+		if (p.get_parent().get_children().size() < 4 &&
+			terrain_detector.biome != "Path" &&
+			marker.get_node("TerrainDetector").biome != "Water"):
 			p.encounter_timer.wait_time = max(p.speed, p.speed * p.repellent)
 			p.encounter_timer.start()
 			var encounter_chance = p.rng.randi_range(0, 100)
@@ -55,5 +62,6 @@ func random_encounter():
 				print_rich("- [b]Encounter Name[/b]: [s]Null[/s]")
 				print_rich("- [b]Encounter Chance[/b]: 75%")
 				print_rich("- [b]Encounter Threat[/b]: Zero")
+			print_rich("- [b]Encounter Biome[/b]: ", terrain_detector.biome)
 			print("#-------------------------#")
 		
