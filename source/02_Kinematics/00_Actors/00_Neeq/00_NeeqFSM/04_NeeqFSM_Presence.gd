@@ -58,11 +58,11 @@ func state_enter(new_state, old_state):
 			p.strong_attack_timer.start()
 			p.combo_timer.stop()
 		states.combat_strong2:
-			p.playback.start("combat_strong1")
+			p.playback.start("combat_strong2")
 			p.strong_attack_timer.start()
 			p.combo_timer.stop()
 		states.combat_strong3:
-			p.playback.start("combat_strong1")
+			p.playback.start("combat_strong3")
 			p.strong_attack_timer.start()
 			p.combo_timer.stop()
 		states.combat_jump_charge: pass #Charge Code

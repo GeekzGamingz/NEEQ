@@ -2,6 +2,9 @@
 extends NeeqMovement
 class_name NeeqCombat
 #------------------------------------------------------------------------------#
+#Constants
+const FX_IMPACT = preload("res://source/03_Objects/01_Particles/02_ImpactParticles/FX_Impact.tscn")
+#------------------------------------------------------------------------------#
 #Variables
 var last_action: String = ""
 #Exported Variables
@@ -9,6 +12,8 @@ var last_action: String = ""
 @export var combat_jump_multiplier: float = 1.0
 @export_enum("Explorer", "Combat", "Sneeq", "Magic") var MODE: String
 #OnReady Variables
+@onready var atkbox_light = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light
+@onready var atkbox_medium = $Facing/WorldDetectors/CombatDetectors/Atkbox_Medium
 @onready var quick_attack_timer: Timer = $Timers/QuickAttackTimer
 @onready var strong_attack_timer: Timer = $Timers/StrongAttackTimer
 @onready var combo_timer: Timer = $Timers/ComboTimer
@@ -57,3 +62,20 @@ func healing(): is_healing = true
 func hurting(): is_hurting = true
 #Kill Switch
 func kill(): is_dead = true
+
+
+func _on_atkbox_light_area_entered(area):
+	if area.name == "Hitbox":
+		var impact_particle = FX_IMPACT.instantiate()
+		var collision_position = (atkbox_light.global_position + area.global_position) / 2
+		impact_particle.global_position = collision_position
+		impact_particle.scale = Vector2(0.5, 0.5)
+		G.ORPHANS.add_child(impact_particle)
+
+func _on_atkbox_medium_area_entered(area):
+	if area.name == "Hitbox":
+		var impact_particle = FX_IMPACT.instantiate()
+		var collision_position = (atkbox_light.global_position + area.global_position) / 2
+		impact_particle.global_position = collision_position
+		impact_particle.scale = Vector2(0.75, 0.75)
+		G.ORPHANS.add_child(impact_particle)

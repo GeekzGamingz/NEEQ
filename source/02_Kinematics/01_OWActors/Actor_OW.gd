@@ -19,7 +19,6 @@ var controllable: bool = true
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:
-	despawn_timer.start()
 	#Snap to Grid
 	position = position.snapped(Vector2.ONE * G.TILE_SIZE_OW)
 	position -= Vector2.ONE * (float(G.TILE_SIZE_OW) / 2)
@@ -27,7 +26,11 @@ func _ready() -> void:
 		"Minor": sprite.texture = OW_ENCOUNTER_MINOR
 		"Moderate": sprite.texture = OW_ENCOUNTER_MODERATE
 		"Master": sprite.texture = OW_ENCOUNTER_MASTER
-		"Mystery": sprite.texture = OW_ENCOUNTER_MYSTERY
+		"Mystery":
+			delay = 0.4
+			despawn_timer.wait_time = 3
+			sprite.texture = OW_ENCOUNTER_MYSTERY
+	despawn_timer.start()
 #------------------------------------------------------------------------------#
 #Player Direction
 func move_direction() -> void:
