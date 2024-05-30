@@ -23,10 +23,10 @@ func state_logic(delta):
 			p.dodge_particles()
 			if p.grounded: p.jump_particles()
 		states.combat_walk: p.max_speed = p.walk_speed
-		states.combat_downthrust, states.combat_jump_charge, states.combat_jump_fall:
+		states.combat_downthrust, states.combat_jump_fall: p.velocity.x = 0
+		states.combat_jump_charge_still, states.combat_jump_charge_inch:
 			p.velocity.x = 0
-			if state == states.combat_jump_charge:
-				p.combat_jump_multiplier += p.charge_strength
+			p.combat_jump_multiplier += p.charge_strength
 		states.combat_quick1, states.combat_quick2, states.combat_quick3: p.velocity.x = 0
 		states.combat_strong1, states.combat_strong2, states.combat_strong3: p.velocity.x = 0
 		states.damage_hit, states.damage_air:

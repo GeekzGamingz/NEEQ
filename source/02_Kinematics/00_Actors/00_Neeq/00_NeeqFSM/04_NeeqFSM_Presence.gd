@@ -65,7 +65,8 @@ func state_enter(new_state, old_state):
 			p.playback.start("combat_strong3")
 			p.strong_attack_timer.start()
 			p.combo_timer.stop()
-		states.combat_jump_charge: pass #Charge Code
+		states.combat_jump_charge_still: p.playback.start("combat_jump_charge_still")
+		states.combat_jump_charge_inch: p.playback.start("combat_jump_charge_inch")
 		states.combat_jump_fall:
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.playback.travel("combat_jump_fall")
@@ -87,12 +88,13 @@ func state_exit(old_state, new_state):
 		states.fall: p.jumping = false
 		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.skid: p.skid_timer.start()
-		states.combat_jump_charge:
-			p.playback.start("combat_jump")
-			p.combat_jump_multiplier = min(p.combat_jump_multiplier, 2)
-			p.velocity.y = p.max_jump_velocity * p.combat_jump_multiplier
-			p.combat_jump_multiplier = 1.0
-			p.quick_attack_timer.start()
+		states.combat_jump_charge_still, states.combat_jump_charge_inch:
+			if ![states.combat_jump_charge_still, states.combat_jump_charge_inch].has(new_state):
+				p.playback.start("combat_jump")
+				p.combat_jump_multiplier = min(p.combat_jump_multiplier, 2)
+				p.velocity.y = p.max_jump_velocity * p.combat_jump_multiplier
+				p.combat_jump_multiplier = 1.0
+				p.quick_attack_timer.start()
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
 		states.damage_hit, states.damage_air: p.is_hurting = false

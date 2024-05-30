@@ -22,11 +22,6 @@ func _on_sight_detector_body_entered(body):
 func _on_sight_detector_body_exited(body):
 	if body.name == "Neeq": player = null
 #------------------------------------------------------------------------------#
-#Attack Box
-func atkbox_toggle() -> void:
-	atkbox.set_deferred("disabled", !atk_toggle)
-	atk_toggle = !atk_toggle
-#------------------------------------------------------------------------------#
 #Hitbox
 func _on_hitbox_area_entered(area):
 	match(area.name):

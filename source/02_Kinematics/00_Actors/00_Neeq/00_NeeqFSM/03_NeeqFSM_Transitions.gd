@@ -12,7 +12,7 @@ func transitions(delta):
 			if p.is_hurting: return states.damage_hit
 			if p.MODE == "Combat":
 				if Input.is_action_pressed("action_travel"):
-					return states.combat_jump_charge
+					return states.combat_jump_charge_still
 				else: return states.combat_idle
 			if !p.grounded:
 				if p.velocity.y < 0: return states.jump
@@ -26,7 +26,7 @@ func transitions(delta):
 			if Input.is_action_just_pressed("action_cancel"): return states.dodge
 			if p.MODE == "Combat":
 				if Input.is_action_pressed("action_travel"):
-					return states.combat_jump_charge
+					return states.combat_jump_charge_still
 				else: return states.combat_idle
 			if Input.is_action_just_released("action_quick"): return states.skid
 			if (p.dir_prev > p.dir_new || p.dir_prev < p.dir_new):
@@ -90,7 +90,7 @@ func transitions(delta):
 				return states.combat_quick1
 			elif p.velocity.x != 0: return states.combat_walk
 			if Input.is_action_just_pressed("action_travel"):
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 			if Input.is_action_just_pressed("action_interact"):
 				return states.combat_strong1
 		#Combat Walk
@@ -99,7 +99,7 @@ func transitions(delta):
 			if p.MODE == "Explorer": return states.walk
 			if Input.is_action_just_pressed("action_cancel"): return states.dodge
 			if Input.is_action_just_pressed("action_quick"): return states.combat_quick1
-			if Input.is_action_just_pressed("action_travel"): return states.combat_jump_charge
+			if Input.is_action_just_pressed("action_travel"): return states.combat_jump_charge_still
 			if Input.is_action_just_pressed("action_interact"): return states.combat_strong1
 			if p.velocity.x == 0: return states.combat_idle
 		#Combat Down Thrust
@@ -109,13 +109,18 @@ func transitions(delta):
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
 		#Combat Jump
-		states.combat_jump_charge:
+		states.combat_jump_charge_still:
 			if p.is_hurting: return states.damage_hit
+			if p.direction != 0: return states.combat_jump_charge_inch
+			if Input.is_action_just_released("action_travel"): return states.combat_jump_fall
+		states.combat_jump_charge_inch:
+			if p.is_hurting: return states.damage_hit
+			if p.direction == 0: return states.combat_jump_charge_still
 			if Input.is_action_just_released("action_travel"): return states.combat_jump_fall
 		states.combat_jump_fall:
 			if p.is_hurting: return states.damage_air
 			if p.quick_attack_timer.is_stopped() && p.grounded:
-				if Input.is_action_pressed("action_travel"): return states.combat_jump_charge
+				if Input.is_action_pressed("action_travel"): return states.combat_jump_charge_still
 				else: return states.combat_idle
 		#Combat Quick Attack
 		states.combat_quick1:
@@ -130,7 +135,7 @@ func transitions(delta):
 					return states.combat_strong1
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 		states.combat_quick2:
 			if p.is_hurting: return states.damage_hit
 			if !p.grounded: return states.combat_downthrust
@@ -143,7 +148,7 @@ func transitions(delta):
 					return states.combat_strong2
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 		states.combat_quick3:
 			if p.is_hurting: return states.damage_hit
 			if !p.grounded: return states.combat_downthrust
@@ -156,7 +161,7 @@ func transitions(delta):
 					return states.combat_strong3
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 		#Combat Strong Attack
 		states.combat_strong1:
 			if p.is_hurting: return states.damage_hit
@@ -170,7 +175,7 @@ func transitions(delta):
 					return states.combat_strong2
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 		states.combat_strong2:
 			if p.is_hurting: return states.damage_hit
 			if !p.grounded: return states.combat_downthrust
@@ -183,7 +188,7 @@ func transitions(delta):
 					return states.combat_strong3
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 		states.combat_strong3:
 			if p.is_hurting: return states.damage_hit
 			if !p.grounded: return states.combat_downthrust
@@ -196,7 +201,7 @@ func transitions(delta):
 					return states.combat_strong1 #Replace With Strong Finisher
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
-				return states.combat_jump_charge
+				return states.combat_jump_charge_still
 	#Damage
 		states.damage_hit, states.damage_air:
 			if p.damage_timer.is_stopped():

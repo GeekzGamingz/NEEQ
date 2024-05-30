@@ -37,7 +37,8 @@ func _ready() -> void:
 	state_add("combat_strong2")
 	state_add("combat_strong3")
 	state_add("combat_downthrust")
-	state_add("combat_jump_charge")
+	state_add("combat_jump_charge_still")
+	state_add("combat_jump_charge_inch")
 	state_add("combat_jump_fall")
 	#Damage
 	state_add("damage_hit")
