@@ -6,8 +6,9 @@ extends StateMachine
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
 #------------------------------------------------------------------------------#
-#Ready
+#Ready Method
 func _ready() -> void:
+	#Add States
 	state_add("idle")
 	state_add("walk")
 	state_add("chase")

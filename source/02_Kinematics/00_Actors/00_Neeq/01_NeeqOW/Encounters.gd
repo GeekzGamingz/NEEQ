@@ -14,6 +14,7 @@ const ACTOR_OW = preload("res://source/02_Kinematics/01_OWActors/Actor_OW.tscn")
 @onready var west_detector = $"../Markers/WestMarker/TerrainDetector"
 #------------------------------------------------------------------------------#
 func random_encounter():
+	G.DEBUG.biome = terrain_detector.biome
 	for marker in p.markers.get_children():
 		if (p.get_parent().get_children().size() < 4 &&
 			terrain_detector.biome != "Path" &&

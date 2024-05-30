@@ -8,6 +8,9 @@ extends StateMachine
 #------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
+	#Update Debug
+	G.DEBUG.player = p
+	#Add States
 	state_add("idle")
 	state_add("walk_north")
 	state_add("walk_south")

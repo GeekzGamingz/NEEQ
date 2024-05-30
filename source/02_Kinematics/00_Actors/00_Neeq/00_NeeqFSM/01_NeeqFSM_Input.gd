@@ -10,6 +10,9 @@ class_name NeeqFSM_Input
 #------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
+	#Update Debug
+	G.DEBUG.player = p
+	#Add States
 	#Explorer
 	state_add("idle")
 	state_add("walk")
