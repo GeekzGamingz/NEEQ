@@ -25,35 +25,35 @@ theme_override_constants/margin_bottom = 16
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 32
-theme_override_constants/v_separation = 32
+theme_override_constants/h_separation = 36
+theme_override_constants/v_separation = 36
 columns = 5
 
-[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot1" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot2" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
 [node name="Interact_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Icon_Strong" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Icon"]
+[node name="Icon_Interact" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Icon"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_hlguu")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(16, 0, 16, 16)
 
-[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot4" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot5" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot6" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot7" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
 [node name="Interact_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
@@ -65,31 +65,44 @@ texture = ExtResource("1_uvr11")
 hframes = 20
 frame = 6
 
-[node name="MarginContainer8" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot9" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer9" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot10" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer10" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Quick_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="QuickControl" type="CenterContainer" parent="MarginContainer/GridContainer"]
+[node name="Icon_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Quick_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Button_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/QuickControl"]
+[node name="Button_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Control"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_uvr11")
 hframes = 20
 frame = 4
 
-[node name="MarginContainer11" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="MODE_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
+
+[node name="Icon_MODE" type="Sprite2D" parent="MarginContainer/GridContainer/MODE_Icon"]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 16)
 
 [node name="Cancel_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Control"]
+[node name="Button_Cancel" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Control"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_uvr11")
 hframes = 20
@@ -102,39 +115,45 @@ layout_mode = 2
 scale = Vector2(2, 2)
 texture = ExtResource("1_hlguu")
 region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
+region_rect = Rect2(32, 0, 16, 16)
 
-[node name="MarginContainer13" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot16" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer14" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot17" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Quick_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+[node name="Travel_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Control"]
+[node name="Button_Travel" type="Sprite2D" parent="MarginContainer/GridContainer/Travel_Control"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_uvr11")
 hframes = 20
 
-[node name="MarginContainer15" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot19" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer16" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot20" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer17" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot21" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer18" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot22" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer19" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Travel_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer20" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Icon_Travel" type="Sprite2D" parent="MarginContainer/GridContainer/Travel_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Slot24" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer21" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="Slot25" type="MarginContainer" parent="MarginContainer/GridContainer"]
 layout_mode = 2
