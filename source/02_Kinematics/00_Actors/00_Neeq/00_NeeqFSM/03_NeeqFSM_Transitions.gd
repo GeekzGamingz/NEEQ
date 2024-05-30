@@ -122,6 +122,7 @@ func transitions(delta):
 			if p.quick_attack_timer.is_stopped() && p.grounded:
 				if Input.is_action_pressed("action_travel"): return states.combat_jump_charge_still
 				else: return states.combat_idle
+			if p.ledge: return states.ledge
 		#Combat Quick Attack
 		states.combat_quick1:
 			if p.is_hurting: return states.damage_hit

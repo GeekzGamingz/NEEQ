@@ -6,13 +6,13 @@ var player: CharacterBody2D
 var camera: Camera2D
 var biome: String
 #OnReady Variables
-@onready var position_output = $MarginContainer/VBoxContainer/GridContainer/PositionOutput
-@onready var state_output = $MarginContainer/VBoxContainer/GridContainer/StateOutput
-@onready var camera_output = $MarginContainer/VBoxContainer/GridContainer/CameraOutput
-@onready var camera_target_output = $MarginContainer/VBoxContainer/GridContainer/CameraTargetOutput
-@onready var player_mode_output = $MarginContainer/VBoxContainer/GridContainer/PlayerModeOutput
-@onready var biome_output = $MarginContainer/VBoxContainer/GridContainer/BiomeOutput
-@onready var lives_outputs = $MarginContainer/VBoxContainer/GridContainer/LivesOutputs
+@onready var position_output = $VBoxContainer/GridContainer/PositionOutput
+@onready var state_output = $VBoxContainer/GridContainer/StateOutput
+@onready var camera_output = $VBoxContainer/GridContainer/CameraOutput
+@onready var camera_target_output = $VBoxContainer/GridContainer/CameraTargetOutput
+@onready var player_mode_output = $VBoxContainer/GridContainer/PlayerModeOutput
+@onready var biome_output = $VBoxContainer/GridContainer/BiomeOutput
+@onready var lives_outputs = $VBoxContainer/GridContainer/LivesOutputs
 #------------------------------------------------------------------------------#
 func _ready():
 	visible = false

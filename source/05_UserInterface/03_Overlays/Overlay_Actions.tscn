@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=3 uid="uid://byv66xuxrvg1u"]
+
+[ext_resource type="Texture2D" uid="uid://cfjegckof25l4" path="res://assets/04_UserInterface/02_Controls/Icons.png" id="1_hlguu"]
+[ext_resource type="Texture2D" uid="uid://2jhbjvghcy26" path="res://assets/04_UserInterface/02_Controls/XBOX360.png" id="1_uvr11"]
+
+[node name="Overlay_Actions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 5
+
+[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Interact_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Strong" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Interact_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Interact" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 6
+
+[node name="MarginContainer8" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer9" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer10" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="QuickControl" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/QuickControl"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 4
+
+[node name="MarginContainer11" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Cancel_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 2
+
+[node name="Cancel_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Cancel" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="MarginContainer13" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer14" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Quick_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+
+[node name="MarginContainer15" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer16" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer17" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer18" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer19" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer20" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer21" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2

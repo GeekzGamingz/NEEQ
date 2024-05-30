@@ -68,8 +68,8 @@ func state_enter(new_state, old_state):
 		states.combat_jump_charge_still: p.playback.start("combat_jump_charge_still")
 		states.combat_jump_charge_inch: p.playback.start("combat_jump_charge_inch")
 		states.combat_jump_fall:
-			await get_tree().create_timer(p.jump_duration).timeout
 			p.playback.travel("combat_jump_fall")
+			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0
 	#Damage
