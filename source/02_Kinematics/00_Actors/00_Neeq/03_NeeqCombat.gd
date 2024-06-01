@@ -25,11 +25,19 @@ var last_action: String = ""
 #Handle Mode
 func handle_mode() -> void:
 	if (Input.get_action_strength("action_mode1") > 0 &&
-		Input.get_action_strength("action_mode2") > 0): MODE = "Magic"
-	elif Input.get_action_strength("action_mode1") > 0: MODE = "Combat"
-	elif Input.get_action_strength("action_mode2") > 0: MODE = "Sneeq"
+		Input.get_action_strength("action_mode2") > 0):
+		MODE = "Magic"
+		#G.ACTIONS.icon_player.play("Magic")
+	elif Input.get_action_strength("action_mode1") > 0:
+		MODE = "Combat"
+		G.ACTIONS.icon_player.play("Combat")
+	elif Input.get_action_strength("action_mode2") > 0:
+		MODE = "Sneeq"
+		#G.ACTIONS.icon_player.play("Sneeq")
 	elif (Input.get_action_strength("action_mode1") == 0 &&
-		Input.get_action_strength("action_mode2") == 0): MODE = "Explorer"
+		Input.get_action_strength("action_mode2") == 0):
+		MODE = "Explorer"
+		G.ACTIONS.icon_player.play("Explorer")
 #Update Last Action Pressed
 func update_last_action():
 	if combo_timer.is_stopped():

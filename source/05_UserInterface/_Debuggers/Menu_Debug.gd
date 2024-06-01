@@ -18,12 +18,14 @@ func _ready():
 	visible = false
 #------------------------------------------------------------------------------#
 func _process(_delta: float):
+	if player == null: player = G.PLAYER
 	#Player Outputs
-	if player != null:
+	else:
 		var snapped_position = player.global_position.snapped(Vector2.ONE * 0.01)
 		position_output.text = str(snapped_position) #Position
 		state_output.text = str(player.fsm.state_label.text) #State
-		if player.MODE != null: player_mode_output.text = str(player.MODE) #Mode
+		if player.name == "Neeq": player_mode_output.text = str(player.MODE)
+		elif player.name == "Neeq_Overworld": player_mode_output.text = ("Overworld")
 	#Camera Outputs
 	if camera != null:
 		camera_output.text = str(camera.panning)
