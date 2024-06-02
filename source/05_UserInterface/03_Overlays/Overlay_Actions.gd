@@ -13,3 +13,7 @@ var player: CharacterBody2D
 @onready var icon_player = $AnimationPlayers/IconPlayer
 @onready var button_player = $AnimationPlayers/ButtonPlayer
 #------------------------------------------------------------------------------#
+func _process(_delta):
+	if player == null:
+		player = G.PLAYER
+		if player.name == "Neeq_Overworld": icon_player.play("Overworld")
