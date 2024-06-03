@@ -224,7 +224,7 @@ shape = SubResource("CircleShape2D_x0t63")
 
 [node name="SceneChanger" parent="." instance=ExtResource("4_dx0jv")]
 position = Vector2(0, -3)
-LEVEL = "Debug"
+LEVEL = "Random"
 
 [node name="CollisionShape2D" parent="SceneChanger" index="0"]
 shape = SubResource("CircleShape2D_0jace")

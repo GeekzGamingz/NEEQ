@@ -50,9 +50,9 @@ func random_encounter():
 			elif range(95, 99).has(encounter_chance):
 				var enc_scene = ACTOR_OW.instantiate()
 				enc_scene.global_position = marker.global_position
-				enc_scene.LEVEL = "Master"
+				enc_scene.LEVEL = "Major"
 				p.get_parent().add_child(enc_scene)
-				print_rich("- [b]Encounter Name[/b]: Master")
+				print_rich("- [b]Encounter Name[/b]: Major")
 				print_rich("- [b]Encounter Chance[/b]: 5%")
 				print_rich("- [b]Encounter Threat[/b]: Potent")
 			elif [100].has(encounter_chance):

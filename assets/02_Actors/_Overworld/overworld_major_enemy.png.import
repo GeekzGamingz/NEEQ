@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7prksrn0yfj"
-path="res://.godot/imported/overworld_master_enemy.png-f0cf78cf6ccc201033e8b19e5a9afbc7.ctex"
+path="res://.godot/imported/overworld_major_enemy.png-4eb72e5a0e6bd29616e3e042f3991219.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/02_Actors/_Overworld/overworld_master_enemy.png"
-dest_files=["res://.godot/imported/overworld_master_enemy.png-f0cf78cf6ccc201033e8b19e5a9afbc7.ctex"]
+source_file="res://assets/02_Actors/_Overworld/overworld_major_enemy.png"
+dest_files=["res://.godot/imported/overworld_major_enemy.png-4eb72e5a0e6bd29616e3e042f3991219.ctex"]
 
 [params]
 
