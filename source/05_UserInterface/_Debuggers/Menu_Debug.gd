@@ -12,7 +12,8 @@ var biome: String
 @onready var camera_target_output = $VBoxContainer/GridContainer/CameraTargetOutput
 @onready var player_mode_output = $VBoxContainer/GridContainer/PlayerModeOutput
 @onready var biome_output = $VBoxContainer/GridContainer/BiomeOutput
-@onready var lives_outputs = $VBoxContainer/GridContainer/LivesOutputs
+@onready var lives_output = $VBoxContainer/GridContainer/LivesOutput
+@onready var controller_output = $VBoxContainer/GridContainer/ControllerOutput
 #------------------------------------------------------------------------------#
 func _ready():
 	visible = false
@@ -35,7 +36,9 @@ func _process(_delta: float):
 		biome_output.text = biome
 	else: biome_output.text = "Path"
 	#Lives Output
-	lives_outputs.text = str(S.life_count)
+	lives_output.text = str(S.life_count)
+	#Controller Output
+	controller_output.text = str(G.ACTIONS.CONTROLLER, " (F2)")
 	#Toggle Visibility
 	if Input.is_action_just_released("F3"):
 		visible = !visible
