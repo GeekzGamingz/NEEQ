@@ -52,7 +52,7 @@ func _process(_delta) -> void:
 		if player.name == "Neeq_Overworld": icon_player.play("Overworld")
 #------------------------------------------------------------------------------#
 #Unhandled Input
-func _unhandled_input(event) -> void:
+func _input(event) -> void:
 	#Icon Swaps
 	if event.is_action_pressed("action_quick"): quick_player.play("quick_pressed")
 	elif event.is_action_released("action_quick"): quick_player.play("quick")

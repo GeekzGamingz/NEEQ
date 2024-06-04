@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7uy18t3dkcke"]
+[gd_scene load_steps=14 format=3 uid="uid://c7uy18t3dkcke"]
 
 [ext_resource type="Texture2D" uid="uid://c1sb3r4k5i3a8" path="res://assets/01_Tilesets/Sidescroll/Daungun.png" id="1_8ybc1"]
 [ext_resource type="Script" path="res://source/01_World/01_Levels/01_Random/Level_Random.gd" id="1_pxhb6"]
 [ext_resource type="Texture2D" uid="uid://br0vki7kt2thi" path="res://assets/01_Tilesets/Sidescroll/Forest.png" id="2_nvthw"]
 [ext_resource type="PackedScene" uid="uid://bnc03qphek87j" path="res://source/02_Kinematics/00_Actors/00_Neeq/Neeq.tscn" id="3_55fw7"]
 [ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="5_84g5p"]
+[ext_resource type="PackedScene" uid="uid://m0dqd1swvgoa" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/Enemy_GiantRat.tscn" id="6_yoawj"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7phvf"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
@@ -2768,8 +2769,20 @@ LEVEL = "Overworld"
 position = Vector2(-2, -14)
 shape = SubResource("RectangleShape2D_qv32q")
 
+[node name="Enemy_GiantRat" parent="." instance=ExtResource("6_yoawj")]
+position = Vector2(-547, 161)
+
+[node name="Enemy_GiantRat2" parent="." instance=ExtResource("6_yoawj")]
+position = Vector2(337, 163)
+
 [connection signal="health_damage" from="Neeq" to="Neeq/ProgressBars" method="health_damage"]
 [connection signal="health_heal" from="Neeq" to="Neeq/ProgressBars" method="health_heal"]
+[connection signal="health_damage" from="Enemy_GiantRat" to="Enemy_GiantRat" method="damage"]
+[connection signal="health_damage" from="Enemy_GiantRat" to="Enemy_GiantRat/ProgressBars" method="health_damage"]
+[connection signal="health_heal" from="Enemy_GiantRat" to="Enemy_GiantRat" method="heal"]
+[connection signal="health_heal" from="Enemy_GiantRat" to="Enemy_GiantRat/ProgressBars" method="health_heal"]
+[connection signal="health_damage" from="Enemy_GiantRat2" to="Enemy_GiantRat2/ProgressBars" method="health_damage"]
+[connection signal="health_heal" from="Enemy_GiantRat2" to="Enemy_GiantRat2/ProgressBars" method="health_heal"]
 
 [editable path="SceneChangers/Minor/SceneChanger1"]
 [editable path="SceneChangers/Minor/SceneChanger2"]
