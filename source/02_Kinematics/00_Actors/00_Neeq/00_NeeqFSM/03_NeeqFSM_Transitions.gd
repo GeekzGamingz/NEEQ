@@ -69,9 +69,9 @@ func transitions(delta):
 			if p.grounded: return states.idle
 			elif !p.grounded: if p.velocity.y < 0: return states.wall_jump
 			elif !p.wall: return states.fall
-			if states.wall_slide:
+			if state == states.wall_slide:
 				if p.max_speed == p.run_speed: return states.wall_slide_quick
-			elif states.wall_slide_quick:
+			elif state == states.wall_slide_quick:
 				if p.max_speed == p.walk_speed: return states.wall_slide
 		#Ledge
 		states.ledge:

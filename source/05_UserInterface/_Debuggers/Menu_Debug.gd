@@ -28,9 +28,7 @@ func _process(_delta: float):
 		if player.name == "Neeq": player_mode_output.text = str(player.MODE)
 		elif player.name == "Neeq_Overworld": player_mode_output.text = ("Overworld")
 	#Camera Outputs
-	if camera != null:
-		camera_output.text = str(camera.panning)
-		camera_target_output.text = str(camera.focus.name)
+	if camera != null: camera_target_output.text = str(camera.p.name)
 	#Biome Output
 	if biome != "":
 		biome_output.text = biome

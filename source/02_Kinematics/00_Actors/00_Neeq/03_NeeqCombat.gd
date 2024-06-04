@@ -22,7 +22,7 @@ var last_action: String = ""
 @onready var damage_timer = $Timers/DamageTimer
 #------------------------------------------------------------------------------#
 #Combat Input
-#Handle Mode
+#Handle Mode,
 func handle_mode() -> void:
 	if (Input.get_action_strength("action_mode1") > 0 &&
 		Input.get_action_strength("action_mode2") > 0):

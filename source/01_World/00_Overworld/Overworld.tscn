@@ -2933,7 +2933,7 @@ custom_data_layer_0/name = "Biome"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_h0ilf")
 
-[node name="OW_Debug" type="Node2D"]
+[node name="Overworld" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-800.0, 800.0, 1200.0, -1200.0]
 metadata/_edit_vertical_guides_ = [1200.0, -1200.0]
 
@@ -2950,11 +2950,10 @@ layer_2/tile_data = PackedInt32Array(-131077, 65536, 0, -131078, 0, 0, -65542, 3
 layer_3/name = "Layer 0"
 layer_3/tile_data = PackedInt32Array(-65541, 0, 5, -5, 0, 6, 65531, 0, 6, 131067, 0, 7, 131068, 131072, 7, 65532, 131072, 6, -4, 327680, 9, -65540, 131072, 5, -3, 65536, 8, 131074, 458752, 8, 131073, 65536, 8, 131072, 65536, 8, 196607, 65536, 8, 196606, 262144, 8, 131070, 196608, 6, 65534, 196608, 6, -2, 458752, 5, 458753, 131072, 5, 458752, 0, 5, 524288, 0, 7, 524289, 458752, 6, 589825, 196608, 6, 655361, 196608, 6, 720897, 196608, 6, 786433, 196608, 7, 65538, 262144, 5, 65540, 65536, 8, 65541, 65536, 8, 65542, 65536, 8)
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("2_i7epc")]
+[node name="Camera2D" parent="." instance=ExtResource("2_i7epc")]
 zoom = Vector2(5, 5)
 limit_smoothed = true
 position_smoothing_enabled = true
-focus = NodePath("../Kinematics/Neeq_Overworld")
 
 [node name="Kinematics" type="Node2D" parent="."]
 

@@ -11,7 +11,7 @@ func _on_body_entered(body):
 	if body.name == "Neeq_Overworld" || body.name == "Neeq":
 		var level_scene
 		match(LEVEL):
-			"Overworld": level_scene = load("res://source/01_World/00_Overworld/00_OWDebug/OW_Debug.tscn")
+			"Overworld": level_scene = load("res://source/01_World/00_Overworld/Overworld.tscn")
 			"Debug": level_scene = load("res://source/01_World/01_Levels/00_Debug/Level_Debug.tscn")
 			"Random": level_scene = load("res://source/01_World/01_Levels/01_Random/Level_Random.tscn")
 		level_scene = level_scene.instantiate()

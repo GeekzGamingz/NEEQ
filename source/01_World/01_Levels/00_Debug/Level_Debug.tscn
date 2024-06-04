@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://m0dqd1swvgoa" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/Enemy_GiantRat.tscn" id="7_4uwd1"]
 [ext_resource type="Texture2D" uid="uid://c0qfg0v2p0wtm" path="res://assets/03_Objects/bush.png" id="8_kw2lr"]
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="9_pbnxu"]
-[ext_resource type="PackedScene" uid="uid://d08ra2rdb7skc" path="res://source/05_UserInterface/00_Camera/_CameraChange.tscn" id="10_42mbv"]
+[ext_resource type="PackedScene" path="res://source/05_UserInterface/00_Camera/_CameraChange.tscn" id="10_42mbv"]
 [ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="11_nfx1y"]
 [ext_resource type="PackedScene" uid="uid://dww73oeea8i86" path="res://source/03_Objects/00_PowerUps/00_ExtraLife/ExtraLife.tscn" id="12_cg72i"]
 

@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3oa180qqu0kv"]
+[gd_scene load_steps=16 format=3 uid="uid://b3oa180qqu0kv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
 [ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Encounters.gd" id="3_u8xy8"]
 [ext_resource type="PackedScene" uid="uid://b6q55u17fu8wn" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/TerrainDetector.tscn" id="4_aysba"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
-radius = 6.0
+[ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="6_18bx1"]
 
 [sub_resource type="Animation" id="Animation_fk36u"]
 length = 0.001
@@ -200,6 +198,9 @@ outline_size = 1
 outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
+radius = 6.0
+
 [node name="Neeq_Overworld" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 33
@@ -213,20 +214,6 @@ script = ExtResource("2_32x13")
 script = ExtResource("3_u8xy8")
 
 [node name="TerrainDetector" parent="Encounters" instance=ExtResource("4_aysba")]
-
-[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
-texture = ExtResource("2_tb6in")
-hframes = 4
-vframes = 3
-frame = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_x0t63")
-
-[node name="MoveDetector" type="RayCast2D" parent="."]
-target_position = Vector2(0, 12)
-collide_with_areas = true
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -283,3 +270,20 @@ position = Vector2(-36, 0)
 
 [node name="EncounterTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("2_tb6in")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="MainCamera" parent="." instance=ExtResource("6_18bx1")]
+position = Vector2(421.712, 72.3227)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x0t63")
+
+[node name="MoveDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 12)
+collide_with_areas = true

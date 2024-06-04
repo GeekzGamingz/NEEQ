@@ -15,6 +15,7 @@ var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
 #OnReady Variables
+@onready var camera = $MainCamera
 @onready var particles_marker = $Facing/Markers/ParticlesMarker
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
