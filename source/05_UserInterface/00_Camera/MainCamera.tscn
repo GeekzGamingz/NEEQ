@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" path="res://source/05_UserInterface/00_Camera/MainCamera.gd" id="1_uml6u"]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="MainCamera" type="Camera2D"]
 zoom = Vector2(2.5, 2.5)
+limit_left = -1280
+limit_top = -800
+limit_right = 1280
+limit_bottom = 800
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.75
+drag_right_margin = 0.1
 script = ExtResource("1_uml6u")
