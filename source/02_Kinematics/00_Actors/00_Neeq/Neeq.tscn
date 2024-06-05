@@ -1,10 +1,11 @@
-[gd_scene load_steps=113 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=114 format=3 uid="uid://bnc03qphek87j"]
 
-[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/03_NeeqCombat.gd" id="1_hm6a4"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
 [ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
 [ext_resource type="Texture2D" uid="uid://bwcobc7deglhx" path="res://assets/02_Actors/00_Neeq/WHIP_Combat_Compiled.png" id="4_duc1e"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
+[ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/03_Misc/GrappleArrow.png" id="5_ci778"]
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="6_teouf"]
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="7_v5jet"]
 
@@ -3839,8 +3840,7 @@ height = 16.0
 [node name="Neeq" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 17
-script = ExtResource("1_hm6a4")
-MODE = "Explorer"
+script = ExtResource("1_f1tj0")
 
 [node name="NeeqFSM" type="Node2D" parent="."]
 script = ExtResource("2_86ct0")
@@ -3940,6 +3940,17 @@ position = Vector2(8, -32)
 script = ExtResource("4_v4hut")
 
 [node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
+
+[node name="Grapple" type="Node2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="Grapple"]
+
+[node name="GrappleGuideSprite" type="Sprite2D" parent="Grapple/Sprites"]
+visible = false
+position = Vector2(0, -16)
+rotation = -3.14159
+texture = ExtResource("5_ci778")
+offset = Vector2(48, 0)
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 

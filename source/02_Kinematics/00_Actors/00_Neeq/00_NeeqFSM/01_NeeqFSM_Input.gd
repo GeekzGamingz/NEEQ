@@ -78,3 +78,6 @@ func _input(event: InputEvent) -> void:
 			p.velocity.y = p.min_jump_velocity
 	#Slide From Ledge
 	if states.ledge: if event.is_action_pressed("move_down"): p.ledge_break()
+	#Grapple
+	if event.is_action_pressed("action_grapple"): p.grapple_guide.visible = true
+	elif event.is_action_released("action_grapple"): p.grapple_guide.visible = false

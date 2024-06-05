@@ -14,7 +14,14 @@ const CONTROLLERS = [
 var player: CharacterBody2D
 var button_id: int = 0
 #Exported Variables
-@export_enum("XBox360", "XboxONE", "PS2", "PS4", "Switch", "Mouse & Keyboard") var CONTROLLER
+@export_enum(
+	"XBox360",
+	"XboxONE",
+	"PS2",
+	"PS4",
+	"Switch",
+	"Mouse & Keyboard"
+	) var CONTROLLER: String = "Xbox360"
 #OnReady Variables
 #Icon Sprites
 @onready var icon_mode = $MarginContainer/GridContainer/MODE_Icon/Icon_MODE
@@ -74,12 +81,12 @@ func _input(event) -> void:
 	if event.is_action_pressed("F2"):
 		for button in buttons: button.texture = CONTROLLERS[button_id]
 		match(button_id):
-				0: CONTROLLER = "XBox360"
-				1: CONTROLLER = "XBoxONE"
-				2: CONTROLLER = "PS2"
-				3: CONTROLLER = "PS4"
-				4: CONTROLLER = "Switch"
-				5: CONTROLLER = "Mouse & Keyboard"
+			0: CONTROLLER = "XBox360"
+			1: CONTROLLER = "XBoxONE"
+			2: CONTROLLER = "PS2"
+			3: CONTROLLER = "PS4"
+			4: CONTROLLER = "Switch"
+			5: CONTROLLER = "Mouse & Keyboard"
 		button_id += 1
 		if button_id == CONTROLLERS.size(): button_id = 0
 #------------------------------------------------------------------------------#

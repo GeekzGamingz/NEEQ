@@ -7,6 +7,7 @@ func state_logic(delta):
 	p.handle_mode()
 	p.move_direction()
 	p.update_last_action()
+	p.grapple_rotation()
 	if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
 		states.ledge, states.combat_downthrust, states.combat_jump_fall,
 		states.damage_hit, states.damage_air, states.damage_death].has(state):
