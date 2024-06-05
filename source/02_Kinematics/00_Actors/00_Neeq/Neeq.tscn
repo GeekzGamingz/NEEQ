@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=121 format=3 uid="uid://bnc03qphek87j"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/03_Misc/GrappleArrow.png" id="5_ci778"]
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="6_teouf"]
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="7_v5jet"]
+[ext_resource type="AudioStream" uid="uid://hyorps0kdpjm" path="res://assets/05_SFX/00_Neeq/Attack_Quick1.wav" id="8_jec3o"]
+[ext_resource type="AudioStream" uid="uid://c4ve05maddcqt" path="res://assets/05_SFX/00_Neeq/Attack_Quick2.wav" id="9_7yqax"]
+[ext_resource type="AudioStream" uid="uid://cg2u0rxlekb2m" path="res://assets/05_SFX/00_Neeq/Attack_Quick3.wav" id="10_vbrti"]
+[ext_resource type="AudioStream" uid="uid://c6bltc2uveq8x" path="res://assets/05_SFX/00_Neeq/Attack_Strong1.wav" id="11_gv6bh"]
+[ext_resource type="AudioStream" uid="uid://dwulqofpm3wi2" path="res://assets/05_SFX/00_Neeq/Attack_Strong2.wav" id="12_jju6p"]
+[ext_resource type="AudioStream" uid="uid://vuony3jmm745" path="res://assets/05_SFX/00_Neeq/Attack_Strong3.wav" id="13_jlf0h"]
+[ext_resource type="AudioStream" uid="uid://bo2nj8oxewfj8" path="res://assets/05_SFX/00_Neeq/Action_Jump.wav" id="14_prg5y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_met2k"]
 radius = 9.0
@@ -415,6 +422,17 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_15f7e"]
 resource_name = "combat_jump_charge_inch"
@@ -929,6 +947,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_jec3o")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_wycwb"]
 resource_name = "combat_quick2"
@@ -1066,6 +1099,21 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_7yqax")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_w75uo"]
 resource_name = "combat_quick3"
@@ -1239,6 +1287,21 @@ tracks/13/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/14/type = "audio"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_vbrti")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/14/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pog52"]
 resource_name = "combat_strong1"
@@ -1364,6 +1427,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_gv6bh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_pl5a1"]
 resource_name = "combat_strong2"
@@ -1489,6 +1567,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_jju6p")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1mlyj"]
 resource_name = "combat_strong3"
@@ -1614,6 +1707,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_jlf0h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_itin5"]
 resource_name = "combat_walk"
@@ -2748,6 +2856,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_prg5y")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_8mlxs"]
 resource_name = "run"
@@ -3825,7 +3948,7 @@ states/wall_slide/position = Vector2(375, 341)
 states/wall_slide_quick/node = SubResource("AnimationNodeAnimation_43yco")
 states/wall_slide_quick/position = Vector2(218, 341)
 transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7"), "combat_strong1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_qkxwi"), "combat_idle", "combat_strong1", SubResource("AnimationNodeStateMachineTransition_aooyx"), "damage_air", "combat_idle", SubResource("AnimationNodeStateMachineTransition_cotoo"), "damage_hit", "combat_idle", SubResource("AnimationNodeStateMachineTransition_n0xbf"), "damage_air", "damage_death", SubResource("AnimationNodeStateMachineTransition_4ogca"), "damage_hit", "damage_death", SubResource("AnimationNodeStateMachineTransition_olv34"), "combat_jump", "combat_jump_fall", SubResource("AnimationNodeStateMachineTransition_h3ok5"), "combat_jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_kdea7"), "combat_strong1", "combat_strong2", SubResource("AnimationNodeStateMachineTransition_bnj0f"), "combat_strong2", "combat_strong3", SubResource("AnimationNodeStateMachineTransition_a0hl7"), "combat_jump_charge_still", "combat_jump_charge_inch", SubResource("AnimationNodeStateMachineTransition_ydem4"), "combat_jump_charge_inch", "combat_jump_charge_still", SubResource("AnimationNodeStateMachineTransition_e0wlc"), "combat_jump_charge_still", "combat_jump", SubResource("AnimationNodeStateMachineTransition_a23tj"), "combat_jump_fall", "jump_ledge", SubResource("AnimationNodeStateMachineTransition_8m6wa")]
-graph_offset = Vector2(180, -115.146)
+graph_offset = Vector2(205, -111.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -3965,6 +4088,10 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_h72ka")
 anim_player = NodePath("../SpritePlayer")
+
+[node name="AudioPlayers" type="Node2D" parent="."]
+
+[node name="EffectsPlayer" type="AudioStreamPlayer2D" parent="AudioPlayers"]
 
 [node name="Outputs" type="Node2D" parent="."]
 
