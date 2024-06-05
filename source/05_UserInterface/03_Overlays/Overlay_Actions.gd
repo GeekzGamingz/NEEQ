@@ -53,6 +53,9 @@ var button_id: int = 0
 @onready var mode1_player = $AnimationPlayers/ButtonPlayers/Mode1Player
 @onready var mode2_player = $AnimationPlayers/ButtonPlayers/Mode2Player
 #------------------------------------------------------------------------------#
+#Ready Method
+func _ready() -> void: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+#------------------------------------------------------------------------------#
 #Process Method
 func _process(_delta) -> void:
 	if player == null:
@@ -80,6 +83,7 @@ func _input(event) -> void:
 	elif event.is_action_released("action_mode2"): mode2_player.play("mode2")
 	#Button Swaps
 	if event.is_action_pressed("F2"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		for button in buttons: button.texture = CONTROLLERS[button_id]
 		match(button_id):
 			0: CONTROLLER = "XBox360"
@@ -87,7 +91,9 @@ func _input(event) -> void:
 			2: CONTROLLER = "PS2"
 			3: CONTROLLER = "PS4"
 			4: CONTROLLER = "Switch"
-			5: CONTROLLER = "Mouse & Keyboard"
+			5: 
+				CONTROLLER = "Mouse & Keyboard"
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		button_id += 1
 		if button_id == CONTROLLERS.size(): button_id = 0
 #------------------------------------------------------------------------------#

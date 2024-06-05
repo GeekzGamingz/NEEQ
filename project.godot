@@ -27,6 +27,8 @@ window/size/viewport_height=800
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+mouse_cursor/custom_image="res://assets/04_UserInterface/02_Controls/CursorBIG.png"
+mouse_cursor/custom_image_hotspot=Vector2(23, 26)
 
 [importer_defaults]
 
