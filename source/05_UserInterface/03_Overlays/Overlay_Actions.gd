@@ -7,7 +7,8 @@ const CONTROLLERS = [
 	preload("res://assets/04_UserInterface/02_Controls/XBOXone.png"),
 	preload("res://assets/04_UserInterface/02_Controls/PS2.png"),
 	preload("res://assets/04_UserInterface/02_Controls/PS4.png"),
-	preload("res://assets/04_UserInterface/02_Controls/Switch.png")
+	preload("res://assets/04_UserInterface/02_Controls/Switch.png"),
+	preload("res://assets/04_UserInterface/02_Controls/Mouse_Keyboard.png")
 	]
 #------------------------------------------------------------------------------#
 #Variables

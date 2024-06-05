@@ -7,7 +7,7 @@ var look: Vector2 = Vector2.ZERO
 #OnReady Variables
 @onready var grapple_guide = $Grapple/Sprites/GrappleGuideSprite
 #------------------------------------------------------------------------------#
-func grapple_rotation():
+func grapple_rotation() -> void:
 	if G.ACTIONS.CONTROLLER == "Mouse & Keyboard": pass
 	else:
 		if grapple_guide.visible:
