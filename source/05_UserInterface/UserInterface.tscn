@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ryy1d8hbv1v6"]
+[gd_scene load_steps=8 format=3 uid="uid://ryy1d8hbv1v6"]
 
 [ext_resource type="PackedScene" uid="uid://ddm2fw1pp3ebs" path="res://source/05_UserInterface/_Debuggers/Menu_Debug.tscn" id="1_kn4ol"]
 [ext_resource type="PackedScene" uid="uid://byv66xuxrvg1u" path="res://source/05_UserInterface/03_Overlays/Overlay_Actions.tscn" id="2_6twbj"]
-[ext_resource type="Texture2D" uid="uid://bx84oc3nr6nsn" path="res://assets/02_Actors/00_Neeq/Healthbar_Neeq.png" id="3_i08e0"]
+[ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="3_5l5l2"]
+[ext_resource type="Texture2D" uid="uid://de25kmprmrr37" path="res://assets/02_Actors/00_Neeq/ProgressBarBG_Neeq.png" id="4_7v1cy"]
+[ext_resource type="Texture2D" uid="uid://c4gpie0itaj6k" path="res://assets/02_Actors/00_Neeq/ProgressBar_Neeq.png" id="5_la100"]
+[ext_resource type="Texture2D" uid="uid://cfqpy67mgb32f" path="res://assets/02_Actors/00_Neeq/ProgressBarFG_Neeq.png" id="6_fkur4"]
+[ext_resource type="Texture2D" uid="uid://cmx50gl0uwchk" path="res://assets/02_Actors/00_Neeq/ProgressBarFG_Tail_Neeq.png" id="7_bixl2"]
 
 [node name="UserInterface" type="CanvasLayer"]
 metadata/_edit_horizontal_guides_ = [25.0, 775.0]
@@ -28,10 +32,27 @@ layout_mode = 2
 layout_mode = 2
 CONTROLLER = "Xbox360"
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+[node name="ProgressBars" parent="MarginContainer" instance=ExtResource("3_5l5l2")]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Healthbar_Neeq" type="Sprite2D" parent="MarginContainer/CenterContainer"]
+[node name="HealthUnder" parent="MarginContainer/ProgressBars/Health" index="0"]
 scale = Vector2(2, 2)
-texture = ExtResource("3_i08e0")
+texture_under = ExtResource("4_7v1cy")
+texture_progress = ExtResource("5_la100")
+texture_progress_offset = Vector2(31, 16)
+tint_under = Color(1, 1, 1, 1)
+
+[node name="HealthOver" parent="MarginContainer/ProgressBars/Health" index="1"]
+scale = Vector2(2, 2)
+texture_over = ExtResource("6_fkur4")
+texture_progress = ExtResource("5_la100")
+texture_progress_offset = Vector2(31, 16)
+
+[node name="TailOverlay" type="Sprite2D" parent="MarginContainer/ProgressBars/Health" index="2"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_bixl2")
 centered = false
+
+[editable path="MarginContainer/ProgressBars"]

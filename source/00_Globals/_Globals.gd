@@ -15,3 +15,4 @@ var WIND: float = 0
 @onready var UI = WORLD.get_node("UserInterface/MarginContainer")
 @onready var DEBUG = UI.get_node("Menu_Debug")
 @onready var ACTIONS = UI.get_node("Overlay_Actions")
+@onready var PROGRESS = UI.get_node("ProgressBars")

@@ -62,6 +62,8 @@ func set_health(value):
 		healing()
 		if health == 100: pass
 		emit_signal("health_heal", health)
+		if name == "Neeq":
+			G.UI.PROGRESS.health_heal(health)
 	if health < health_prev:
 		hurting()
 		emit_signal("health_damage", health)
@@ -70,7 +72,8 @@ func set_health(value):
 			Engine.time_scale = 0.1
 			await get_tree().create_timer(0.1).timeout
 			Engine.time_scale = 1
-		#else: if enemy_bars != null: enemy_bars.visible = true
+		if name == "Neeq":
+			G.PROGRESS.health_damage(health)
 #Heal Switch
 func healing(): pass
 #Damage Switch
