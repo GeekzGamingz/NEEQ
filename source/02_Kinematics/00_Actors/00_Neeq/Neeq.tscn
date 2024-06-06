@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=131 format=3 uid="uid://bnc03qphek87j"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
 [ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/03_Misc/GrappleArrow.png" id="5_ci778"]
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="6_teouf"]
+[ext_resource type="AudioStream" uid="uid://c3qwe7i708cth" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge_Inch.wav" id="7_k37hs"]
+[ext_resource type="AudioStream" uid="uid://15yjmll1fjra" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge.wav" id="7_ocf0r"]
 [ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="7_v5jet"]
 [ext_resource type="AudioStream" uid="uid://hyorps0kdpjm" path="res://assets/05_SFX/00_Neeq/Attack_Quick1.wav" id="8_jec3o"]
 [ext_resource type="AudioStream" uid="uid://c4ve05maddcqt" path="res://assets/05_SFX/00_Neeq/Attack_Quick2.wav" id="9_7yqax"]
@@ -14,7 +16,14 @@
 [ext_resource type="AudioStream" uid="uid://c6bltc2uveq8x" path="res://assets/05_SFX/00_Neeq/Attack_Strong1.wav" id="11_gv6bh"]
 [ext_resource type="AudioStream" uid="uid://dwulqofpm3wi2" path="res://assets/05_SFX/00_Neeq/Attack_Strong2.wav" id="12_jju6p"]
 [ext_resource type="AudioStream" uid="uid://vuony3jmm745" path="res://assets/05_SFX/00_Neeq/Attack_Strong3.wav" id="13_jlf0h"]
+[ext_resource type="AudioStream" uid="uid://y318rpmaw7bn" path="res://assets/05_SFX/00_Neeq/Action_Land.wav" id="13_ugkx2"]
+[ext_resource type="AudioStream" uid="uid://bq5iucsrech3x" path="res://assets/05_SFX/00_Neeq/Action_LedgeJump.wav" id="14_b3gvj"]
+[ext_resource type="AudioStream" uid="uid://bpklhdmk7bm3r" path="res://assets/05_SFX/00_Neeq/Action_Walk2.wav" id="14_krp7g"]
 [ext_resource type="AudioStream" uid="uid://bo2nj8oxewfj8" path="res://assets/05_SFX/00_Neeq/Action_Jump.wav" id="14_prg5y"]
+[ext_resource type="AudioStream" uid="uid://cdot7b127auu2" path="res://assets/05_SFX/00_Neeq/Action_Skid.wav" id="15_v08gy"]
+[ext_resource type="AudioStream" uid="uid://bdv1u68k31lpk" path="res://assets/05_SFX/00_Neeq/Action_Walk.wav" id="16_ys75n"]
+[ext_resource type="AudioStream" uid="uid://4ks2puugnv7a" path="res://assets/05_SFX/00_Neeq/Action_WallJump.wav" id="18_q7ths"]
+[ext_resource type="AudioStream" uid="uid://dg6esxgt5uhui" path="res://assets/05_SFX/00_Neeq/Action_WallSlide.wav" id="19_oyjj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_met2k"]
 radius = 9.0
@@ -422,17 +431,6 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_15f7e"]
 resource_name = "combat_jump_charge_inch"
@@ -559,6 +557,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_k37hs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_hshff"]
 resource_name = "combat_jump_charge_still"
@@ -685,6 +698,21 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.118759,
+"start_offset": 0.0,
+"stream": ExtResource("7_ocf0r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tin5s"]
 resource_name = "combat_jump_fall"
@@ -822,6 +850,17 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_52wj7"]
 resource_name = "combat_quick1"
@@ -950,7 +989,7 @@ tracks/9/keys = {
 tracks/10/type = "audio"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1102,7 +1141,7 @@ tracks/10/keys = {
 tracks/11/type = "audio"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/11/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -1290,7 +1329,7 @@ tracks/13/keys = {
 tracks/14/type = "audio"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/14/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1430,7 +1469,7 @@ tracks/9/keys = {
 tracks/10/type = "audio"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1570,7 +1609,7 @@ tracks/9/keys = {
 tracks/10/type = "audio"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1710,7 +1749,7 @@ tracks/9/keys = {
 tracks/10/type = "audio"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -1836,6 +1875,57 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}],
+"times": PackedFloat32Array(0.24, 0.72, 1.2, 1.68, 2.16, 2.64, 3.12, 3.6, 4.08, 4.56)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_k23jj"]
 resource_name = "damage_air"
@@ -2630,6 +2720,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ugkx2")
+}],
+"times": PackedFloat32Array(0.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mh18c"]
 resource_name = "jump_ledge"
@@ -2743,6 +2848,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_b3gvj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_f7mdw"]
 resource_name = "jump_takeoff"
@@ -2859,7 +2979,7 @@ tracks/8/keys = {
 tracks/9/type = "audio"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../AudioPlayers/EffectsPlayer")
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -2876,7 +2996,7 @@ tracks/9/use_blend = true
 resource_name = "run"
 length = 3.2
 loop_mode = 1
-step = 0.08
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2884,7 +3004,7 @@ tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00305027, 0.0830503, 0.16305, 0.24305, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.59695, 1.67695, 1.75695, 1.83695, 1.92, 2, 2.08, 2.16, 2.23695, 2.31695, 2.39695, 2.47695, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.6, 1.68, 1.76, 1.84, 1.92, 2, 2.08, 2.16, 2.24, 2.32, 2.4, 2.48, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 36, 37, 38, 39, 40, 41, 42, 43, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52]
@@ -2985,6 +3105,57 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}],
+"times": PackedFloat32Array(0.2, 0.48, 0.84, 1.12, 1.48, 1.76, 2.12, 2.4, 2.76, 3.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_gba4o"]
 resource_name = "skid"
@@ -3098,6 +3269,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_v08gy")
+}],
+"times": PackedFloat32Array(0.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_juktq"]
 resource_name = "walk"
@@ -3212,6 +3398,57 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}],
+"times": PackedFloat32Array(0.12, 0.6, 1.08, 1.56, 2.04, 2.52, 3, 3.48, 3.96, 4.44)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ofmmq"]
 resource_name = "wall_jump"
@@ -3325,6 +3562,21 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("18_q7ths")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qhdnn"]
 resource_name = "wall_ledge"
@@ -3553,6 +3805,33 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}],
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_sampe"]
 resource_name = "wall_slide_quick"
@@ -3667,6 +3946,33 @@ tracks/8/keys = {
 "update": 1,
 "values": [Vector2(16, -16)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.132595,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}],
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
 _data = {
@@ -3888,6 +4194,8 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8m6wa"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o70rv"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(714, 31)
 states/Start/position = Vector2(375, 31)
@@ -3947,7 +4255,7 @@ states/wall_slide/node = SubResource("AnimationNodeAnimation_u26r0")
 states/wall_slide/position = Vector2(375, 341)
 states/wall_slide_quick/node = SubResource("AnimationNodeAnimation_43yco")
 states/wall_slide_quick/position = Vector2(218, 341)
-transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7"), "combat_strong1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_qkxwi"), "combat_idle", "combat_strong1", SubResource("AnimationNodeStateMachineTransition_aooyx"), "damage_air", "combat_idle", SubResource("AnimationNodeStateMachineTransition_cotoo"), "damage_hit", "combat_idle", SubResource("AnimationNodeStateMachineTransition_n0xbf"), "damage_air", "damage_death", SubResource("AnimationNodeStateMachineTransition_4ogca"), "damage_hit", "damage_death", SubResource("AnimationNodeStateMachineTransition_olv34"), "combat_jump", "combat_jump_fall", SubResource("AnimationNodeStateMachineTransition_h3ok5"), "combat_jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_kdea7"), "combat_strong1", "combat_strong2", SubResource("AnimationNodeStateMachineTransition_bnj0f"), "combat_strong2", "combat_strong3", SubResource("AnimationNodeStateMachineTransition_a0hl7"), "combat_jump_charge_still", "combat_jump_charge_inch", SubResource("AnimationNodeStateMachineTransition_ydem4"), "combat_jump_charge_inch", "combat_jump_charge_still", SubResource("AnimationNodeStateMachineTransition_e0wlc"), "combat_jump_charge_still", "combat_jump", SubResource("AnimationNodeStateMachineTransition_a23tj"), "combat_jump_fall", "jump_ledge", SubResource("AnimationNodeStateMachineTransition_8m6wa")]
+transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7"), "combat_strong1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_qkxwi"), "combat_idle", "combat_strong1", SubResource("AnimationNodeStateMachineTransition_aooyx"), "damage_air", "combat_idle", SubResource("AnimationNodeStateMachineTransition_cotoo"), "damage_hit", "combat_idle", SubResource("AnimationNodeStateMachineTransition_n0xbf"), "damage_air", "damage_death", SubResource("AnimationNodeStateMachineTransition_4ogca"), "damage_hit", "damage_death", SubResource("AnimationNodeStateMachineTransition_olv34"), "combat_jump", "combat_jump_fall", SubResource("AnimationNodeStateMachineTransition_h3ok5"), "combat_jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_kdea7"), "combat_strong1", "combat_strong2", SubResource("AnimationNodeStateMachineTransition_bnj0f"), "combat_strong2", "combat_strong3", SubResource("AnimationNodeStateMachineTransition_a0hl7"), "combat_jump_charge_still", "combat_jump_charge_inch", SubResource("AnimationNodeStateMachineTransition_ydem4"), "combat_jump_charge_inch", "combat_jump_charge_still", SubResource("AnimationNodeStateMachineTransition_e0wlc"), "combat_jump_charge_still", "combat_jump", SubResource("AnimationNodeStateMachineTransition_a23tj"), "combat_jump_fall", "jump_ledge", SubResource("AnimationNodeStateMachineTransition_8m6wa"), "jump_fall", "wall_jump", SubResource("AnimationNodeStateMachineTransition_o70rv")]
 graph_offset = Vector2(205, -111.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
@@ -3986,6 +4294,7 @@ hframes = 4
 vframes = 14
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
+visible = false
 
 [node name="GroundDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
@@ -4091,7 +4400,7 @@ anim_player = NodePath("../SpritePlayer")
 
 [node name="AudioPlayers" type="Node2D" parent="."]
 
-[node name="EffectsPlayer" type="AudioStreamPlayer2D" parent="AudioPlayers"]
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="AudioPlayers"]
 
 [node name="Outputs" type="Node2D" parent="."]
 
@@ -4175,6 +4484,7 @@ offset_bottom = -40.0
 [node name="MainCamera" parent="." instance=ExtResource("7_v5jet")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_83gcn")
 

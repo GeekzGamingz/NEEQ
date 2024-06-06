@@ -304,6 +304,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_h72ka")
 anim_player = NodePath("../SpritePlayer")
 
+[node name="AudioPlayers" type="Node2D" parent="."]
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="AudioPlayers"]
+
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]

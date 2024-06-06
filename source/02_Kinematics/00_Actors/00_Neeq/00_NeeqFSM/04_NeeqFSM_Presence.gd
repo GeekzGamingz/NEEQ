@@ -27,7 +27,7 @@ func state_enter(new_state, old_state):
 			p.jumping = false
 		states.wall_slide, states.wall_slide_quick:
 			p.playback.start("wall_slide")
-			if states.wall_slide_quick:
+			if state == states.wall_slide_quick:
 				p.playback.travel("wall_slide_quick")
 			p.safe_fall.enabled = false
 			p.particles_marker.position = Vector2(7, -7)
@@ -69,6 +69,8 @@ func state_enter(new_state, old_state):
 		states.combat_jump_charge_inch: p.playback.start("combat_jump_charge_inch")
 		states.combat_jump_fall:
 			p.playback.travel("combat_jump_fall")
+			p.audio_player.stream = p.ATTACK_JUMP
+			p.audio_player.play()
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0

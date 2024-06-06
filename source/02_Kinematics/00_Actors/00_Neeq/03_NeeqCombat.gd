@@ -4,6 +4,7 @@ class_name NeeqCombat
 #------------------------------------------------------------------------------#
 #Constants
 const FX_IMPACT = preload("res://source/03_Objects/01_Particles/02_ImpactParticles/FX_Impact.tscn")
+const ATTACK_JUMP = preload("res://assets/05_SFX/00_Neeq/Attack_Jump.wav")
 #------------------------------------------------------------------------------#
 #Variables
 var last_action: String = ""

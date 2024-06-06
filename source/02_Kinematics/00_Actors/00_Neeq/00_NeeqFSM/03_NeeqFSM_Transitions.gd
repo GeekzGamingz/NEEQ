@@ -60,6 +60,8 @@ func transitions(delta):
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
 			elif p.MODE == "Combat": return states.combat_downthrust
+			if !p.grounded:
+				if p.velocity.y < 0: return states.jump
 		#Dodge
 		states.dodge: if p.quick_attack_timer.is_stopped(): return states.run
 		states.dodge_air: if p.quick_attack_timer.is_stopped(): return states.fall

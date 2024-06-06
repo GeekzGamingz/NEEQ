@@ -34,6 +34,8 @@ var ledge: bool = false
 @onready var anim_tree: AnimationTree = $AnimationPlayers/AnimationTree
 @onready var playback = anim_tree.get("parameters/playback")
 @onready var pb_state = playback.get_current_node()
+#Audio Nodes
+@onready var audio_player = $AudioPlayers/AudioPlayer
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void:
