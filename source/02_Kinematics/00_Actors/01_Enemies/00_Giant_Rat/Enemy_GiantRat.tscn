@@ -835,7 +835,7 @@ debug_color = Color(1, 1, 0.0352941, 0.419608)
 
 [node name="BiteDetector" type="RayCast2D" parent="Facing/WorldDetectors/CombatDetectors"]
 position = Vector2(4, -14)
-target_position = Vector2(24, 0)
+target_position = Vector2(18, 0)
 collision_mask = 2
 
 [node name="Atkbox_Light" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]

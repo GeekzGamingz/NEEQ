@@ -33,6 +33,7 @@ var is_dead: bool = false
 @onready var max_speed: float = walk_speed
 @onready var min_jump_height: float = jump_strength * G.TILE_SIZE
 @onready var max_jump_height: float = min_jump_height * 5
+@onready var progress_bars = $ProgressBars
 #------------------------------------------------------------------------------#
 #Applies Gravity
 func apply_gravity(delta) -> void:
@@ -60,10 +61,10 @@ func set_health(value):
 	health = clamp(value, 0, max_health)
 	if health > health_prev:
 		healing()
-		if health == 100: pass
+		if health == 100: progress_bars.visible = false
 		emit_signal("health_heal", health)
 		if name == "Neeq":
-			G.UI.PROGRESS.health_heal(health)
+			G.PROGRESS.health_heal(health)
 	if health < health_prev:
 		hurting()
 		emit_signal("health_damage", health)
