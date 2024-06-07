@@ -4,6 +4,7 @@ class_name OW_Kinematic
 #------------------------------------------------------------------------------#
 #Variables
 var grid_direction: Vector2 = Vector2.ZERO
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 #Bool Variables
 var moving: bool = false
 #Exported Variables
@@ -13,6 +14,7 @@ var moving: bool = false
 @onready var move_detector = $MoveDetector
 @onready var anim_player = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
+#Ready Method
 func _ready():
 	move_detector.target_position = Vector2.DOWN * (float(G.TILE_SIZE_OW) / 2)
 #------------------------------------------------------------------------------#

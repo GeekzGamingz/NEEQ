@@ -1,0 +1,1185 @@
+[gd_scene load_steps=29 format=3 uid="uid://byv66xuxrvg1u"]
+
+[ext_resource type="Texture2D" uid="uid://cfjegckof25l4" path="res://assets/04_UserInterface/02_Controls/Icons.png" id="1_hlguu"]
+[ext_resource type="Texture2D" uid="uid://2jhbjvghcy26" path="res://assets/04_UserInterface/02_Controls/XBOX360.png" id="1_uvr11"]
+[ext_resource type="Script" path="res://source/05_UserInterface/03_Overlays/Overlay_Actions.gd" id="1_xktav"]
+
+[sub_resource type="Animation" id="Animation_veg1f"]
+resource_name = "Combat"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 16, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 16, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 16, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 16, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 16, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 32, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 48, 32, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_mul0p"]
+resource_name = "Explorer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 0, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 0, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 16, 32, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 32, 32, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_mp101"]
+resource_name = "Magiq"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 32, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 64, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 48, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 64, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 64, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 32, 32, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 16, 32, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_a1qb7"]
+resource_name = "Overworld"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 64, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 64, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 64, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 64, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 64, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 64, 16, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 64, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_ddo17"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 0, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 0, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 32, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 48, 32, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_45j8k"]
+resource_name = "Sneeq"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Icon/Icon_Interact:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(16, 32, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Quick_Icon/Icon_Quick:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 64, 16, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/MODE_Icon/Icon_MODE:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 32, 32, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Cancel_Icon/Icon_Cancel:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 64, 16, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Travel_Icon/Icon_Travel:region_rect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(48, 64, 16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode1_Icon/Icon_Mode1:region_rect")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 48, 32, 16)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Mode2_Icon/Icon_Mode2:region_rect")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 32, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1por"]
+_data = {
+"Combat": SubResource("Animation_veg1f"),
+"Explorer": SubResource("Animation_mul0p"),
+"Magiq": SubResource("Animation_mp101"),
+"Overworld": SubResource("Animation_a1qb7"),
+"RESET": SubResource("Animation_ddo17"),
+"Sneeq": SubResource("Animation_45j8k")
+}
+
+[sub_resource type="Animation" id="Animation_4kp5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Quick_Control/Button_Quick:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MarginContainer/GridContainer/Interact_Control/Button_Interact:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MarginContainer/GridContainer/Cancel_Control/Button_Cancel:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MarginContainer/GridContainer/Travel_Control/Button_Travel:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MarginContainer/GridContainer/Mode1_Control/Button_Mode1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MarginContainer/GridContainer/Mode2_Control/Button_Mode2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MarginContainer/GridContainer/Emote_Control/Button_Emote:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MarginContainer/GridContainer/Grapple_Control/Button_Grapple:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_ef2r3"]
+resource_name = "cancel"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Cancel_Control/Button_Cancel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_54xcb"]
+resource_name = "cancel_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Cancel_Control/Button_Cancel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_1xoes"]
+resource_name = "emote"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Emote_Control/Button_Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_26mqe"]
+resource_name = "emote_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Emote_Control/Button_Emote:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_koip7"]
+resource_name = "grapple"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Grapple_Control/Button_Grapple:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_ihsgn"]
+resource_name = "grapple_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Grapple_Control/Button_Grapple:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_oxnrs"]
+resource_name = "interact"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Control/Button_Interact:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_77bnn"]
+resource_name = "interact_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Interact_Control/Button_Interact:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_jrouh"]
+resource_name = "mode1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Mode1_Control/Button_Mode1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_rmun4"]
+resource_name = "mode1_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Mode1_Control/Button_Mode1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_munqo"]
+resource_name = "mode2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Mode2_Control/Button_Mode2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_mk1ov"]
+resource_name = "mode2_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Mode2_Control/Button_Mode2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_hfvig"]
+resource_name = "quick"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Quick_Control/Button_Quick:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_ul7e2"]
+resource_name = "quick_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Quick_Control/Button_Quick:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_dg54p"]
+resource_name = "travel"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Travel_Control/Button_Travel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_esfc4"]
+resource_name = "travel_pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MarginContainer/GridContainer/Travel_Control/Button_Travel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yr0ew"]
+_data = {
+"RESET": SubResource("Animation_4kp5v"),
+"cancel": SubResource("Animation_ef2r3"),
+"cancel_pressed": SubResource("Animation_54xcb"),
+"emote": SubResource("Animation_1xoes"),
+"emote_pressed": SubResource("Animation_26mqe"),
+"grapple": SubResource("Animation_koip7"),
+"grapple_pressed": SubResource("Animation_ihsgn"),
+"interact": SubResource("Animation_oxnrs"),
+"interact_pressed": SubResource("Animation_77bnn"),
+"mode1": SubResource("Animation_jrouh"),
+"mode1_pressed": SubResource("Animation_rmun4"),
+"mode2": SubResource("Animation_munqo"),
+"mode2_pressed": SubResource("Animation_mk1ov"),
+"quick": SubResource("Animation_hfvig"),
+"quick_pressed": SubResource("Animation_ul7e2"),
+"travel": SubResource("Animation_dg54p"),
+"travel_pressed": SubResource("Animation_esfc4")
+}
+
+[node name="Overlay_Actions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xktav")
+CONTROLLER = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 36
+theme_override_constants/v_separation = 36
+columns = 5
+
+[node name="Mode1_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Icon_Mode1" type="Sprite2D" parent="MarginContainer/GridContainer/Mode1_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 16)
+
+[node name="Slot2" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot3" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot4" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Mode2_Icon" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Mode2" type="Sprite2D" parent="MarginContainer/GridContainer/Mode2_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(64, 48, 32, 16)
+
+[node name="Mode1_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Mode1" type="Sprite2D" parent="MarginContainer/GridContainer/Mode1_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 12
+
+[node name="Slot7" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Interact_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Interact" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Slot9" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Mode2_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Mode2" type="Sprite2D" parent="MarginContainer/GridContainer/Mode2_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 14
+
+[node name="Slot11" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Emote_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Emote" type="Sprite2D" parent="MarginContainer/GridContainer/Emote_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 8
+
+[node name="Interact_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Interact" type="Sprite2D" parent="MarginContainer/GridContainer/Interact_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 6
+
+[node name="Grapple_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Grapple" type="Sprite2D" parent="MarginContainer/GridContainer/Grapple_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 10
+
+[node name="Slot15" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Quick_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Quick_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Quick" type="Sprite2D" parent="MarginContainer/GridContainer/Quick_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 16)
+
+[node name="MODE_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_MODE" type="Sprite2D" parent="MarginContainer/GridContainer/MODE_Icon"]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 16)
+
+[node name="Cancel_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Cancel" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+frame = 2
+
+[node name="Cancel_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Cancel" type="Sprite2D" parent="MarginContainer/GridContainer/Cancel_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Slot21" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot22" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Travel_Control" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button_Travel" type="Sprite2D" parent="MarginContainer/GridContainer/Travel_Control"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uvr11")
+hframes = 20
+
+[node name="Slot24" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot25" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot26" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot27" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Travel_Icon" type="CenterContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Icon_Travel" type="Sprite2D" parent="MarginContainer/GridContainer/Travel_Icon"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hlguu")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Slot29" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slot30" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayers" type="Node2D" parent="."]
+
+[node name="IconPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"": SubResource("AnimationLibrary_t1por")
+}
+
+[node name="ButtonPlayers" type="Node2D" parent="AnimationPlayers"]
+
+[node name="QuickPlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="InteractPlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="CancelPlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="TravelPlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="EmotePlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="GrapplePlayer" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="Mode1Player" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}
+
+[node name="Mode2Player" type="AnimationPlayer" parent="AnimationPlayers/ButtonPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yr0ew")
+}

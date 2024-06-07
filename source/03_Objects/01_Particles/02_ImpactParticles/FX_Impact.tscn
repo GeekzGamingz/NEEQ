@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcyiemaf03qo3"]
+
+[ext_resource type="Texture2D" uid="uid://duoj03jw7x1gc" path="res://assets/03_Objects/02_Impact/impact.png" id="1_4lkyj"]
+[ext_resource type="Script" path="res://source/03_Objects/01_Particles/02_ImpactParticles/FX_Impact.gd" id="2_55t8v"]
+
+[sub_resource type="Animation" id="Animation_gdrnt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_km53m"]
+resource_name = "impact"
+length = 0.16
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21xj6"]
+_data = {
+"RESET": SubResource("Animation_gdrnt"),
+"impact": SubResource("Animation_km53m")
+}
+
+[node name="FX_Impact" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_4lkyj")
+hframes = 4
+script = ExtResource("2_55t8v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_21xj6")
+}
+autoplay = "impact"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

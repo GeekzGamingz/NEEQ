@@ -1,24 +1,27 @@
 #Inherits StateMachine Code
 extends StateMachine
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
+	#Update Debug
+	G.PLAYER = p
+	#Add States
 	state_add("idle")
 	state_add("walk_north")
 	state_add("walk_south")
 	state_add("walk_west")
 	state_add("walk_east")
 	call_deferred("state_set", states.idle)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Label
 func _process(_delta: float) -> void:
 	state_label.text = str(states.keys()[state])
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Machine
 #State Logistics
 func state_logic(_delta):
@@ -63,6 +66,7 @@ func state_exit(old_state, new_state):
 #------------------------------------------------------------------------------#
 func map_move():
 	if p.grid_direction != Vector2.ZERO && !p.moving:
+		if p.encounter_timer.is_stopped(): p.encounters.random_encounter()
 		if p.direction.y < 0: return states.walk_north
 		elif p.direction.y > 0: return states.walk_south
 		elif p.direction.x < 0: return states.walk_west

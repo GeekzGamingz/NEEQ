@@ -8,7 +8,7 @@ extends Node2D
 @onready var anim_player = $AnimationPlayers/AnimationPlayer
 @onready var chat_bubble = $ChatBubble
 #------------------------------------------------------------------------------#
-#Ready Function
+#Ready Method
 func _ready() -> void:
 	if emote != null:
 		match(emote):

@@ -3,8 +3,16 @@ extends OW_Kinematic
 #------------------------------------------------------------------------------#
 #Variables
 var direction: Vector2 = Vector2.ZERO
+var MODE: String = "Overworld"
 #Bool Variables
 var controllable: bool = true
+#Exported Variables
+@export_range(1, 5, 0.5) var repellent: float
+#OnReady Variables
+@onready var encounters = $Encounters
+@onready var encounter_timer = $Timers/EncounterTimer
+@onready var markers = $Markers
+@onready var fsm: Node2D = get_child(0)
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:

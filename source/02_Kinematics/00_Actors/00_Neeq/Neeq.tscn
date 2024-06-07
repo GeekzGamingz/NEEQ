@@ -1,17 +1,41 @@
-[gd_scene load_steps=75 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=131 format=3 uid="uid://bnc03qphek87j"]
 
-[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/03_NeeqCombat.gd" id="1_hm6a4"]
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
 [ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
 [ext_resource type="Texture2D" uid="uid://bwcobc7deglhx" path="res://assets/02_Actors/00_Neeq/WHIP_Combat_Compiled.png" id="4_duc1e"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
+[ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/03_Misc/GrappleArrow.png" id="5_ci778"]
+[ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="6_teouf"]
+[ext_resource type="AudioStream" uid="uid://c3qwe7i708cth" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge_Inch.wav" id="7_k37hs"]
+[ext_resource type="AudioStream" uid="uid://15yjmll1fjra" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge.wav" id="7_ocf0r"]
+[ext_resource type="PackedScene" uid="uid://bxi8tkv2gajg5" path="res://source/05_UserInterface/00_Camera/MainCamera.tscn" id="7_v5jet"]
+[ext_resource type="AudioStream" uid="uid://hyorps0kdpjm" path="res://assets/05_SFX/00_Neeq/Attack_Quick1.wav" id="8_jec3o"]
+[ext_resource type="AudioStream" uid="uid://c4ve05maddcqt" path="res://assets/05_SFX/00_Neeq/Attack_Quick2.wav" id="9_7yqax"]
+[ext_resource type="AudioStream" uid="uid://cg2u0rxlekb2m" path="res://assets/05_SFX/00_Neeq/Attack_Quick3.wav" id="10_vbrti"]
+[ext_resource type="AudioStream" uid="uid://c6bltc2uveq8x" path="res://assets/05_SFX/00_Neeq/Attack_Strong1.wav" id="11_gv6bh"]
+[ext_resource type="AudioStream" uid="uid://dwulqofpm3wi2" path="res://assets/05_SFX/00_Neeq/Attack_Strong2.wav" id="12_jju6p"]
+[ext_resource type="AudioStream" uid="uid://vuony3jmm745" path="res://assets/05_SFX/00_Neeq/Attack_Strong3.wav" id="13_jlf0h"]
+[ext_resource type="AudioStream" uid="uid://y318rpmaw7bn" path="res://assets/05_SFX/00_Neeq/Action_Land.wav" id="13_ugkx2"]
+[ext_resource type="AudioStream" uid="uid://bq5iucsrech3x" path="res://assets/05_SFX/00_Neeq/Action_LedgeJump.wav" id="14_b3gvj"]
+[ext_resource type="AudioStream" uid="uid://bpklhdmk7bm3r" path="res://assets/05_SFX/00_Neeq/Action_Walk2.wav" id="14_krp7g"]
+[ext_resource type="AudioStream" uid="uid://bo2nj8oxewfj8" path="res://assets/05_SFX/00_Neeq/Action_Jump.wav" id="14_prg5y"]
+[ext_resource type="AudioStream" uid="uid://cdot7b127auu2" path="res://assets/05_SFX/00_Neeq/Action_Skid.wav" id="15_v08gy"]
+[ext_resource type="AudioStream" uid="uid://bdv1u68k31lpk" path="res://assets/05_SFX/00_Neeq/Action_Walk.wav" id="16_ys75n"]
+[ext_resource type="AudioStream" uid="uid://4ks2puugnv7a" path="res://assets/05_SFX/00_Neeq/Action_WallJump.wav" id="18_q7ths"]
+[ext_resource type="AudioStream" uid="uid://dg6esxgt5uhui" path="res://assets/05_SFX/00_Neeq/Action_WallSlide.wav" id="19_oyjj1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
-radius = 3.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_met2k"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjarg"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_075yf"]
+radius = 14.0
 
 [sub_resource type="Animation" id="Animation_2kt2i"]
-length = 0.32
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,7 +57,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -16)]
 }
 tracks/2/type = "value"
@@ -96,6 +120,78 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cj1yg"]
 resource_name = "combat_idle"
@@ -117,80 +213,659 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_oqhj8"]
+resource_name = "combat_jump"
+length = 0.48
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [234, 235, 236, 237, 238, 239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(-6, -16), Vector2(0, -19), Vector2(17, -32), Vector2(17, -39), Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 20.0, 26.0, 22.0, 14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_15f7e"]
+resource_name = "combat_jump_charge_inch"
+length = 0.32
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [229, 230, 231, 232]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [52, 53, 54, 55]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_k37hs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_hshff"]
+resource_name = "combat_jump_charge_still"
+length = 0.32
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [224, 225, 226, 227]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.118759,
+"start_offset": 0.0,
+"stream": ExtResource("7_ocf0r")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_tin5s"]
+resource_name = "combat_jump_fall"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [248, 249, 250]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [20, 21, 22]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(18, -15)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_52wj7"]
 resource_name = "combat_quick1"
 length = 0.32
-step = 0.08
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -206,193 +881,283 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Facing/Sprites/WhipSprite:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_wycwb"]
-resource_name = "combat_quick2"
-length = 0.32
-step = 0.08
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [193, 194, 195, 196]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_w21ln")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [18]
-}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(16, -16), Vector2(15, -20), Vector2(4, -25), Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 16.0, 23.0, 18.0, 14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_jec3o")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_wycwb"]
+resource_name = "combat_quick2"
+length = 0.32
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [193, 194, 195, 196]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.08, 0.16, 0.24),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [Vector2(16, -16)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(18, -18), Vector2(15, -28), Vector2(4, -25), Vector2(16, -16)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 18.0, 23.0, 18.0, 14.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_7yqax")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_w75uo"]
 resource_name = "combat_quick3"
 length = 0.32
-step = 0.08
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -450,7 +1215,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -16)]
 }
 tracks/5/type = "value"
@@ -489,6 +1254,513 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(29, -19), Vector2(15, -35), Vector2(4, -25), Vector2(16, -16)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 18.0, 23.0, 18.0, 14.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/14/type = "audio"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_vbrti")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/14/use_blend = true
+
+[sub_resource type="Animation" id="Animation_pog52"]
+resource_name = "combat_strong1"
+length = 0.48
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [216, 217, 218, 219, 220, 221]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(-2, -23), Vector2(8, -33), Vector2(14, -23), Vector2(20, -12), Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 14.0, 16.0, 18.0, 15.0, 14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_gv6bh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_pl5a1"]
+resource_name = "combat_strong2"
+length = 0.48
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [216, 217, 218, 219, 220, 221]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(-7, -28), Vector2(8, -38), Vector2(20, -28), Vector2(25, -13), Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 14.0, 21.0, 22.0, 18.0, 14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_jju6p")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_1mlyj"]
+resource_name = "combat_strong3"
+length = 0.48
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [216, 217, 218, 219, 220, 221]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(16, -16), Vector2(-7, -28), Vector2(6, -43), Vector2(24, -40), Vector2(30, -18), Vector2(16, -16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14.0, 14.0, 23.0, 24.0, 23.0, 14.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_jlf0h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_itin5"]
 resource_name = "combat_walk"
@@ -510,74 +1782,489 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}],
+"times": PackedFloat32Array(0.24, 0.72, 1.2, 1.68, 2.16, 2.64, 3.12, 3.6, 4.08, 4.56)
+}
+tracks/9/use_blend = true
+
+[sub_resource type="Animation" id="Animation_k23jj"]
+resource_name = "damage_air"
+length = 0.64
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [126, 127, 128, 129, 130, 131, 132, 133]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_5x0gf"]
+resource_name = "damage_death"
+length = 0.72
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [112, 113, 114, 115, 116, 117, 118, 119, 120]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_t6jyq"]
+resource_name = "damage_hit"
+length = 0.24
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [108, 109, 110]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_g8los"]
@@ -599,55 +2286,55 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -659,14 +2346,38 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_jmlw4"]
@@ -689,74 +2400,98 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_2jw16"]
@@ -779,74 +2514,98 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_n5wcc"]
@@ -868,75 +2627,114 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ugkx2")
+}],
+"times": PackedFloat32Array(0.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mh18c"]
 resource_name = "jump_ledge"
@@ -957,80 +2755,119 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_b3gvj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_f7mdw"]
 resource_name = "jump_takeoff"
-length = 0.48
-step = 0.08
+length = 0.24
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1038,7 +2875,7 @@ tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [54, 55, 56, 57, 58, 59]
@@ -1046,81 +2883,120 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_prg5y")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_8mlxs"]
 resource_name = "run"
 length = 3.2
 loop_mode = 1
-step = 0.08
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1128,7 +3004,7 @@ tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.00305027, 0.0830503, 0.16305, 0.24305, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.59695, 1.67695, 1.75695, 1.83695, 1.92, 2, 2.08, 2.16, 2.23695, 2.31695, 2.39695, 2.47695, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36, 1.44, 1.52, 1.6, 1.68, 1.76, 1.84, 1.92, 2, 2.08, 2.16, 2.24, 2.32, 2.4, 2.48, 2.56, 2.64, 2.72, 2.8, 2.88, 2.96, 3.04, 3.12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52, 36, 37, 38, 39, 40, 41, 42, 43, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52]
@@ -1136,75 +3012,150 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_krp7g")
+}],
+"times": PackedFloat32Array(0.2, 0.48, 0.84, 1.12, 1.48, 1.76, 2.12, 2.4, 2.76, 3.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_gba4o"]
 resource_name = "skid"
@@ -1225,75 +3176,114 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_v08gy")
+}],
+"times": PackedFloat32Array(0.04)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_juktq"]
 resource_name = "walk"
@@ -1315,75 +3305,150 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_ys75n")
+}],
+"times": PackedFloat32Array(0.12, 0.6, 1.08, 1.56, 2.04, 2.52, 3, 3.48, 3.96, 4.44)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ofmmq"]
 resource_name = "wall_jump"
@@ -1404,55 +3469,55 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1464,15 +3529,54 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("18_q7ths")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qhdnn"]
 resource_name = "wall_ledge"
@@ -1494,74 +3598,98 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_bbryl"]
@@ -1584,75 +3712,126 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}],
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_sampe"]
 resource_name = "wall_slide_quick"
@@ -1674,84 +3853,145 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:texture")
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_w21ln")]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Facing/Sprites/NeeqSprite:hframes")
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Facing/Sprites/NeeqSprite:vframes")
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [Vector2(16, -16)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Facing/Sprites/NeeqSprite:position")
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -16)]
+"update": 1,
+"values": [14.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [14.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../AudioPlayers/AudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}, {
+"end_offset": 0.132595,
+"start_offset": 0.0,
+"stream": ExtResource("19_oyjj1")
+}],
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
 _data = {
 "RESET": SubResource("Animation_2kt2i"),
 "combat_idle": SubResource("Animation_cj1yg"),
+"combat_jump": SubResource("Animation_oqhj8"),
+"combat_jump_charge_inch": SubResource("Animation_15f7e"),
+"combat_jump_charge_still": SubResource("Animation_hshff"),
+"combat_jump_fall": SubResource("Animation_tin5s"),
 "combat_quick1": SubResource("Animation_52wj7"),
 "combat_quick2": SubResource("Animation_wycwb"),
 "combat_quick3": SubResource("Animation_w75uo"),
+"combat_strong1": SubResource("Animation_pog52"),
+"combat_strong2": SubResource("Animation_pl5a1"),
+"combat_strong3": SubResource("Animation_1mlyj"),
 "combat_walk": SubResource("Animation_itin5"),
+"damage_air": SubResource("Animation_k23jj"),
+"damage_death": SubResource("Animation_5x0gf"),
+"damage_hit": SubResource("Animation_t6jyq"),
 "dodge": SubResource("Animation_g8los"),
 "idle": SubResource("Animation_jmlw4"),
 "jump_fall": SubResource("Animation_2jw16"),
@@ -1770,6 +4010,18 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6aoqp"]
 animation = &"combat_idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_315k1"]
+animation = &"combat_jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tpnow"]
+animation = &"combat_jump_charge_inch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tg63r"]
+animation = &"combat_jump_charge_still"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mq3rh"]
+animation = &"combat_jump_fall"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msjec"]
 animation = &"combat_quick1"
 
@@ -1779,8 +4031,26 @@ animation = &"combat_quick2"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n057x"]
 animation = &"combat_quick3"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b4ti1"]
+animation = &"combat_strong1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ohiyh"]
+animation = &"combat_strong2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nkddf"]
+animation = &"combat_strong3"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pyjn2"]
 animation = &"combat_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mc8ob"]
+animation = &"damage_air"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xlesv"]
+animation = &"damage_death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_um4a3"]
+animation = &"damage_hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bvo0w"]
 animation = &"dodge"
@@ -1863,8 +4133,6 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eg2tk"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_np7sl"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l47yt"]
 switch_mode = 2
 advance_mode = 2
@@ -1890,19 +4158,77 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y6ur7"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qkxwi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aooyx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cotoo"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0xbf"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ogca"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_olv34"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3ok5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kdea7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bnj0f"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a0hl7"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ydem4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e0wlc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a23tj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8m6wa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o70rv"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(714, 31)
 states/Start/position = Vector2(375, 31)
 states/combat_idle/node = SubResource("AnimationNodeAnimation_6aoqp")
-states/combat_idle/position = Vector2(801, 111)
+states/combat_idle/position = Vector2(929, 268)
+states/combat_jump/node = SubResource("AnimationNodeAnimation_315k1")
+states/combat_jump/position = Vector2(714, 111)
+states/combat_jump_charge_inch/node = SubResource("AnimationNodeAnimation_tpnow")
+states/combat_jump_charge_inch/position = Vector2(1316, -49)
+states/combat_jump_charge_still/node = SubResource("AnimationNodeAnimation_tg63r")
+states/combat_jump_charge_still/position = Vector2(929, -49)
+states/combat_jump_fall/node = SubResource("AnimationNodeAnimation_mq3rh")
+states/combat_jump_fall/position = Vector2(714, 183)
 states/combat_quick1/node = SubResource("AnimationNodeAnimation_msjec")
-states/combat_quick1/position = Vector2(801, 190)
+states/combat_quick1/position = Vector2(929, 341)
 states/combat_quick2/node = SubResource("AnimationNodeAnimation_5kxc3")
-states/combat_quick2/position = Vector2(965, 190)
+states/combat_quick2/position = Vector2(1125, 341)
 states/combat_quick3/node = SubResource("AnimationNodeAnimation_n057x")
-states/combat_quick3/position = Vector2(1138, 190)
+states/combat_quick3/position = Vector2(1316, 341)
+states/combat_strong1/node = SubResource("AnimationNodeAnimation_b4ti1")
+states/combat_strong1/position = Vector2(929, 183)
+states/combat_strong2/node = SubResource("AnimationNodeAnimation_ohiyh")
+states/combat_strong2/position = Vector2(1125, 183)
+states/combat_strong3/node = SubResource("AnimationNodeAnimation_nkddf")
+states/combat_strong3/position = Vector2(1316, 183)
 states/combat_walk/node = SubResource("AnimationNodeAnimation_pyjn2")
-states/combat_walk/position = Vector2(965, 111)
+states/combat_walk/position = Vector2(1125, 268)
+states/damage_air/node = SubResource("AnimationNodeAnimation_mc8ob")
+states/damage_air/position = Vector2(929, 31)
+states/damage_death/node = SubResource("AnimationNodeAnimation_xlesv")
+states/damage_death/position = Vector2(1125, 75.854)
+states/damage_hit/node = SubResource("AnimationNodeAnimation_um4a3")
+states/damage_hit/position = Vector2(929, 111)
 states/dodge/node = SubResource("AnimationNodeAnimation_bvo0w")
 states/dodge/position = Vector2(375, 111)
 states/idle/node = SubResource("AnimationNodeAnimation_n1kv1")
@@ -1929,8 +4255,8 @@ states/wall_slide/node = SubResource("AnimationNodeAnimation_u26r0")
 states/wall_slide/position = Vector2(375, 341)
 states/wall_slide_quick/node = SubResource("AnimationNodeAnimation_43yco")
 states/wall_slide_quick/position = Vector2(218, 341)
-transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_idle", "idle", SubResource("AnimationNodeStateMachineTransition_np7sl"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7")]
-graph_offset = Vector2(32, -44.146)
+transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7"), "combat_strong1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_qkxwi"), "combat_idle", "combat_strong1", SubResource("AnimationNodeStateMachineTransition_aooyx"), "damage_air", "combat_idle", SubResource("AnimationNodeStateMachineTransition_cotoo"), "damage_hit", "combat_idle", SubResource("AnimationNodeStateMachineTransition_n0xbf"), "damage_air", "damage_death", SubResource("AnimationNodeStateMachineTransition_4ogca"), "damage_hit", "damage_death", SubResource("AnimationNodeStateMachineTransition_olv34"), "combat_jump", "combat_jump_fall", SubResource("AnimationNodeStateMachineTransition_h3ok5"), "combat_jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_kdea7"), "combat_strong1", "combat_strong2", SubResource("AnimationNodeStateMachineTransition_bnj0f"), "combat_strong2", "combat_strong3", SubResource("AnimationNodeStateMachineTransition_a0hl7"), "combat_jump_charge_still", "combat_jump_charge_inch", SubResource("AnimationNodeStateMachineTransition_ydem4"), "combat_jump_charge_inch", "combat_jump_charge_still", SubResource("AnimationNodeStateMachineTransition_e0wlc"), "combat_jump_charge_still", "combat_jump", SubResource("AnimationNodeStateMachineTransition_a23tj"), "combat_jump_fall", "jump_ledge", SubResource("AnimationNodeStateMachineTransition_8m6wa"), "jump_fall", "wall_jump", SubResource("AnimationNodeStateMachineTransition_o70rv")]
+graph_offset = Vector2(205, -111.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -1938,11 +4264,14 @@ outline_size = 1
 outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83gcn"]
+radius = 3.0
+height = 16.0
+
 [node name="Neeq" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 17
-script = ExtResource("1_hm6a4")
-MODE = "Explorer"
+script = ExtResource("1_f1tj0")
 
 [node name="NeeqFSM" type="Node2D" parent="."]
 script = ExtResource("2_86ct0")
@@ -1962,9 +4291,10 @@ visible = false
 position = Vector2(0, -32)
 texture = ExtResource("4_duc1e")
 hframes = 4
-vframes = 3
+vframes = 14
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
+visible = false
 
 [node name="GroundDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
@@ -2000,6 +4330,37 @@ position = Vector2(3, -22)
 scale = Vector2(1, 0.25)
 target_position = Vector2(5, 0)
 
+[node name="CombatDetectors" type="Node2D" parent="Facing/WorldDetectors"]
+
+[node name="Hitbox" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Hitbox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_met2k")
+debug_color = Color(0.6, 0.6, 0.701961, 0.419608)
+
+[node name="Atkbox_Light" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Atkbox_Light"]
+position = Vector2(16, -16)
+shape = SubResource("CircleShape2D_yjarg")
+disabled = true
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Atkbox_Medium" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Atkbox_Medium"]
+position = Vector2(16, -16)
+shape = SubResource("CircleShape2D_075yf")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+
 [node name="SafeFallDetector" type="RayCast2D" parent="Facing/WorldDetectors"]
 scale = Vector2(0.25, 1)
 target_position = Vector2(0, 48)
@@ -2012,9 +4373,16 @@ script = ExtResource("4_v4hut")
 
 [node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("CapsuleShape2D_83gcn")
+[node name="Grapple" type="Node2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="Grapple"]
+
+[node name="GrappleGuideSprite" type="Sprite2D" parent="Grapple/Sprites"]
+visible = false
+position = Vector2(0, -16)
+rotation = -3.14159
+texture = ExtResource("5_ci778")
+offset = Vector2(48, 0)
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -2024,16 +4392,20 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayers"]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_gbof1")
 }
 tree_root = SubResource("AnimationNodeStateMachine_h72ka")
 anim_player = NodePath("../SpritePlayer")
 
+[node name="AudioPlayers" type="Node2D" parent="."]
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="AudioPlayers"]
+
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -2052,6 +4424,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="ModeOutput" type="Label" parent="Outputs"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -2086,6 +4459,35 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="AttackTimer" type="Timer" parent="Timers"]
+[node name="QuickAttackTimer" type="Timer" parent="Timers"]
 wait_time = 0.32
 one_shot = true
+
+[node name="StrongAttackTimer" type="Timer" parent="Timers"]
+wait_time = 0.48
+one_shot = true
+
+[node name="ComboTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="DamageTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ProgressBars" parent="." instance=ExtResource("6_teouf")]
+offset_left = -13.0
+offset_top = -40.0
+offset_right = -13.0
+offset_bottom = -40.0
+
+[node name="MainCamera" parent="." instance=ExtResource("7_v5jet")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_83gcn")
+
+[connection signal="area_entered" from="Facing/WorldDetectors/CombatDetectors/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Facing/WorldDetectors/CombatDetectors/Atkbox_Light" to="." method="_on_atkbox_light_area_entered"]
+[connection signal="area_entered" from="Facing/WorldDetectors/CombatDetectors/Atkbox_Medium" to="." method="_on_atkbox_medium_area_entered"]

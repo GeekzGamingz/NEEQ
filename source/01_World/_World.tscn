@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3w52oi4bxmxt"]
+[gd_scene load_steps=4 format=3 uid="uid://d3w52oi4bxmxt"]
 
 [ext_resource type="Script" path="res://source/01_World/_World.gd" id="1_3y2lr"]
-[ext_resource type="PackedScene" uid="uid://cpgyr4t2c751m" path="res://source/01_World/00_Overworld/00_OWDebug/OW_Debug.tscn" id="2_cbms4"]
+[ext_resource type="PackedScene" uid="uid://cpgyr4t2c751m" path="res://source/01_World/00_Overworld/Overworld.tscn" id="2_cbms4"]
+[ext_resource type="PackedScene" uid="uid://ryy1d8hbv1v6" path="res://source/05_UserInterface/UserInterface.tscn" id="2_xsfgm"]
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource("1_3y2lr")
 
-[node name="OrphanNodes" type="Node2D" parent="."]
+[node name="UserInterface" parent="." instance=ExtResource("2_xsfgm")]
 
-[node name="OW_Debug" parent="." instance=ExtResource("2_cbms4")]
+[node name="Orphans" type="Node2D" parent="."]
+
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="OW_Debug" parent="Levels" instance=ExtResource("2_cbms4")]

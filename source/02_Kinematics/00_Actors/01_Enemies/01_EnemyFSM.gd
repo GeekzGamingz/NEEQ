@@ -1,23 +1,24 @@
 #Inherits StateMachine Code
 extends StateMachine
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
-#-------------------------------------------------------------------------------------------------#
-#Ready
+#------------------------------------------------------------------------------#
+#Ready Method
 func _ready() -> void:
+	#Add States
 	state_add("idle")
 	state_add("walk")
 	state_add("chase")
 	state_add("attack")
 	call_deferred("state_set", states.idle)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Label
 func _process(_delta: float) -> void:
 	state_label.text = str(states.keys()[state])
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Machine
 #State Logistics
 func state_logic(delta):

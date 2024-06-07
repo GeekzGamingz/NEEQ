@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3oa180qqu0kv"]
+[gd_scene load_steps=15 format=3 uid="uid://b3oa180qqu0kv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_NeeqOW.gd" id="1_8ivlu"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/01_Neeq_OWFSM.gd" id="2_32x13"]
 [ext_resource type="Texture2D" uid="uid://b2oaqs7qo2c7b" path="res://assets/02_Actors/00_Neeq/overmap_sprites.png" id="2_tb6in"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
-radius = 6.0
+[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/Encounters.gd" id="3_u8xy8"]
+[ext_resource type="PackedScene" uid="uid://b6q55u17fu8wn" path="res://source/02_Kinematics/00_Actors/00_Neeq/01_NeeqOW/TerrainDetector.tscn" id="4_aysba"]
 
 [sub_resource type="Animation" id="Animation_fk36u"]
 length = 0.001
@@ -198,27 +197,22 @@ outline_size = 1
 outline_color = Color(0, 0.607843, 0, 1)
 shadow_color = Color(0, 0, 0, 0.588235)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0t63"]
+radius = 6.0
+
 [node name="Neeq_Overworld" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_8ivlu")
+repellent = 5.0
 
 [node name="Neeq_OWFSM" type="Node2D" parent="."]
 script = ExtResource("2_32x13")
 
-[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
-texture = ExtResource("2_tb6in")
-hframes = 4
-vframes = 3
-frame = 4
+[node name="Encounters" type="Node2D" parent="."]
+script = ExtResource("3_u8xy8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_x0t63")
-
-[node name="MoveDetector" type="RayCast2D" parent="."]
-target_position = Vector2(0, 12)
-collide_with_areas = true
+[node name="TerrainDetector" parent="Encounters" instance=ExtResource("4_aysba")]
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -231,6 +225,7 @@ libraries = {
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -247,3 +242,50 @@ label_settings = SubResource("LabelSettings_hdst0")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="NorthMarker" type="Marker2D" parent="Markers"]
+position = Vector2(0, -36)
+
+[node name="TerrainDetector" parent="Markers/NorthMarker" instance=ExtResource("4_aysba")]
+
+[node name="SouthMarker" type="Marker2D" parent="Markers"]
+position = Vector2(0, 36)
+
+[node name="TerrainDetector" parent="Markers/SouthMarker" instance=ExtResource("4_aysba")]
+
+[node name="EastMarker" type="Marker2D" parent="Markers"]
+position = Vector2(36, 0)
+
+[node name="TerrainDetector" parent="Markers/EastMarker" instance=ExtResource("4_aysba")]
+
+[node name="WestMarker" type="Marker2D" parent="Markers"]
+position = Vector2(-36, 0)
+
+[node name="TerrainDetector" parent="Markers/WestMarker" instance=ExtResource("4_aysba")]
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="EncounterTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Sprite_NeeqOW" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("2_tb6in")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="OverworldCamera" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x0t63")
+
+[node name="MoveDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 12)
+collide_with_areas = true

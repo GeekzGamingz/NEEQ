@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ryy1d8hbv1v6"]
+
+[ext_resource type="PackedScene" uid="uid://ddm2fw1pp3ebs" path="res://source/05_UserInterface/_Debuggers/Menu_Debug.tscn" id="1_kn4ol"]
+[ext_resource type="PackedScene" uid="uid://byv66xuxrvg1u" path="res://source/05_UserInterface/03_Overlays/Overlay_Actions.tscn" id="2_6twbj"]
+[ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="3_5l5l2"]
+[ext_resource type="Texture2D" uid="uid://de25kmprmrr37" path="res://assets/02_Actors/00_Neeq/ProgressBarBG_Neeq.png" id="4_7v1cy"]
+[ext_resource type="Texture2D" uid="uid://c4gpie0itaj6k" path="res://assets/02_Actors/00_Neeq/ProgressBar_Neeq.png" id="5_la100"]
+[ext_resource type="Texture2D" uid="uid://cfqpy67mgb32f" path="res://assets/02_Actors/00_Neeq/ProgressBarFG_Neeq.png" id="6_fkur4"]
+[ext_resource type="Texture2D" uid="uid://cmx50gl0uwchk" path="res://assets/02_Actors/00_Neeq/ProgressBarFG_Tail_Neeq.png" id="7_bixl2"]
+
+[node name="UserInterface" type="CanvasLayer"]
+metadata/_edit_horizontal_guides_ = [25.0, 775.0]
+metadata/_edit_vertical_guides_ = [25.0, 1255.0]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Menu_Debug" parent="MarginContainer" instance=ExtResource("1_kn4ol")]
+layout_mode = 2
+
+[node name="Overlay_Actions" parent="MarginContainer" instance=ExtResource("2_6twbj")]
+layout_mode = 2
+CONTROLLER = "Xbox360"
+
+[node name="ProgressBars" parent="MarginContainer" instance=ExtResource("3_5l5l2")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthUnder" parent="MarginContainer/ProgressBars/Health" index="0"]
+scale = Vector2(2, 2)
+texture_under = ExtResource("4_7v1cy")
+texture_progress = ExtResource("5_la100")
+texture_progress_offset = Vector2(31, 16)
+tint_under = Color(1, 1, 1, 1)
+
+[node name="HealthOver" parent="MarginContainer/ProgressBars/Health" index="1"]
+scale = Vector2(2, 2)
+texture_over = ExtResource("6_fkur4")
+texture_progress = ExtResource("5_la100")
+texture_progress_offset = Vector2(31, 16)
+
+[node name="TailOverlay" type="Sprite2D" parent="MarginContainer/ProgressBars/Health" index="2"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_bixl2")
+centered = false
+
+[editable path="MarginContainer/ProgressBars"]

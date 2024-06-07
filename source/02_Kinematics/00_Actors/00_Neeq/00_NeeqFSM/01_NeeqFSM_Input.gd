@@ -1,15 +1,19 @@
 #Inherits StateMachine Code
 extends StateMachine
 class_name NeeqFSM_Input
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
 @onready var p = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
 @onready var mode_label: Label = p.get_node("Outputs/ModeOutput")
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
+	#Update Player Global
+	G.PLAYER = p
+	#Add States
+	#Explorer
 	state_add("idle")
 	state_add("walk")
 	state_add("run")
@@ -23,21 +27,31 @@ func _ready() -> void:
 	state_add("skid")
 	state_add("dodge")
 	state_add("dodge_air")
+	#Combat
 	state_add("combat_idle")
 	state_add("combat_walk")
 	state_add("combat_quick1")
 	state_add("combat_quick2")
 	state_add("combat_quick3")
+	state_add("combat_strong1")
+	state_add("combat_strong2")
+	state_add("combat_strong3")
 	state_add("combat_downthrust")
-	state_add("combat_jump_charge")
+	state_add("combat_jump_charge_still")
+	state_add("combat_jump_charge_inch")
 	state_add("combat_jump_fall")
+	#Damage
+	state_add("damage_hit")
+	state_add("damage_air")
+	state_add("damage_death")
+	#Call Deferred
 	call_deferred("state_set", states.idle)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #State Label
 func _process(_delta: float) -> void:
 	state_label.text = str(states.keys()[state])
 	mode_label.text = str(p.MODE)
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Input Handler
 func _input(event: InputEvent) -> void:
 	#Horizontal Movement
@@ -64,3 +78,6 @@ func _input(event: InputEvent) -> void:
 			p.velocity.y = p.min_jump_velocity
 	#Slide From Ledge
 	if states.ledge: if event.is_action_pressed("move_down"): p.ledge_break()
+	#Grapple
+	if event.is_action_pressed("action_grapple"): p.grapple_guide.visible = true
+	elif event.is_action_released("action_grapple"): p.grapple_guide.visible = false

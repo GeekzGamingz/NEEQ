@@ -15,12 +15,12 @@ var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
 #OnReady Variables
+@onready var camera = $MainCamera
 @onready var particles_marker = $Facing/Markers/ParticlesMarker
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
 @onready var skid_timer: Timer = $Timers/SkidTimer
-@onready var attack_timer: Timer = $Timers/AttackTimer
 #------------------------------------------------------------------------------#
 #Player Movement
 func apply_movement() -> void:
@@ -34,6 +34,7 @@ func apply_movement() -> void:
 		velocity.x = 0.0
 		velocity.y = max_speed
 	if !grounded && was_on_floor: coyote_timer.start()
+	if grounded && !was_on_floor: jump_particles()
 	if ledge_timer.is_stopped():
 		ledge_detector.enabled = true
 		wall_detector1.enabled = true

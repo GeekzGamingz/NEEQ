@@ -1,7 +1,7 @@
 #Inherits StateMachine Code
 extends NeeqFSM_Transitions
 class_name NeeqFSM_Presence
-#-------------------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 #Enter State
 @warning_ignore("unused_parameter")
 func state_enter(new_state, old_state):
@@ -27,7 +27,7 @@ func state_enter(new_state, old_state):
 			p.jumping = false
 		states.wall_slide, states.wall_slide_quick:
 			p.playback.start("wall_slide")
-			if states.wall_slide_quick:
+			if state == states.wall_slide_quick:
 				p.playback.travel("wall_slide_quick")
 			p.safe_fall.enabled = false
 			p.particles_marker.position = Vector2(7, -7)
@@ -36,25 +36,52 @@ func state_enter(new_state, old_state):
 			p.wall_detector2.enabled = true
 		states.dodge, states.dodge_air:
 			p.playback.start("dodge")
-			p.attack_timer.start()
+			p.quick_attack_timer.start()
 			p.particles_marker.position = Vector2(0, -16)
 	#Combat Mode
 		states.combat_idle: p.playback.travel("combat_idle")
 		states.combat_walk: p.playback.travel("combat_walk")
 		states.combat_quick1:
 			p.playback.start("combat_quick1")
-			p.attack_timer.start()
+			p.quick_attack_timer.start()
+			p.combo_timer.stop()
 		states.combat_quick2:
 			p.playback.start("combat_quick2")
-			p.attack_timer.start()
+			p.quick_attack_timer.start()
+			p.combo_timer.stop()
 		states.combat_quick3:
 			p.playback.start("combat_quick3")
-			p.attack_timer.start()
-		states.combat_jump_charge: pass #Charge Code
+			p.quick_attack_timer.start()
+			p.combo_timer.stop()
+		states.combat_strong1:
+			p.playback.start("combat_strong1")
+			p.strong_attack_timer.start()
+			p.combo_timer.stop()
+		states.combat_strong2:
+			p.playback.start("combat_strong2")
+			p.strong_attack_timer.start()
+			p.combo_timer.stop()
+		states.combat_strong3:
+			p.playback.start("combat_strong3")
+			p.strong_attack_timer.start()
+			p.combo_timer.stop()
+		states.combat_jump_charge_still: p.playback.start("combat_jump_charge_still")
+		states.combat_jump_charge_inch: p.playback.start("combat_jump_charge_inch")
 		states.combat_jump_fall:
+			p.playback.travel("combat_jump_fall")
+			p.audio_player.stream = p.ATTACK_JUMP
+			p.audio_player.play()
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0
+	#Damage
+		states.damage_hit:
+			p.damage_timer.start()
+			p.playback.start("damage_hit")
+		states.damage_air:
+			p.damage_timer.start()
+			p.playback.start("damage_air")
+		states.damage_death: p.playback.start("damage_death")
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):
@@ -63,10 +90,13 @@ func state_exit(old_state, new_state):
 		states.fall: p.jumping = false
 		states.wall_slide, states.wall_slide_quick: p.safe_fall.enabled = true
 		states.skid: p.skid_timer.start()
-		states.combat_jump_charge:
-			p.combat_jump_multiplier = min(p.combat_jump_multiplier, 2)
-			p.velocity.y = p.max_jump_velocity * p.combat_jump_multiplier
-			p.combat_jump_multiplier = 1.0
-			p.attack_timer.start()
+		states.combat_jump_charge_still, states.combat_jump_charge_inch:
+			if ![states.combat_jump_charge_still, states.combat_jump_charge_inch].has(new_state):
+				p.playback.start("combat_jump")
+				p.combat_jump_multiplier = min(p.combat_jump_multiplier, 2)
+				p.velocity.y = p.max_jump_velocity * p.combat_jump_multiplier
+				p.combat_jump_multiplier = 1.0
+				p.quick_attack_timer.start()
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
+		states.damage_hit, states.damage_air: p.is_hurting = false
