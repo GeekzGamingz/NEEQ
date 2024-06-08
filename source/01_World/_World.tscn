@@ -13,4 +13,4 @@ script = ExtResource("1_3y2lr")
 
 [node name="Levels" type="Node2D" parent="."]
 
-[node name="OW_Debug" parent="Levels" instance=ExtResource("2_cbms4")]
+[node name="Overworld" parent="Levels" instance=ExtResource("2_cbms4")]

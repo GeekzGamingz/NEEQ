@@ -3,7 +3,7 @@ extends Marker2D
 #------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-@onready var neeq = get_node("../../..")
+@onready var neeq: Node2D = get_node("../../..")
 #------------------------------------------------------------------------------#
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("action_emote"): pass #Toggle Wheel Visibility

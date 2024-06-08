@@ -15,8 +15,8 @@ var dir_new: float = 0
 #Bool Variables
 var controllable: bool = true
 #OnReady Variables
-@onready var camera = $MainCamera
-@onready var particles_marker = $Facing/Markers/ParticlesMarker
+@onready var camera: Camera2D = $MainCamera
+@onready var particles_marker: Marker2D = $Facing/Markers/ParticlesMarker
 #Timers
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
 @onready var ledge_timer: Timer = $Timers/LedgeTimer
@@ -69,7 +69,7 @@ func ledge_break() -> void:
 #------------------------------------------------------------------------------#
 #Particle Effects
 #Jump Particles
-func jump_particles():
+func jump_particles() -> void:
 	var jump_particle = FX_JUMP.instantiate()
 	jump_particle.global_position = particles_marker.global_position
 	jump_particle.amount = 3 if max_speed == run_speed || fsm.state == fsm.states.skid else 1
@@ -83,7 +83,7 @@ func jump_particles():
 			jump_particle.global_position.y = jump_particle.global_position.y + 16
 	G.ORPHANS.add_child(jump_particle)
 #Dodge Particles
-func dodge_particles():
+func dodge_particles() -> void:
 	var dodge_particle = FX_DODGE.instantiate()
 	dodge_particle.global_position = particles_marker.global_position
 	if facing.x == FACING_RIGHT:

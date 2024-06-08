@@ -2,18 +2,18 @@
 extends Node2D
 #------------------------------------------------------------------------------#
 #Constants
-const ACTOR_OW = preload("res://source/02_Kinematics/01_OWActors/Actor_OW.tscn")
+const ACTOR_OW: PackedScene = preload("res://source/02_Kinematics/01_OWActors/Actor_OW.tscn")
 #------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-@onready var p = get_parent()
-@onready var terrain_detector = $TerrainDetector
-@onready var north_detector = $"../Markers/NorthMarker/TerrainDetector"
-@onready var south_detector = $"../Markers/SouthMarker/TerrainDetector"
-@onready var east_detector = $"../Markers/EastMarker/TerrainDetector"
-@onready var west_detector = $"../Markers/WestMarker/TerrainDetector"
+@onready var p: Node2D = get_parent()
+@onready var terrain_detector: Area2D = $TerrainDetector
+@onready var north_detector: Area2D = $"../Markers/NorthMarker/TerrainDetector"
+@onready var south_detector: Area2D = $"../Markers/SouthMarker/TerrainDetector"
+@onready var east_detector: Area2D = $"../Markers/EastMarker/TerrainDetector"
+@onready var west_detector: Area2D = $"../Markers/WestMarker/TerrainDetector"
 #------------------------------------------------------------------------------#
-func random_encounter():
+func random_encounter() -> void:
 	G.DEBUG.biome = terrain_detector.biome
 	for marker in p.markers.get_children():
 		if (p.get_parent().get_children().size() < 4 &&

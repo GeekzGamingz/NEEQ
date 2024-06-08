@@ -2,10 +2,10 @@
 extends OW_Kinematic
 #------------------------------------------------------------------------------#
 #Constants
-const OW_ENCOUNTER_MINOR = preload("res://assets/02_Actors/_Overworld/overworld_minor_enemy.png")
-const OW_ENCOUNTER_MODERATE= preload("res://assets/02_Actors/_Overworld/overworld_moderate_enemy.png")
-const OW_ENCOUNTER_MAJOR = preload("res://assets/02_Actors/_Overworld/overworld_major_enemy.png")
-const OW_ENCOUNTER_MYSTERY = preload("res://assets/02_Actors/_Overworld/overworld_mystery.png")
+const OW_ENCOUNTER_MINOR: Texture2D = preload("res://assets/02_Actors/_Overworld/overworld_minor_enemy.png")
+const OW_ENCOUNTER_MODERATE: Texture2D = preload("res://assets/02_Actors/_Overworld/overworld_moderate_enemy.png")
+const OW_ENCOUNTER_MAJOR: Texture2D = preload("res://assets/02_Actors/_Overworld/overworld_major_enemy.png")
+const OW_ENCOUNTER_MYSTERY: Texture2D = preload("res://assets/02_Actors/_Overworld/overworld_mystery.png")
 #------------------------------------------------------------------------------#
 #Variables
 var direction: Vector2 = Vector2.ZERO
@@ -14,8 +14,8 @@ var controllable: bool = true
 #Exported Variables
 @export_enum("Minor", "Moderate", "Major", "Mystery") var LEVEL: String
 #OnReady Variables
-@onready var sprite = $Sprite_OW
-@onready var despawn_timer = $Timers/DespawnTimer
+@onready var sprite: Sprite2D = $Sprite_OW
+@onready var despawn_timer: Timer = $Timers/DespawnTimer
 #------------------------------------------------------------------------------#
 #Ready Function
 func _ready() -> void:
@@ -39,5 +39,5 @@ func move_direction() -> void:
 	var r_horizontal = rng.randi_range(-1, 1)
 	direction = Vector2(r_verticle, r_horizontal)
 #Despawn
-func _on_despawn_timer_timeout():
+func _on_despawn_timer_timeout() -> void:
 	queue_free()

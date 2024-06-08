@@ -6,7 +6,7 @@ extends Area2D
 @export var custom_scene: PackedScene
 @export_enum("Overworld", "Debug", "Random", "Custom") var LEVEL: String
 #OnReady Variables
-@onready var p = get_parent()
+@onready var p: Node2D = get_parent()
 #------------------------------------------------------------------------------#
 func _on_body_entered(body):
 	if body.name == "Neeq_Overworld" || body.name == "Neeq":

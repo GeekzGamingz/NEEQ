@@ -11,11 +11,11 @@ var moving: bool = false
 @export var speed: float = 0.35
 @export var delay: float = 0.1
 #OnReady Variables
-@onready var move_detector = $MoveDetector
-@onready var anim_player = $AnimationPlayers/AnimationPlayer
+@onready var move_detector: RayCast2D = $MoveDetector
+@onready var anim_player: AnimationPlayer = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
 #Ready Method
-func _ready():
+func _ready() -> void:
 	move_detector.target_position = Vector2.DOWN * (float(G.TILE_SIZE_OW) / 2)
 #------------------------------------------------------------------------------#
 #Apply Movement

@@ -2,7 +2,7 @@
 extends Control
 #------------------------------------------------------------------------------#
 #Constants
-const CONTROLLERS = [
+const CONTROLLERS: Array = [
 	preload("res://assets/04_UserInterface/02_Controls/XBOX360.png"),
 	preload("res://assets/04_UserInterface/02_Controls/XBOXone.png"),
 	preload("res://assets/04_UserInterface/02_Controls/PS2.png"),
@@ -22,7 +22,7 @@ var button_id: int = 0
 	"PS4",
 	"Switch",
 	"Mouse & Keyboard"
-	) var CONTROLLER: String = "Xbox360"
+	) var CONTROLLER: String = "Mouse & Keyboard"
 #OnReady Variables
 #Icon Sprites
 @onready var icon_mode = $MarginContainer/GridContainer/MODE_Icon/Icon_MODE
@@ -42,16 +42,16 @@ var button_id: int = 0
 	$MarginContainer/GridContainer/Travel_Control/Button_Travel
 	]
 #Animation Players
-@onready var icon_player = $AnimationPlayers/IconPlayer
+@onready var icon_player: AnimationPlayer = $AnimationPlayers/IconPlayer
 #Button Players
-@onready var quick_player = $AnimationPlayers/ButtonPlayers/QuickPlayer
-@onready var interact_player = $AnimationPlayers/ButtonPlayers/InteractPlayer
-@onready var cancel_player = $AnimationPlayers/ButtonPlayers/CancelPlayer
-@onready var travel_player = $AnimationPlayers/ButtonPlayers/TravelPlayer
-@onready var emote_player = $AnimationPlayers/ButtonPlayers/EmotePlayer
-@onready var grapple_player = $AnimationPlayers/ButtonPlayers/GrapplePlayer
-@onready var mode1_player = $AnimationPlayers/ButtonPlayers/Mode1Player
-@onready var mode2_player = $AnimationPlayers/ButtonPlayers/Mode2Player
+@onready var quick_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/QuickPlayer
+@onready var interact_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/InteractPlayer
+@onready var cancel_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/CancelPlayer
+@onready var travel_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/TravelPlayer
+@onready var emote_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/EmotePlayer
+@onready var grapple_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/GrapplePlayer
+@onready var mode1_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/Mode1Player
+@onready var mode2_player: AnimationPlayer = $AnimationPlayers/ButtonPlayers/Mode2Player
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

@@ -5,9 +5,9 @@ extends Node2D
 #Exported Variables
 @export_enum("Minor", "Moderate", "Major", "Mystery") var LEVEL: String
 #OnReady Variables
-@onready var changers_minor = $SceneChangers/Minor
-@onready var changers_moderate = $SceneChangers/Moderate
-@onready var changers_major = $SceneChangers/Major
+@onready var changers_minor: Node2D = $SceneChangers/Minor
+@onready var changers_moderate: Node2D = $SceneChangers/Moderate
+@onready var changers_major: Node2D = $SceneChangers/Major
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void:

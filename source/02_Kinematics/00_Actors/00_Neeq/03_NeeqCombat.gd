@@ -3,8 +3,8 @@ extends NeeqMovement
 class_name NeeqCombat
 #------------------------------------------------------------------------------#
 #Constants
-const FX_IMPACT = preload("res://source/03_Objects/01_Particles/02_ImpactParticles/FX_Impact.tscn")
-const ATTACK_JUMP = preload("res://assets/05_SFX/00_Neeq/Attack_Jump.wav")
+const FX_IMPACT: PackedScene = preload("res://source/03_Objects/01_Particles/02_ImpactParticles/FX_Impact.tscn")
+const ATTACK_JUMP: AudioStreamWAV = preload("res://assets/05_SFX/00_Neeq/Attack_Jump.wav")
 #------------------------------------------------------------------------------#
 #Variables
 var last_action: String = ""
@@ -13,14 +13,14 @@ var last_action: String = ""
 @export var combat_jump_multiplier: float = 1.0
 @export_enum("Explorer", "Combat", "Sneeq", "Magiq") var MODE: String
 #OnReady Variables
-@onready var atkbox_light = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light
-@onready var atk_light_col = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D
-@onready var atkbox_medium = $Facing/WorldDetectors/CombatDetectors/Atkbox_Medium
-@onready var atk_medium_col = $Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D
+@onready var atkbox_light: Area2D = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light
+@onready var atk_light_col: CollisionShape2D = atkbox_light.get_node("CollisionShape2D")
+@onready var atkbox_medium: Area2D = $Facing/WorldDetectors/CombatDetectors/Atkbox_Medium
+@onready var atk_medium_col: CollisionShape2D = atkbox_medium.get_node("CollisionShape2D")
 @onready var quick_attack_timer: Timer = $Timers/QuickAttackTimer
 @onready var strong_attack_timer: Timer = $Timers/StrongAttackTimer
 @onready var combo_timer: Timer = $Timers/ComboTimer
-@onready var damage_timer = $Timers/DamageTimer
+@onready var damage_timer: Timer = $Timers/DamageTimer
 #------------------------------------------------------------------------------#
 #Combat Input
 #Handle Mode,
@@ -40,7 +40,7 @@ func handle_mode() -> void:
 		MODE = "Explorer"
 		G.ACTIONS.icon_player.play("Explorer")
 #Update Last Action Pressed
-func update_last_action():
+func update_last_action() -> void:
 	if combo_timer.is_stopped():
 		if Input.is_action_just_pressed("action_quick"):
 			last_action = "Quick"
@@ -57,7 +57,7 @@ func update_last_action():
 		else: last_action = ""
 #------------------------------------------------------------------------------#
 #Hitbox
-func _on_hitbox_area_entered(area):
+func _on_hitbox_area_entered(area: Area2D) -> void:
 	match(area.name):
 		"Atkbox_Ping": damage(1)
 		"Atkbox_Light": damage(5) #Add Strength?
@@ -75,7 +75,7 @@ func hurting(): is_hurting = true
 func kill(): is_dead = true
 #------------------------------------------------------------------------------#
 #Light Attack
-func _on_atkbox_light_area_entered(area):
+func _on_atkbox_light_area_entered(area: Area2D) -> void:
 	if area.name == "Hitbox":
 		var area_radius = area.get_child(0).shape.radius
 		var impact_particle = FX_IMPACT.instantiate()
@@ -96,7 +96,7 @@ func _on_atkbox_light_area_entered(area):
 		impact_particle.scale = Vector2(0.5, 0.5)
 		G.ORPHANS.add_child(impact_particle)
 #Medium Attack
-func _on_atkbox_medium_area_entered(area):
+func _on_atkbox_medium_area_entered(area: Area2D) -> void:
 	if area.name == "Hitbox":
 		var area_radius = area.get_child(0).shape.radius
 		var impact_particle = FX_IMPACT.instantiate()

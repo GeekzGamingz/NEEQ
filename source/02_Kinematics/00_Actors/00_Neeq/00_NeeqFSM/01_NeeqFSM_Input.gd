@@ -79,7 +79,9 @@ func _input(event: InputEvent) -> void:
 	#Slide From Ledge
 	if states.ledge: if event.is_action_pressed("move_down"): p.ledge_break()
 	#Grapple
-	if event.is_action_pressed("action_grapple"): p.grapple.grapple_guide.visible = true
+	if event.is_action_pressed("action_grapple"):
+		p.grapple.release()
+		p.grapple.grapple_guide.visible = true
 	elif event.is_action_released("action_grapple"):
-		p.grapple.grapple_guide.visible = false
 		p.grapple_fire()
+		p.grapple.grapple_guide.visible = false

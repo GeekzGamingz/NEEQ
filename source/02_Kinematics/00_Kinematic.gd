@@ -27,21 +27,21 @@ var is_dead: bool = false
 @export var jump_duration: float = 0.5
 #OnReady Variables
 @onready var p = get_parent()
-@onready var health = max_health: set = set_health
+@onready var health: float = max_health: set = set_health
 @onready var walk_speed: float = speed * G.TILE_SIZE
 @onready var run_speed: float = walk_speed * 2
 @onready var max_speed: float = walk_speed
 @onready var min_jump_height: float = jump_strength * G.TILE_SIZE
 @onready var max_jump_height: float = min_jump_height * 5
-@onready var progress_bars = $ProgressBars
+@onready var progress_bars: Control = $ProgressBars
 #------------------------------------------------------------------------------#
 #Applies Gravity
-func apply_gravity(delta) -> void:
+func apply_gravity(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity.x += G.WIND * delta
 #------------------------------------------------------------------------------#
 #Set Facing
-func set_facing(hor_facing) -> void:
+func set_facing(hor_facing: int) -> void:
 	if hor_facing == 0:
 		hor_facing = FACING_RIGHT
 	var hor_face_mod = hor_facing / abs(hor_facing)
@@ -50,13 +50,13 @@ func set_facing(hor_facing) -> void:
 #------------------------------------------------------------------------------#
 #Health
 #Heal
-func heal(amount):
+func heal(amount: float):
 	set_health(health + amount)
 #Damage
-func damage(amount):
+func damage(amount: float):
 	set_health(health - amount)
 #Set Health
-func set_health(value):
+func set_health(value: float):
 	var health_prev = health
 	health = clamp(value, 0, max_health)
 	if health > health_prev:

@@ -6,7 +6,8 @@ var biome: String
 var current_tilemap: TileMap
 #------------------------------------------------------------------------------#
 #On Body Shape Entered
-func _on_body_shape_entered(body_rid: RID,
+func _on_body_shape_entered(
+	body_rid: RID,
 	body: Node2D,
 	_body_shape_index: int,
 	_local_shape_index: int) -> void:

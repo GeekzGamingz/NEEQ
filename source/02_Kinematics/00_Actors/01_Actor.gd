@@ -3,7 +3,7 @@ extends Kinematic
 class_name Actor
 #------------------------------------------------------------------------------#
 #Constants
-const EMOTES = preload("res://source/05_UserInterface/01_Emotes/_Emotes.tscn")
+const EMOTES: PackedScene = preload("res://source/05_UserInterface/01_Emotes/_Emotes.tscn")
 #------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
@@ -32,10 +32,10 @@ var ledge: bool = false
 #Animation Nodes
 @onready var sprite_player: AnimationPlayer = $AnimationPlayers/SpritePlayer
 @onready var anim_tree: AnimationTree = $AnimationPlayers/AnimationTree
-@onready var playback = anim_tree.get("parameters/playback")
-@onready var pb_state = playback.get_current_node()
+@onready var playback: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
+@onready var pb_state: String = playback.get_current_node()
 #Audio Nodes
-@onready var audio_player = $AudioPlayers/AudioPlayer
+@onready var audio_player: AudioStreamPlayer2D = $AudioPlayers/AudioPlayer
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void:

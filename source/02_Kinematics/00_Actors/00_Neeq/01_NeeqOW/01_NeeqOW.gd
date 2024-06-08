@@ -9,9 +9,9 @@ var controllable: bool = true
 #Exported Variables
 @export_range(1, 5, 0.5) var repellent: float
 #OnReady Variables
-@onready var encounters = $Encounters
-@onready var encounter_timer = $Timers/EncounterTimer
-@onready var markers = $Markers
+@onready var encounters: Node2D = $Encounters
+@onready var encounter_timer: Timer = $Timers/EncounterTimer
+@onready var markers: Node2D = $Markers
 @onready var fsm: Node2D = get_child(0)
 #------------------------------------------------------------------------------#
 #Ready Function

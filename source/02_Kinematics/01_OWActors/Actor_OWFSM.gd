@@ -3,7 +3,7 @@ extends StateMachine
 #------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-@onready var p = get_parent()
+@onready var p: Node2D = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
 #------------------------------------------------------------------------------#
 #Ready
@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 #------------------------------------------------------------------------------#
 #State Machine
 #State Logistics
-func state_logic(_delta):
+func state_logic(_delta) -> void:
 	p.move_direction()
 	p.apply_movement(p.direction)
 	match(state):

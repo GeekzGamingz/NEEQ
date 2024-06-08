@@ -2,14 +2,14 @@
 extends Camera2D
 #------------------------------------------------------------------------------#
 #Constants
-const LOOK_FACTOR = 0.1
+const LOOK_FACTOR: float = 0.1
 #------------------------------------------------------------------------------#
 #Variables
-var facing = 0
+var facing: int = 0
 #Exported Variable
 @export var panning_duration: float = 1.0
 #OnReady Variables
-@onready var p = get_parent()
+@onready var p: Node2D = get_parent()
 @onready var prev_cam_position: Vector2 = get_screen_center_position()
 #------------------------------------------------------------------------------#
 #Ready

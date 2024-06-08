@@ -9,18 +9,19 @@ var tip_position: Vector2 = Vector2.ZERO
 #Exported Variables
 @export var speed: float = G.TILE_SIZE
 #OnReady Variables
-@onready var links = $Links
-@onready var tip = $Tip
-@onready var grapple_guide = $GrappleGuideSprite
-@onready var grapple_destination = $GrappleGuideSprite/GrappleDestination
+@onready var links: Sprite2D = $Links
+@onready var tip: CharacterBody2D = $Tip
+@onready var grapple_guide: Sprite2D = $GrappleGuideSprite
+@onready var grapple_destination: Marker2D = $GrappleGuideSprite/GrappleDestination
 #------------------------------------------------------------------------------#
 #Process
 func _process(_delta: float) -> void:
-	visible = flying || hooked
-	if !visible: return
+	tip.visible = flying || hooked
+	links.visible = tip.visible
+	if !tip.visible: return
 	var tip_loc = to_local(tip_position)
-	links.rotation = position.angle_to_point(tip_loc) - deg_to_rad(90)
-	tip.rotation = position.angle_to_point(tip_loc) - deg_to_rad(90)
+	links.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
+	tip.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
 	links.position = tip_loc
 	links.region_rect.size.y = tip_loc.length()
 #------------------------------------------------------------------------------#

@@ -5,7 +5,7 @@ class_name NeeqGrapple
 #Variables
 var look: Vector2 = Vector2.ZERO
 #OnReady Variables
-@onready var grapple = $GrapplingHook
+@onready var grapple: Node2D = $GrapplingHook
 #------------------------------------------------------------------------------#
 func grapple_rotation() -> void:
 	if grapple.grapple_guide.visible:
@@ -22,4 +22,4 @@ func grapple_rotation() -> void:
 					if facing.x == FACING_RIGHT: grapple.grapple_guide.rotation = 0
 					else: grapple.grapple_guide.rotation = deg_to_rad(180)
 func grapple_fire() -> void:
-	grapple.shoot(grapple.grapple_destination.position)
+	grapple.shoot(to_local(grapple.grapple_destination.global_position))

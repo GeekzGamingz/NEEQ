@@ -3,10 +3,10 @@ extends Area2D
 #------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-@onready var anim_player = $AnimationPlayers/AnimationPlayer
+@onready var anim_player: AnimationPlayer = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
 #Body Entered
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 	if body.name == "Neeq":
 		S.set_life_count(+1)
 		body.heal(100)

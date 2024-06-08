@@ -4374,6 +4374,7 @@ script = ExtResource("4_v4hut")
 [node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
 
 [node name="GrapplingHook" parent="." instance=ExtResource("7_w2fdt")]
+position = Vector2(0, -8)
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 

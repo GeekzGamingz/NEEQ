@@ -7,13 +7,13 @@ var player: CharacterBody2D = null
 #Bool Variables
 var atk_toggle: bool = true
 #OnReady Variables
-@onready var combat_detectors = $Facing/WorldDetectors/CombatDetectors
+@onready var combat_detectors: Node2D = $Facing/WorldDetectors/CombatDetectors
 @onready var sight_detector: Area2D = combat_detectors.get_node("SightDetector")
 @onready var bite_detector: RayCast2D = combat_detectors.get_node("BiteDetector")
 @onready var atkbox: CollisionShape2D = combat_detectors.get_node("Atkbox_Light/CollisionShape2D")
 @onready var hitbox: CollisionShape2D = combat_detectors.get_node("Hitbox/CollisionShape2D")
 @onready var atk_timer: Timer = $Timers/AttackTimer
-@onready var damage_timer = $Timers/DamageTimer
+@onready var damage_timer: Timer = $Timers/DamageTimer
 #------------------------------------------------------------------------------#
 #Neeq Spotted
 func _on_sight_detector_body_entered(body):

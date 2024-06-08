@@ -9,7 +9,7 @@ var dir_new: float = 0
 @export var direction: float = 0
 #Bool Variables
 #OnReady Variables
-@onready var direction_timer = $Timers/DirectionTimer
+@onready var direction_timer: Timer = $Timers/DirectionTimer
 #------------------------------------------------------------------------------#
 #Enemy Movement
 func apply_movement() -> void:
