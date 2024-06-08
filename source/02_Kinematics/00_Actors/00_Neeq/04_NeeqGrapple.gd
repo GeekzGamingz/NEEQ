@@ -3,9 +3,11 @@ extends NeeqCombat
 class_name NeeqGrapple
 #------------------------------------------------------------------------------#
 #Variables
-var look: Vector2 = Vector2.ZERO
+#Bool Variables
 var can_grapple: bool = true
 var is_grappling: bool = false
+#Vector Variables
+var look: Vector2 = Vector2.ZERO
 #OnReady Variables
 @onready var grapple: Node2D = $GrapplingHook
 #------------------------------------------------------------------------------#

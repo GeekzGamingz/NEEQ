@@ -7,7 +7,7 @@ var hooked: bool = false
 var direction: Vector2 = Vector2.ZERO
 var tip_position: Vector2 = Vector2.ZERO
 #Exported Variables
-@export var speed: float = G.TILE_SIZE
+@export var speed: float = G.TILE_SIZE / 2.0
 #OnReady Variables
 @onready var links: Sprite2D = $Links
 @onready var tip: CharacterBody2D = $Tip
