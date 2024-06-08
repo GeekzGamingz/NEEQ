@@ -4,6 +4,8 @@ class_name NeeqGrapple
 #------------------------------------------------------------------------------#
 #Variables
 var look: Vector2 = Vector2.ZERO
+var can_grapple: bool = true
+var is_grappling: bool = false
 #OnReady Variables
 @onready var grapple: Node2D = $GrapplingHook
 #------------------------------------------------------------------------------#

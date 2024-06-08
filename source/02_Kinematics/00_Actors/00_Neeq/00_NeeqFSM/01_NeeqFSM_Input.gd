@@ -40,6 +40,13 @@ func _ready() -> void:
 	state_add("combat_jump_charge_still")
 	state_add("combat_jump_charge_inch")
 	state_add("combat_jump_fall")
+	#Grapple
+	state_add("grapple_charge_still")
+	state_add("grapple_charge_walk")
+	state_add("grapple_charge_run")
+	state_add("grapple_charge_air")
+	state_add("grapple_fire")
+	state_add("grapple_hooked")
 	#Damage
 	state_add("damage_hit")
 	state_add("damage_air")
@@ -79,9 +86,11 @@ func _input(event: InputEvent) -> void:
 	#Slide From Ledge
 	if states.ledge: if event.is_action_pressed("move_down"): p.ledge_break()
 	#Grapple
-	if event.is_action_pressed("action_grapple"):
-		p.grapple.release()
-		p.grapple.grapple_guide.visible = true
-	elif event.is_action_released("action_grapple"):
-		p.grapple_fire()
-		p.grapple.grapple_guide.visible = false
+	if p.can_grapple:
+		if event.is_action_pressed("action_grapple"):
+			p.is_grappling = true
+			p.grapple.release()
+			p.grapple.grapple_guide.visible = true
+		elif event.is_action_released("action_grapple"):
+			p.grapple_fire()
+			p.grapple.grapple_guide.visible = false

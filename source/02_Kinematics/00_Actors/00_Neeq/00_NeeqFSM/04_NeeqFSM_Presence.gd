@@ -74,6 +74,10 @@ func state_enter(new_state, old_state):
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
 		states.combat_downthrust: p.gravity *= 5.0
+	#Grapple
+		states.grapple_charge_still, states.grapple_charge_air, \
+		states.grapple_charge_walk, states.grapple_charge_run:
+			p.playback.start("grapple_charge_still") #PLACEHOLDER
 	#Damage
 		states.damage_hit:
 			p.damage_timer.start()
@@ -100,3 +104,6 @@ func state_exit(old_state, new_state):
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
 		states.damage_hit, states.damage_air: p.is_hurting = false
+		states.grapple_hooked:
+			p.is_grappling = false
+			p.grapple.release()

@@ -10,6 +10,7 @@ func transitions(delta):
 		#Idle
 		states.idle:
 			if p.is_hurting: return states.damage_hit
+			if p.is_grappling: return states.grapple_charge_still
 			if p.MODE == "Combat":
 				if Input.is_action_pressed("action_travel"):
 					return states.combat_jump_charge_still
@@ -37,8 +38,11 @@ func transitions(delta):
 				elif p.velocity.y > 0: return states.fall
 			if p.velocity.x != 0:
 				if Input.is_action_just_pressed("action_cancel"): return states.dodge
-				elif p.max_speed == p.walk_speed: return states.walk
+				elif p.max_speed == p.walk_speed:
+					if p.is_grappling: return states.grapple_charge_walk
+					else: return states.walk
 				elif p.max_speed == p.run_speed:
+					if p.is_grappling: return states.grapple_charge_run
 					if p.MODE == "Combat": return states.combat_quick1
 					else: return states.run
 			elif p.velocity.x == 0: return states.idle
@@ -46,6 +50,7 @@ func transitions(delta):
 		#Jumping
 		states.jump, states.wall_jump, states.ledge_jump:
 			if p.is_hurting: return states.damage_air
+			if p.is_grappling: return states.grapple_charge_air
 			if state != states.wall_jump:
 				if Input.is_action_just_pressed("action_cancel"): return states.dodge_air
 			if p.wall: return states.wall_slide
@@ -55,6 +60,7 @@ func transitions(delta):
 		#Falling
 		states.fall: 
 			if p.is_hurting: return states.damage_air
+			if p.is_grappling: return states.grapple_charge_air
 			if Input.is_action_just_pressed("action_cancel"): return states.dodge_air
 			if p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
@@ -205,6 +211,14 @@ func transitions(delta):
 				else: return states.combat_idle
 			if Input.get_action_strength("action_travel") > 0:
 				return states.combat_jump_charge_still
+	#Grapple
+		states.grapple_charge_still, states.grapple_charge_air, \
+		states.grapple_charge_walk, states.grapple_charge_run:
+			if Input.is_action_just_released("action_grapple"): return states.grapple_fire
+		states.grapple_fire:
+			if p.grapple.hooked: return states.grapple_hooked
+		states.grapple_hooked:
+			if p.grounded: return states.idle
 	#Damage
 		states.damage_hit, states.damage_air:
 			if p.damage_timer.is_stopped():
