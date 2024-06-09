@@ -34,4 +34,4 @@ func state_logic(delta):
 			if p.facing.x == p.FACING_RIGHT: p.velocity.x = -G.TILE_SIZE
 			else: p.velocity.x = G.TILE_SIZE
 		states.damage_death: p.velocity.x = 0
-		states.grapple_hooked: pass
+		states.grapple_hooked: p.velocity = Vector2.ZERO

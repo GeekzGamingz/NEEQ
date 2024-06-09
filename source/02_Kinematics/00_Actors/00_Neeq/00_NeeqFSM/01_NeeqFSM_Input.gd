@@ -65,7 +65,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action_quick"): p.max_speed = p.run_speed
 	elif event.is_action_released("action_quick"): p.max_speed = p.walk_speed
 	#Verticle Movement
-	if [states.idle, states.walk, states.run, states.ledge,
+	if [states.idle, states.walk, states.run, states.ledge, states.grapple_hooked,
 		states.wall_slide, states.wall_slide_quick, states.fall].has(state):
 		if !p.jumping:
 			if event.is_action_pressed("action_travel"):

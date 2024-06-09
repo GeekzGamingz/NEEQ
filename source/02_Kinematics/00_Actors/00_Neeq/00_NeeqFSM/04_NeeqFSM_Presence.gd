@@ -78,7 +78,9 @@ func state_enter(new_state, old_state):
 		states.grapple_charge_still, states.grapple_charge_air, \
 		states.grapple_charge_walk, states.grapple_charge_run:
 			p.playback.start("grapple_charge_still") #PLACEHOLDER
-		states.grapple_hooked: p.playback.start("jump_fall")
+		states.grapple_hooked:
+			p.playback.start("jump_fall")
+			p.jumping = false
 	#Damage
 		states.damage_hit:
 			p.damage_timer.start()

@@ -1,6 +1,9 @@
 #Inherits Node2D Code
 extends Node2D
 #------------------------------------------------------------------------------#
+#Constants
+const GRAPPLE_POINT = preload("res://source/03_Objects/01_GrapplingHook/Grapple_Point.tscn")
+#------------------------------------------------------------------------------#
 #Variables
 var flying: bool = false
 var hooked: bool = false
@@ -31,6 +34,7 @@ func _physics_process(_delta: float) -> void:
 	if flying: if tip.move_and_collide(direction * speed):
 		hooked = true
 		flying = false
+		add_point()
 	tip_position = tip.global_position
 #------------------------------------------------------------------------------#
 #Grapple Functions
@@ -43,3 +47,10 @@ func shoot(dir: Vector2) -> void:
 func release() -> void:
 	flying = false
 	hooked = false
+#------------------------------------------------------------------------------#
+#Add Spring Joint
+func add_point() -> void:
+	var point_scene = GRAPPLE_POINT.instantiate()
+	point_scene.tip = tip
+	point_scene.player = get_parent()
+	G.ORPHANS.add_child(point_scene)

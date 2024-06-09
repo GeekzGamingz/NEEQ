@@ -4441,7 +4441,6 @@ hframes = 4
 vframes = 14
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
-visible = false
 
 [node name="GroundDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
@@ -4521,7 +4520,6 @@ script = ExtResource("4_v4hut")
 [node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
 
 [node name="GrapplingHook" parent="." instance=ExtResource("7_w2fdt")]
-position = Vector2(0, -8)
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -4622,7 +4620,6 @@ offset_bottom = -40.0
 [node name="MainCamera" parent="." instance=ExtResource("7_v5jet")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_83gcn")
 

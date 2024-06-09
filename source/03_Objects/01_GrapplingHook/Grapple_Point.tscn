@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfxnbj6y2ocvd"]
+
+[ext_resource type="Script" path="res://source/03_Objects/01_GrapplingHook/Grapple_Point.gd" id="1_3pfh2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wjomy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ea8d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oyq16"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vqr1"]
+
+[node name="GrapplePoint" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_wjomy")
+script = ExtResource("1_3pfh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3ea8d")
+disabled = true
+debug_color = Color(1, 0.490196, 1, 1)
+
+[node name="GrappleSpring" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../PlayerHolder")
+
+[node name="PlayerHolder" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_oyq16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHolder"]
+shape = SubResource("CircleShape2D_8vqr1")
+disabled = true
+debug_color = Color(1, 0.490196, 1, 1)

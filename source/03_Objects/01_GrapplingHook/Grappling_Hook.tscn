@@ -30,9 +30,9 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_e63aj")
 
 [node name="GrappleGuideSprite" type="Sprite2D" parent="."]
-visible = false
+position = Vector2(0, -8)
 texture = ExtResource("4_stysx")
 offset = Vector2(48, 0)
 
 [node name="GrappleDestination" type="Marker2D" parent="GrappleGuideSprite"]
-position = Vector2(85, 0)
+position = Vector2(85, -0.5)
