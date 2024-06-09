@@ -9,9 +9,11 @@ var flying: bool = false
 var hooked: bool = false
 var direction: Vector2 = Vector2.ZERO
 var tip_position: Vector2 = Vector2.ZERO
+var travel_length: int = 0
 #Exported Variables
 @export var speed: float = G.TILE_SIZE / 2.0
 #OnReady Variables
+@onready var p: CharacterBody2D = get_parent()
 @onready var links: Sprite2D = $Links
 @onready var tip: CharacterBody2D = $Tip
 @onready var grapple_guide: Sprite2D = $GrappleGuideSprite
@@ -31,10 +33,17 @@ func _process(_delta: float) -> void:
 #Physics Process
 func _physics_process(_delta: float) -> void:
 	tip.global_position = tip_position
-	if flying: if tip.move_and_collide(direction * speed):
-		hooked = true
-		flying = false
-		add_point()
+	if flying:
+		if tip.move_and_collide(direction * speed):
+			hooked = true
+			flying = false
+			add_point()
+		if travel_length < p.grapple_length: travel_length += 1
+		else:
+			travel_length = 0
+			hooked = false
+			flying = false
+		print(travel_length)
 	tip_position = tip.global_position
 #------------------------------------------------------------------------------#
 #Grapple Functions
@@ -50,7 +59,13 @@ func release() -> void:
 #------------------------------------------------------------------------------#
 #Add Spring Joint
 func add_point() -> void:
+	remove_points()
 	var point_scene = GRAPPLE_POINT.instantiate()
 	point_scene.tip = tip
-	point_scene.player = get_parent()
+	point_scene.player = p
 	G.ORPHANS.add_child(point_scene)
+#Remove Spring Joint
+func remove_points() -> void:
+	for node in G.ORPHANS.get_children():
+		if node.is_in_group("GrapplePoints"): node.queue_free()
+#------------------------------------------------------------------------------#

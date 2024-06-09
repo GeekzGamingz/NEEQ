@@ -218,7 +218,6 @@ func transitions(delta):
 		states.grapple_fire:
 			if p.grapple.hooked: return states.grapple_hooked
 		states.grapple_hooked:
-			if p.grounded: return states.idle
 			if Input.is_action_just_pressed("action_travel"): return states.fall
 	#Damage
 		states.damage_hit, states.damage_air:

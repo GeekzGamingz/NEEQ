@@ -10,7 +10,7 @@ var tip: CharacterBody2D
 #Ready Method
 func _ready() -> void:
 	global_position = tip.global_position
-	player_holder.global_position = player.global_position
+	player_holder.global_position = player.grapple.global_position
 #------------------------------------------------------------------------------#
 #Process Function
 func _process(_delta):
@@ -23,4 +23,4 @@ func _process(_delta):
 		player_state.grapple_fire
 		].has(player.fsm.state): queue_free()
 	if player.fsm.state == player_state.grapple_hooked:
-		player.global_position = player_holder.global_position
+		player.global_position = player_holder.global_position + Vector2(0, G.TILE_SIZE / 4.0)

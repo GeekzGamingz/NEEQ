@@ -9,8 +9,6 @@ const OW_ENCOUNTER_MYSTERY: Texture2D = preload("res://assets/02_Actors/_Overwor
 #------------------------------------------------------------------------------#
 #Variables
 var direction: Vector2 = Vector2.ZERO
-#Bool Variables
-var controllable: bool = true
 #Exported Variables
 @export_enum("Minor", "Moderate", "Major", "Mystery") var LEVEL: String
 #OnReady Variables

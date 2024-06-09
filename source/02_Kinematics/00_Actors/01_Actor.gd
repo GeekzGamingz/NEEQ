@@ -7,6 +7,7 @@ const EMOTES: PackedScene = preload("res://source/05_UserInterface/01_Emotes/_Em
 #------------------------------------------------------------------------------#
 #Variables
 #Bool Variables
+var controllable: bool = true
 var grounded: bool = false
 var jumping: bool = false
 var wall: bool = false

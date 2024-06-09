@@ -4,16 +4,17 @@ class_name NeeqFSM_Logic
 #------------------------------------------------------------------------------#
 #State Logistics
 func state_logic(delta):
-	p.handle_mode()
-	p.move_direction()
-	p.update_last_action()
+	if p.controllable:
+		p.handle_mode()
+		p.move_direction()
+		p.update_last_action()
+		if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
+			states.ledge, states.combat_downthrust, states.combat_jump_fall,
+			states.damage_hit, states.damage_air, states.damage_death].has(state):
+			p.handle_movement()
+		p.apply_gravity(delta)
+		p.apply_movement()
 	p.grapple_rotation()
-	if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
-		states.ledge, states.combat_downthrust, states.combat_jump_fall,
-		states.damage_hit, states.damage_air, states.damage_death].has(state):
-		p.handle_movement()
-	p.apply_gravity(delta)
-	p.apply_movement()
 	match(state):
 		states.idle: pass
 		states.fall: p.jumping = true if p.coyote_timer.is_stopped() else false

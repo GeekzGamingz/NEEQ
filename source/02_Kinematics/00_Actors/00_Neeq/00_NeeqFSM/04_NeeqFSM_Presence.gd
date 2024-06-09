@@ -79,6 +79,7 @@ func state_enter(new_state, old_state):
 		states.grapple_charge_walk, states.grapple_charge_run:
 			p.playback.start("grapple_charge_still") #PLACEHOLDER
 		states.grapple_hooked:
+			p.controllable = false
 			p.playback.start("jump_fall")
 			p.jumping = false
 	#Damage
@@ -110,3 +111,4 @@ func state_exit(old_state, new_state):
 		states.grapple_hooked:
 			p.is_grappling = false
 			p.grapple.release()
+			p.controllable = true

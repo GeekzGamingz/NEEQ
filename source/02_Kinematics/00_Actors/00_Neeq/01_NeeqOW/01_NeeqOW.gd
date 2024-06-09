@@ -4,8 +4,6 @@ extends OW_Kinematic
 #Variables
 var direction: Vector2 = Vector2.ZERO
 var MODE: String = "Overworld"
-#Bool Variables
-var controllable: bool = true
 #Exported Variables
 @export_range(1, 5, 0.5) var repellent: float
 #OnReady Variables

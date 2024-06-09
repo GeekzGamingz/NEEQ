@@ -12,8 +12,6 @@ const DODGE_LEFT: Rect2 = Rect2(192, 160, 32, 32)
 var direction: float = 0
 var dir_prev: float = 0
 var dir_new: float = 0
-#Bool Variables
-var controllable: bool = true
 #OnReady Variables
 @onready var camera: Camera2D = $MainCamera
 @onready var particles_marker: Marker2D = $Facing/Markers/ParticlesMarker
