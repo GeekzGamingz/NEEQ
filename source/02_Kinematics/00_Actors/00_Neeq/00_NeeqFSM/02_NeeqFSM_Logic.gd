@@ -6,7 +6,6 @@ class_name NeeqFSM_Logic
 func state_logic(delta):
 	if p.controllable:
 		p.handle_mode()
-		p.move_direction()
 		p.update_last_action()
 		if ![states.wall_slide, states.wall_slide_quick, states.wall_jump,
 			states.ledge, states.combat_downthrust, states.combat_jump_fall,
@@ -14,6 +13,7 @@ func state_logic(delta):
 			p.handle_movement()
 		p.apply_gravity(delta)
 		p.apply_movement()
+	p.move_direction()
 	p.grapple_rotation()
 	match(state):
 		states.idle: pass
@@ -35,4 +35,3 @@ func state_logic(delta):
 			if p.facing.x == p.FACING_RIGHT: p.velocity.x = -G.TILE_SIZE
 			else: p.velocity.x = G.TILE_SIZE
 		states.damage_death: p.velocity.x = 0
-		states.grapple_hooked: p.velocity = Vector2.ZERO

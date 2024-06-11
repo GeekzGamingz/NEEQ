@@ -11,7 +11,7 @@ var last_action: String = ""
 #Exported Variables
 @export var charge_strength: float = 0.01
 @export var combat_jump_multiplier: float = 1.0
-@export_enum("Explorer", "Combat", "Sneeq", "Magiq") var MODE: String
+@export_enum("Explorer", "Combat", "Sneeq", "Friends") var MODE: String
 #OnReady Variables
 @onready var atkbox_light: Area2D = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light
 @onready var atk_light_col: CollisionShape2D = atkbox_light.get_node("CollisionShape2D")
@@ -27,8 +27,8 @@ var last_action: String = ""
 func handle_mode() -> void:
 	if (Input.get_action_strength("action_mode1") > 0 &&
 		Input.get_action_strength("action_mode2") > 0):
-		MODE = "Magiq"
-		G.ACTIONS.icon_player.play("Magiq")
+		MODE = "Friends"
+		G.ACTIONS.icon_player.play("Friends")
 	elif Input.get_action_strength("action_mode1") > 0:
 		MODE = "Combat"
 		G.ACTIONS.icon_player.play("Combat")

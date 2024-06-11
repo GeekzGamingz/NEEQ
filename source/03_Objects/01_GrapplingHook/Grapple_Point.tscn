@@ -29,7 +29,10 @@ length = 48.0
 position = Vector2(0, 48)
 collision_layer = 0
 physics_material_override = SubResource("PhysicsMaterial_qegj2")
+linear_damp_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHolder"]
 shape = SubResource("CircleShape2D_8vqr1")
 debug_color = Color(1, 0.490196, 1, 1)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

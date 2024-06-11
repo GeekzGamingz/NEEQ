@@ -77,8 +77,10 @@ func state_enter(new_state, old_state):
 	#Grapple
 		states.grapple_charge_still, states.grapple_charge_air, \
 		states.grapple_charge_walk, states.grapple_charge_run:
+			if new_state == states.grapple_charge_air: Engine.time_scale = 0.25
 			p.playback.start("grapple_charge_still") #PLACEHOLDER
 		states.grapple_hooked:
+			p.can_grapple = false
 			p.controllable = false
 			p.playback.start("jump_fall")
 			p.jumping = false
@@ -108,7 +110,10 @@ func state_exit(old_state, new_state):
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
 		states.damage_hit, states.damage_air: p.is_hurting = false
+		states.grapple_charge_air: Engine.time_scale = 1
 		states.grapple_hooked:
 			p.is_grappling = false
+			p.can_grapple = true
 			p.grapple.release()
 			p.controllable = true
+			p.velocity.y = p.max_jump_velocity

@@ -11,7 +11,6 @@ var hooked: bool = false
 var direction: Vector2 = Vector2.ZERO
 var tip_position: Vector2 = Vector2.ZERO
 var tip_distance: float
-var travel_length: int = 0
 #Exported Variables
 @export var speed: float = G.TILE_SIZE / 2.0
 #OnReady Variables
@@ -27,6 +26,7 @@ func _physics_process(_delta: float) -> void:
 	if [states.grapple_hooked,
 		states.grapple_fire].has(p.fsm.state): grapple_physics()
 	else:
+		tip.visible = false
 		tip.global_position = p.global_position
 		links.global_position = p.global_position
 		links.region_rect.size.y = 0
@@ -41,15 +41,14 @@ func grapple_physics() -> void:
 				hooked = true
 				flying = false
 				add_point()
-			if tip_distance > p.grapple_length:
-				if !hooked:
-					reeling = true
-					await get_tree().create_timer(0.1).timeout
-					reel()
+			elif tip_distance > p.grapple_length:
+				reeling = true
+				await get_tree().create_timer(0.1).timeout
+				reel()
 	tip_position = tip.global_position
-	#tip.visible = flying || hooked || reeling
-	#links.visible = tip.visible
-	#if !tip.visible: return
+	tip.visible = flying || hooked
+	links.visible = tip.visible
+	if !tip.visible: return
 	var tip_loc = to_local(tip_position)
 	links.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
 	tip.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
@@ -86,4 +85,3 @@ func add_point() -> void:
 func remove_points() -> void:
 	for node in G.ORPHANS.get_children():
 		if node.is_in_group("GrapplePoints"): node.queue_free()
-#------------------------------------------------------------------------------#

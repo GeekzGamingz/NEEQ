@@ -21,6 +21,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1, 4)
 
 [node name="Tip" type="CharacterBody2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="Sprite_Tip" type="Sprite2D" parent="Tip"]
@@ -31,6 +32,7 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_e63aj")
 
 [node name="GrappleGuideSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("4_stysx")
 offset = Vector2(48, 0)
 
