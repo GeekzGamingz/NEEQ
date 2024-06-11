@@ -9,7 +9,7 @@ var is_grappling: bool = false
 #Vector Variables
 var look: Vector2 = Vector2.ZERO
 #Exported Variables
-@export var grapple_length: float = G.TILE_SIZE
+@export var grapple_length: float = G.TILE_SIZE * 5
 #OnReady Variables
 @onready var grapple: Node2D = $GrapplingHook
 #------------------------------------------------------------------------------#

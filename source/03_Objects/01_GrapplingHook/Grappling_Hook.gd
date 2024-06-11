@@ -6,9 +6,11 @@ const GRAPPLE_POINT = preload("res://source/03_Objects/01_GrapplingHook/Grapple_
 #------------------------------------------------------------------------------#
 #Variables
 var flying: bool = false
+var reeling: bool = false
 var hooked: bool = false
 var direction: Vector2 = Vector2.ZERO
 var tip_position: Vector2 = Vector2.ZERO
+var tip_distance: float
 var travel_length: int = 0
 #Exported Variables
 @export var speed: float = G.TILE_SIZE / 2.0
@@ -19,32 +21,40 @@ var travel_length: int = 0
 @onready var grapple_guide: Sprite2D = $GrappleGuideSprite
 @onready var grapple_destination: Marker2D = $GrappleGuideSprite/GrappleDestination
 #------------------------------------------------------------------------------#
-#Process
-func _process(_delta: float) -> void:
-	tip.visible = flying || hooked
-	links.visible = tip.visible
-	if !tip.visible: return
+#Physics Process
+func _physics_process(_delta: float) -> void:
+	var states = p.fsm.states
+	if [states.grapple_hooked,
+		states.grapple_fire].has(p.fsm.state): grapple_physics()
+	else:
+		tip.global_position = p.global_position
+		links.global_position = p.global_position
+		links.region_rect.size.y = 0
+#------------------------------------------------------------------------------#
+#Grapple Physics
+func grapple_physics() -> void:
+	tip_distance = p.global_position.distance_to(tip.global_position)
+	if !reeling:
+		tip.global_position = tip_position
+		if flying:
+			if tip.move_and_collide(direction * speed):
+				hooked = true
+				flying = false
+				add_point()
+			if tip_distance > p.grapple_length:
+				if !hooked:
+					reeling = true
+					await get_tree().create_timer(0.1).timeout
+					reel()
+	tip_position = tip.global_position
+	#tip.visible = flying || hooked || reeling
+	#links.visible = tip.visible
+	#if !tip.visible: return
 	var tip_loc = to_local(tip_position)
 	links.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
 	tip.rotation = position.angle_to_point(tip_loc) - deg_to_rad(-90)
 	links.position = tip_loc
 	links.region_rect.size.y = tip_loc.length()
-#------------------------------------------------------------------------------#
-#Physics Process
-func _physics_process(_delta: float) -> void:
-	tip.global_position = tip_position
-	if flying:
-		if tip.move_and_collide(direction * speed):
-			hooked = true
-			flying = false
-			add_point()
-		if travel_length < p.grapple_length: travel_length += 1
-		else:
-			travel_length = 0
-			hooked = false
-			flying = false
-		print(travel_length)
-	tip_position = tip.global_position
 #------------------------------------------------------------------------------#
 #Grapple Functions
 #Shoot
@@ -52,6 +62,14 @@ func shoot(dir: Vector2) -> void:
 	direction = dir.normalized()
 	flying = true
 	tip_position = global_position
+func reel() -> void:
+	var tween = create_tween()
+	tween.tween_property(tip, "position", Vector2.ZERO, 0.1)
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(func(): reeling = false)
+	tween.tween_callback(func(): flying = false)
+	tween.tween_callback(func(): p.is_grappling = false)
+	tween.tween_callback(func(): remove_points())
 #Release
 func release() -> void:
 	flying = false
