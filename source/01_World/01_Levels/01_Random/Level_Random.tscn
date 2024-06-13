@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7uy18t3dkcke"]
+[gd_scene load_steps=15 format=3 uid="uid://c7uy18t3dkcke"]
 
 [ext_resource type="Texture2D" uid="uid://c1sb3r4k5i3a8" path="res://assets/01_Tilesets/Sidescroll/Daungun.png" id="1_8ybc1"]
 [ext_resource type="Script" path="res://source/01_World/01_Levels/01_Random/Level_Random.gd" id="1_pxhb6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnc03qphek87j" path="res://source/02_Kinematics/00_Actors/00_Neeq/Neeq.tscn" id="3_55fw7"]
 [ext_resource type="PackedScene" uid="uid://d0f5j0gr4v8fc" path="res://source/01_World/SceneChanger.tscn" id="5_84g5p"]
 [ext_resource type="PackedScene" uid="uid://m0dqd1swvgoa" path="res://source/02_Kinematics/00_Actors/01_Enemies/00_Giant_Rat/Enemy_GiantRat.tscn" id="6_yoawj"]
+[ext_resource type="PackedScene" uid="uid://ctpstduw18gpv" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_Slime/Enemy_Slime.tscn" id="7_m5gqb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7phvf"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
@@ -2769,6 +2770,9 @@ position = Vector2(-284, 155)
 [node name="Enemy_GiantRat2" parent="." instance=ExtResource("6_yoawj")]
 position = Vector2(271, 157)
 direction = 1.0
+
+[node name="Enemy_Slime" parent="." instance=ExtResource("7_m5gqb")]
+position = Vector2(-132, 63)
 
 [connection signal="health_damage" from="Neeq" to="Neeq/ProgressBars" method="health_damage"]
 [connection signal="health_heal" from="Neeq" to="Neeq/ProgressBars" method="health_heal"]

@@ -3,10 +3,10 @@ extends StateMachine
 #------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-@onready var p = get_parent()
+@onready var p: Node2D = get_parent()
 @onready var state_label: Label = p.get_node("Outputs/StateOutput")
 #------------------------------------------------------------------------------#
-#Ready
+#Ready Method
 func _ready() -> void:
 	state_add("idle")
 	state_add("walk_left")
