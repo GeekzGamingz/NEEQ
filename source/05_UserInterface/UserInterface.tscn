@@ -41,14 +41,12 @@ size_flags_vertical = 0
 scale = Vector2(2, 2)
 texture_under = ExtResource("4_7v1cy")
 texture_progress = ExtResource("5_la100")
-texture_progress_offset = Vector2(31, 16)
 tint_under = Color(1, 1, 1, 1)
 
 [node name="HealthOver" parent="MarginContainer/ProgressBars/Health" index="1"]
 scale = Vector2(2, 2)
 texture_over = ExtResource("6_fkur4")
 texture_progress = ExtResource("5_la100")
-texture_progress_offset = Vector2(31, 16)
 
 [node name="TailOverlay" type="Sprite2D" parent="MarginContainer/ProgressBars/Health" index="2"]
 scale = Vector2(2, 2)

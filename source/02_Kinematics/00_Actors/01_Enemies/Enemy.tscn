@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfbvndk3w8bbx"]
+[gd_scene load_steps=17 format=3 uid="uid://cfbvndk3w8bbx"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/02_EnemyMovement.gd" id="1_7r74k"]
 [ext_resource type="Texture2D" uid="uid://bifoykmedw518" path="res://assets/02_Actors/01_Enemies/00_GiantRat/giantrat-Sheet.png" id="2_1mcbc"]
@@ -176,6 +176,44 @@ _data = {
 "idle": SubResource("Animation_jmlw4")
 }
 
+[sub_resource type="Animation" id="Animation_j0xa7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ex3xu"]
+resource_name = "death"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.55, 0.75, 0.95, 1.15, 1.35, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dinj6"]
+_data = {
+"RESET": SubResource("Animation_j0xa7"),
+"death": SubResource("Animation_ex3xu")
+}
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(801, 31)
 states/Start/position = Vector2(289, 31)
@@ -294,6 +332,11 @@ zoom = Vector2(2.5, 2.5)
 [node name="SpritePlayer" type="AnimationPlayer" parent="AnimationPlayers"]
 libraries = {
 "": SubResource("AnimationLibrary_gbof1")
+}
+
+[node name="EffectsPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"": SubResource("AnimationLibrary_dinj6")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayers"]

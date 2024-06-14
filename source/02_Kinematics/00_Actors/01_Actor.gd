@@ -32,6 +32,7 @@ var ledge: bool = false
 @onready var ledge_detector: RayCast2D = wall_detectors.get_node("LedgeDetector")
 #Animation Nodes
 @onready var sprite_player: AnimationPlayer = $AnimationPlayers/SpritePlayer
+@onready var fx_player: AnimationPlayer = $AnimationPlayers/EffectsPlayer
 @onready var anim_tree: AnimationTree = $AnimationPlayers/AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = anim_tree.get("parameters/playback")
 @onready var pb_state: String = playback.get_current_node()

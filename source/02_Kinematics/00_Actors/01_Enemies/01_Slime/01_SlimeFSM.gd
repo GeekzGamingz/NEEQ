@@ -92,7 +92,13 @@ func state_enter(new_state, old_state):
 			p.set_vert(p.RIGHT_SIDE_UP)
 			p.MODE = "Grounded"
 		#Death
-		states.death: pass
+		states.death:
+			p.direction = 0
+			p.playback.start("death")
+			await p.anim_tree.animation_finished
+			p.fx_player.play("death")
+			await p.fx_player.animation_finished
+			p.queue_free()
 #Exit State
 @warning_ignore("unused_parameter")
 func state_exit(old_state, new_state):

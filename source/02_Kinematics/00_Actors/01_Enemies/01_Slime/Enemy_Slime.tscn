@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ctpstduw18gpv"]
+[gd_scene load_steps=40 format=3 uid="uid://ctpstduw18gpv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_Slime/03_SlimeCombat.gd" id="1_tqfj2"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_Slime/01_SlimeFSM.gd" id="2_677u6"]
@@ -33,7 +33,7 @@ length = 0.32
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Slime:flip_h")
+tracks/1/path = NodePath("../Facing/Sprites/Sprite_Enemy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -55,6 +55,54 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_smy2v"]
+resource_name = "drip_drop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_8h0xy"]
+resource_name = "drip_pool"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_p70m2"]
+resource_name = "drip_splash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19]
+}
+
 [sub_resource type="Animation" id="Animation_jmlw4"]
 resource_name = "idle"
 length = 0.4
@@ -62,7 +110,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +122,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Slime:flip_h")
+tracks/1/path = NodePath("../Facing/Sprites/Sprite_Enemy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,7 +140,7 @@ step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,7 +152,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Facing/Sprites/Sprite_Slime:flip_h")
+tracks/1/path = NodePath("../Facing/Sprites/Sprite_Enemy:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,54 +162,6 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_8h0xy"]
-resource_name = "drip_pool"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 9, 10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_smy2v"]
-resource_name = "drip_drop"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-
-[sub_resource type="Animation" id="Animation_p70m2"]
-resource_name = "drip_splash"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [14, 15, 16, 17, 18, 19]
-}
-
 [sub_resource type="Animation" id="Animation_3266q"]
 resource_name = "walk"
 length = 0.6
@@ -169,7 +169,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -179,9 +179,26 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29]
 }
 
+[sub_resource type="Animation" id="Animation_fp11h"]
+resource_name = "death"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [31, 32, 33, 34, 35, 36, 37, 38, 39]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
 _data = {
 "RESET": SubResource("Animation_2kt2i"),
+"death": SubResource("Animation_fp11h"),
 "drip_drop": SubResource("Animation_smy2v"),
 "drip_pool": SubResource("Animation_8h0xy"),
 "drip_splash": SubResource("Animation_p70m2"),
@@ -189,6 +206,47 @@ _data = {
 "lurking": SubResource("Animation_x2dm8"),
 "walk": SubResource("Animation_3266q")
 }
+
+[sub_resource type="Animation" id="Animation_svsa6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5c03p"]
+resource_name = "death"
+length = 5.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Enemy:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 1.9, 2.15, 2.35, 2.55, 2.75, 2.95, 3.15, 3.35, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.55, 4.6, 4.65, 4.7, 4.75, 4.8, 4.85, 4.9, 4.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6yx2i"]
+_data = {
+"RESET": SubResource("Animation_svsa6"),
+"death": SubResource("Animation_5c03p")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ry2e"]
+animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oelft"]
 animation = &"drip_drop"
@@ -228,6 +286,8 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(801, 31)
 states/Start/position = Vector2(289, 31)
+states/death/node = SubResource("AnimationNodeAnimation_5ry2e")
+states/death/position = Vector2(801, 120.854)
 states/drip_drop/node = SubResource("AnimationNodeAnimation_oelft")
 states/drip_drop/position = Vector2(537, -103.146)
 states/drip_pool/node = SubResource("AnimationNodeAnimation_ymy21")
@@ -241,7 +301,7 @@ states/lurking/position = Vector2(537, -238.146)
 states/walk/node = SubResource("AnimationNodeAnimation_v81r7")
 states/walk/position = Vector2(537, 120.854)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qtdo5"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_rai60"), "lurking", "drip_pool", SubResource("AnimationNodeStateMachineTransition_4ycid"), "drip_pool", "drip_drop", SubResource("AnimationNodeStateMachineTransition_okudo"), "drip_drop", "drip_splash", SubResource("AnimationNodeStateMachineTransition_irnlu"), "drip_splash", "idle", SubResource("AnimationNodeStateMachineTransition_0qjku"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_o5ujl"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_h6dvt")]
-graph_offset = Vector2(-40.1626, -373.146)
+graph_offset = Vector2(-87.1626, -319.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -261,11 +321,11 @@ script = ExtResource("2_677u6")
 
 [node name="Sprites" type="Node2D" parent="Facing"]
 
-[node name="Sprite_Slime" type="Sprite2D" parent="Facing/Sprites"]
+[node name="Sprite_Enemy" type="Sprite2D" parent="Facing/Sprites"]
 position = Vector2(0, -12)
 texture = ExtResource("2_cs8di")
 hframes = 8
-vframes = 4
+vframes = 5
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
 
@@ -365,6 +425,11 @@ shape = SubResource("CircleShape2D_1e32y")
 [node name="SpritePlayer" type="AnimationPlayer" parent="AnimationPlayers"]
 libraries = {
 "": SubResource("AnimationLibrary_gbof1")
+}
+
+[node name="EffectsPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+libraries = {
+"": SubResource("AnimationLibrary_6yx2i")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayers"]
