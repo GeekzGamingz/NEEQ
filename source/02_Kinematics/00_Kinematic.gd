@@ -9,11 +9,12 @@ signal health_damage(damage)
 #Constants
 const FACING_LEFT: int = -1
 const FACING_RIGHT: int = 1
-const UP_SIDE_DOWN: Vector2 = Vector2(1, -1)
-const RIGHT_SIDE_UP: Vector2 = Vector2(1, 1)
+const UP_SIDE_DOWN: int = -1
+const RIGHT_SIDE_UP: int = 1
 #------------------------------------------------------------------------------#
 #Variables
 var facing: Vector2 = Vector2.ONE
+var inversion: Vector2 = Vector2.ONE
 #Movement Variables
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var min_jump_velocity: float = 0.0
@@ -36,6 +37,7 @@ var is_dead: bool = false
 @onready var min_jump_height: float = jump_strength * G.TILE_SIZE
 @onready var max_jump_height: float = min_jump_height * 5
 @onready var progress_bars: Control = $ProgressBars
+@onready var progress_timer: Timer = $Timers/ProgressTimer
 #------------------------------------------------------------------------------#
 #Gravity
 #Applies Gravity
@@ -53,11 +55,16 @@ func set_facing(hor_facing: int) -> void:
 		hor_facing = FACING_RIGHT
 	var hor_face_mod = hor_facing / abs(hor_facing)
 	$Facing.apply_scale(Vector2(hor_face_mod * facing.x, 1))
+	$CollisionShape2D.position.x *= -1
 	facing = Vector2(hor_face_mod, facing.y)
 #Vertical Facing
-func set_vert(vert_facing: Vector2) -> void:
-	$Facing.apply_scale(vert_facing)
+func set_vert(vert_facing: int) -> void:
+	if vert_facing == 0:
+		vert_facing = RIGHT_SIDE_UP
+	var vert_face_mod = vert_facing / abs(vert_facing)
+	$Facing.apply_scale(Vector2(1, vert_face_mod * inversion.x))
 	$CollisionShape2D.position.y *= -1
+	inversion = Vector2(vert_face_mod, inversion.y)
 #------------------------------------------------------------------------------#
 #Health
 #Heal
@@ -68,11 +75,12 @@ func damage(amount: float):
 	set_health(health - amount)
 #Set Health
 func set_health(value: float):
+	progress_bars.visible = true
+	progress_timer.start()
 	var health_prev = health
 	health = clamp(value, 0, max_health)
 	if health > health_prev:
 		healing()
-		if health == 100: progress_bars.visible = false
 		emit_signal("health_heal", health)
 		if name == "Neeq":
 			G.PROGRESS.health_heal(health)
@@ -92,3 +100,5 @@ func healing(): pass
 func hurting(): pass
 #Kill Switch
 func kill(): pass
+#Visibility Timer
+func _on_progress_timer_timeout() -> void: progress_bars.visible = false

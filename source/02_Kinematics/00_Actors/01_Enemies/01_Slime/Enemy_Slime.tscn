@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctpstduw18gpv"]
+[gd_scene load_steps=35 format=3 uid="uid://ctpstduw18gpv"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_Slime/03_SlimeCombat.gd" id="1_tqfj2"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/01_Enemies/01_Slime/01_SlimeFSM.gd" id="2_677u6"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="4_c1jl7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qixbl"]
-radius = 6.0
+radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jtinw"]
 height = 150.0
@@ -114,12 +114,90 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_8h0xy"]
+resource_name = "drip_pool"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_smy2v"]
+resource_name = "drip_drop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_p70m2"]
+resource_name = "drip_splash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_3266q"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/Sprite_Slime:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
 _data = {
 "RESET": SubResource("Animation_2kt2i"),
+"drip_drop": SubResource("Animation_smy2v"),
+"drip_pool": SubResource("Animation_8h0xy"),
+"drip_splash": SubResource("Animation_p70m2"),
 "idle": SubResource("Animation_jmlw4"),
-"lurking": SubResource("Animation_x2dm8")
+"lurking": SubResource("Animation_x2dm8"),
+"walk": SubResource("Animation_3266q")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oelft"]
+animation = &"drip_drop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymy21"]
+animation = &"drip_pool"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cbmo3"]
+animation = &"drip_splash"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_785tp"]
 animation = &"idle"
@@ -127,23 +205,43 @@ animation = &"idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2cm2c"]
 animation = &"lurking"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v81r7"]
+animation = &"walk"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qtdo5"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rai60"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bnivd"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ycid"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytydg"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_okudo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_irnlu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0qjku"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5ujl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h6dvt"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(801, 31)
 states/Start/position = Vector2(289, 31)
+states/drip_drop/node = SubResource("AnimationNodeAnimation_oelft")
+states/drip_drop/position = Vector2(537, -103.146)
+states/drip_pool/node = SubResource("AnimationNodeAnimation_ymy21")
+states/drip_pool/position = Vector2(537, -168.146)
+states/drip_splash/node = SubResource("AnimationNodeAnimation_cbmo3")
+states/drip_splash/position = Vector2(537, -31.146)
 states/idle/node = SubResource("AnimationNodeAnimation_785tp")
 states/idle/position = Vector2(537, 31)
 states/lurking/node = SubResource("AnimationNodeAnimation_2cm2c")
-states/lurking/position = Vector2(537, 185.854)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qtdo5"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_rai60"), "lurking", "idle", SubResource("AnimationNodeStateMachineTransition_bnivd"), "idle", "lurking", SubResource("AnimationNodeStateMachineTransition_ytydg")]
-graph_offset = Vector2(-115, -91.146)
+states/lurking/position = Vector2(537, -238.146)
+states/walk/node = SubResource("AnimationNodeAnimation_v81r7")
+states/walk/position = Vector2(537, 120.854)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qtdo5"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_rai60"), "lurking", "drip_pool", SubResource("AnimationNodeStateMachineTransition_4ycid"), "drip_pool", "drip_drop", SubResource("AnimationNodeStateMachineTransition_okudo"), "drip_drop", "drip_splash", SubResource("AnimationNodeStateMachineTransition_irnlu"), "drip_splash", "idle", SubResource("AnimationNodeStateMachineTransition_0qjku"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_o5ujl"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_h6dvt")]
+graph_offset = Vector2(-40.1626, -373.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -207,15 +305,13 @@ target_position = Vector2(5, 0)
 
 [node name="CombatDetectors" type="Node2D" parent="Facing/WorldDetectors"]
 
-[node name="Atkbox_Light" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
-position = Vector2(10, -14)
+[node name="Atkbox_Ping" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
+position = Vector2(0, -5)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Atkbox_Light"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/WorldDetectors/CombatDetectors/Atkbox_Ping"]
 shape = SubResource("CircleShape2D_qixbl")
-disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="SightDetector" type="Area2D" parent="Facing/WorldDetectors/CombatDetectors"]
@@ -252,13 +348,15 @@ collision_mask = 2
 position = Vector2(0, -48)
 
 [node name="Torch" type="PointLight2D" parent="Facing"]
+visible = false
 z_index = -100
-position = Vector2(4.5, -16.5)
+position = Vector2(0, -5)
 scale = Vector2(0.145, 0.145)
 color = Color(0.701961, 0.47451, 0.215686, 1)
 texture = SubResource("GradientTexture2D_6jgea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_1e32y")
 
@@ -284,6 +382,7 @@ anim_player = NodePath("../SpritePlayer")
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -311,8 +410,19 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="ProgressTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [node name="ProgressBars" parent="." instance=ExtResource("4_c1jl7")]
+visible = false
 offset_left = -13.0
 offset_top = -31.0
 offset_right = -13.0
 offset_bottom = -31.0
+
+[connection signal="health_damage" from="." to="ProgressBars" method="health_damage"]
+[connection signal="health_heal" from="." to="ProgressBars" method="health_heal"]
+[connection signal="area_entered" from="Facing/WorldDetectors/CombatDetectors/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayers/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="Timers/ProgressTimer" to="." method="_on_progress_timer_timeout"]

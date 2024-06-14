@@ -895,6 +895,7 @@ anim_player = NodePath("../SpritePlayer")
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -930,7 +931,12 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="ProgressTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [node name="ProgressBars" parent="." instance=ExtResource("4_untaj")]
+visible = false
 offset_left = -13.0
 offset_top = -32.0
 offset_right = -13.0
@@ -939,3 +945,4 @@ offset_bottom = -32.0
 [connection signal="body_entered" from="Facing/WorldDetectors/CombatDetectors/SightDetector" to="." method="_on_sight_detector_body_entered"]
 [connection signal="body_exited" from="Facing/WorldDetectors/CombatDetectors/SightDetector" to="." method="_on_sight_detector_body_exited"]
 [connection signal="area_entered" from="Facing/WorldDetectors/CombatDetectors/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Timers/ProgressTimer" to="." method="_on_progress_timer_timeout"]
