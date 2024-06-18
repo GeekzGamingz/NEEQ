@@ -2772,7 +2772,7 @@ position = Vector2(271, 157)
 direction = 1.0
 
 [node name="Enemy_Slime" parent="." instance=ExtResource("7_m5gqb")]
-position = Vector2(-132, 63)
+position = Vector2(-130, -58)
 
 [connection signal="health_damage" from="Neeq" to="Neeq/ProgressBars" method="health_damage"]
 [connection signal="health_heal" from="Neeq" to="Neeq/ProgressBars" method="health_heal"]

@@ -77,7 +77,7 @@ func state_enter(new_state, old_state):
 	#Grapple
 		states.grapple_charge_still, states.grapple_charge_air, \
 		states.grapple_charge_walk, states.grapple_charge_run:
-			if new_state == states.grapple_charge_air: Engine.time_scale = 0.25
+			if new_state == states.grapple_charge_air: G.time_alter(0.1, 0.3)
 			p.playback.start("grapple_charge_still") #PLACEHOLDER
 		states.grapple_hooked:
 			p.can_grapple = false
@@ -88,9 +88,13 @@ func state_enter(new_state, old_state):
 		states.damage_hit:
 			p.damage_timer.start()
 			p.playback.start("damage_hit")
+			p.fx_player.play("iframes")
+			p.hitbox_col.set_deferred("disabled", true)
 		states.damage_air:
 			p.damage_timer.start()
 			p.playback.start("damage_air")
+			p.fx_player.play("iframes")
+			p.hitbox_col.set_deferred("disabled", true)
 		states.damage_death: p.playback.start("damage_death")
 #Exit State
 @warning_ignore("unused_parameter")
@@ -110,7 +114,7 @@ func state_exit(old_state, new_state):
 		states.combat_jump_fall: p.gravity /= 10.0
 		states.combat_downthrust: p.gravity /= 5.0
 		states.damage_hit, states.damage_air: p.is_hurting = false
-		states.grapple_charge_air: Engine.time_scale = 1
+		states.grapple_charge_air: G.time_reset()
 		states.grapple_hooked:
 			p.is_grappling = false
 			p.can_grapple = true

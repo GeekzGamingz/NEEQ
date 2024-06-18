@@ -13,10 +13,17 @@ var last_action: String = ""
 @export var combat_jump_multiplier: float = 1.0
 @export_enum("Explorer", "Combat", "Sneeq", "Friends") var MODE: String
 #OnReady Variables
+#Hitbox
+@onready var hitbox = $Facing/WorldDetectors/CombatDetectors/Hitbox
+@onready var hitbox_col = hitbox.get_node("CollisionShape2D")
+#Attack Boxes
+#Light
 @onready var atkbox_light: Area2D = $Facing/WorldDetectors/CombatDetectors/Atkbox_Light
 @onready var atk_light_col: CollisionShape2D = atkbox_light.get_node("CollisionShape2D")
+#Medium
 @onready var atkbox_medium: Area2D = $Facing/WorldDetectors/CombatDetectors/Atkbox_Medium
 @onready var atk_medium_col: CollisionShape2D = atkbox_medium.get_node("CollisionShape2D")
+#Timers
 @onready var quick_attack_timer: Timer = $Timers/QuickAttackTimer
 @onready var strong_attack_timer: Timer = $Timers/StrongAttackTimer
 @onready var combo_timer: Timer = $Timers/ComboTimer
@@ -65,6 +72,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		"Atkbox_Moderate": damage(15)
 		"Atkbox_Strong": damage(20)
 		"Atkbox_Elite": damage(25)
+#iFrames
+func _on_effects_player_animation_finished(anim_name):
+	match(anim_name):
+		"iframes": hitbox_col.set_deferred("disabled", false)
 #------------------------------------------------------------------------------#
 #Health Functions
 #Heal Switch

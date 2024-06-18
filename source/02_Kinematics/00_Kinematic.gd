@@ -89,9 +89,7 @@ func set_health(value: float):
 		emit_signal("health_damage", health)
 		if health == 0:
 			kill()
-			Engine.time_scale = 0.1
-			await get_tree().create_timer(0.1).timeout
-			Engine.time_scale = 1
+			G.time_alter(0.1, 0.1)
 		if name == "Neeq":
 			G.PROGRESS.health_damage(health)
 #Heal Switch

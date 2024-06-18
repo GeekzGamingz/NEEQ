@@ -16,3 +16,13 @@ var WIND: float = 0
 @onready var DEBUG: Control = UI.get_node("Menu_Debug")
 @onready var ACTIONS: Control = UI.get_node("Overlay_Actions")
 @onready var PROGRESS: Control = UI.get_node("ProgressBars")
+#------------------------------------------------------------------------------#
+#Time Manipulation
+#Alter Time
+func time_alter(time: float, duration: float):
+	Engine.time_scale = time
+	await get_tree().create_timer(duration).timeout
+	Engine.time_scale = 1
+#Reset Time
+func time_reset():
+	Engine.time_scale = 1
