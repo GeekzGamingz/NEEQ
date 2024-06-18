@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=139 format=3 uid="uid://bnc03qphek87j"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
@@ -4115,9 +4115,136 @@ tracks/9/keys = {
 }
 tracks/9/use_blend = true
 
+[sub_resource type="Animation" id="Animation_ktn6s"]
+resource_name = "combat_downthrust"
+length = 0.24
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Facing/Sprites/NeeqSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [252, 253, 254]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Facing/Sprites/NeeqSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Facing/Sprites/WhipSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Light/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Facing/WorldDetectors/CombatDetectors/Atkbox_Medium/CollisionShape2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(16, -16)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Facing/Sprites/WhipSprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [56, 57, 58]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbof1"]
 _data = {
 "RESET": SubResource("Animation_2kt2i"),
+"combat_downthrust": SubResource("Animation_ktn6s"),
 "combat_idle": SubResource("Animation_cj1yg"),
 "combat_jump": SubResource("Animation_oqhj8"),
 "combat_jump_charge_inch": SubResource("Animation_15f7e"),
@@ -4203,6 +4330,9 @@ _data = {
 "death": SubResource("Animation_1wmaa"),
 "iframes": SubResource("Animation_77xsk")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pildk"]
+animation = &"combat_downthrust"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6aoqp"]
 animation = &"combat_idle"
@@ -4399,6 +4529,8 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h72ka"]
 states/End/position = Vector2(714, 31)
 states/Start/position = Vector2(375, 31)
+states/combat_downthrust/node = SubResource("AnimationNodeAnimation_pildk")
+states/combat_downthrust/position = Vector2(1316, 75.854)
 states/combat_idle/node = SubResource("AnimationNodeAnimation_6aoqp")
 states/combat_idle/position = Vector2(929, 268)
 states/combat_jump/node = SubResource("AnimationNodeAnimation_315k1")
@@ -4458,7 +4590,7 @@ states/wall_slide/position = Vector2(375, 341)
 states/wall_slide_quick/node = SubResource("AnimationNodeAnimation_43yco")
 states/wall_slide_quick/position = Vector2(218, 341)
 transitions = ["skid", "walk", SubResource("AnimationNodeStateMachineTransition_jlfpp"), "skid", "run", SubResource("AnimationNodeStateMachineTransition_ncme7"), "skid", "idle", SubResource("AnimationNodeStateMachineTransition_88wjk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_onuui"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_qionp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_qk74n"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rol02"), "jump_land", "idle", SubResource("AnimationNodeStateMachineTransition_4y0l3"), "jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_s8s0f"), "jump_takeoff", "jump_fall", SubResource("AnimationNodeStateMachineTransition_68phe"), "wall_jump", "jump_fall", SubResource("AnimationNodeStateMachineTransition_43g75"), "jump_ledge", "jump_fall", SubResource("AnimationNodeStateMachineTransition_ts214"), "wall_ledge", "wall_jump", SubResource("AnimationNodeStateMachineTransition_hvpyx"), "wall_slide", "wall_jump", SubResource("AnimationNodeStateMachineTransition_3gq1l"), "wall_ledge", "wall_slide", SubResource("AnimationNodeStateMachineTransition_umh6i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ciyw3"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_eg2tk"), "combat_quick1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_l47yt"), "combat_idle", "combat_quick1", SubResource("AnimationNodeStateMachineTransition_4a7os"), "wall_slide", "jump_fall", SubResource("AnimationNodeStateMachineTransition_7m2y6"), "combat_quick1", "combat_quick2", SubResource("AnimationNodeStateMachineTransition_w0cuj"), "combat_quick2", "combat_quick3", SubResource("AnimationNodeStateMachineTransition_4dgp3"), "wall_slide", "wall_slide_quick", SubResource("AnimationNodeStateMachineTransition_46dnh"), "wall_slide_quick", "wall_slide", SubResource("AnimationNodeStateMachineTransition_cxdcc"), "dodge", "jump_takeoff", SubResource("AnimationNodeStateMachineTransition_iwxal"), "combat_idle", "combat_walk", SubResource("AnimationNodeStateMachineTransition_7xsvx"), "combat_walk", "combat_idle", SubResource("AnimationNodeStateMachineTransition_y6ur7"), "combat_strong1", "combat_idle", SubResource("AnimationNodeStateMachineTransition_qkxwi"), "combat_idle", "combat_strong1", SubResource("AnimationNodeStateMachineTransition_aooyx"), "damage_air", "combat_idle", SubResource("AnimationNodeStateMachineTransition_cotoo"), "damage_hit", "combat_idle", SubResource("AnimationNodeStateMachineTransition_n0xbf"), "damage_air", "damage_death", SubResource("AnimationNodeStateMachineTransition_4ogca"), "damage_hit", "damage_death", SubResource("AnimationNodeStateMachineTransition_olv34"), "combat_jump", "combat_jump_fall", SubResource("AnimationNodeStateMachineTransition_h3ok5"), "combat_jump_fall", "jump_land", SubResource("AnimationNodeStateMachineTransition_kdea7"), "combat_strong1", "combat_strong2", SubResource("AnimationNodeStateMachineTransition_bnj0f"), "combat_strong2", "combat_strong3", SubResource("AnimationNodeStateMachineTransition_a0hl7"), "combat_jump_charge_still", "combat_jump_charge_inch", SubResource("AnimationNodeStateMachineTransition_ydem4"), "combat_jump_charge_inch", "combat_jump_charge_still", SubResource("AnimationNodeStateMachineTransition_e0wlc"), "combat_jump_charge_still", "combat_jump", SubResource("AnimationNodeStateMachineTransition_a23tj"), "combat_jump_fall", "jump_ledge", SubResource("AnimationNodeStateMachineTransition_8m6wa"), "jump_fall", "wall_jump", SubResource("AnimationNodeStateMachineTransition_o70rv")]
-graph_offset = Vector2(-69, -85.146)
+graph_offset = Vector2(105, -147.146)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqqum"]
 font_size = 12
@@ -4472,7 +4604,7 @@ height = 16.0
 
 [node name="Neeq" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 21
 script = ExtResource("1_f1tj0")
 
 [node name="NeeqFSM" type="Node2D" parent="."]
@@ -4493,7 +4625,7 @@ visible = false
 position = Vector2(0, -32)
 texture = ExtResource("4_duc1e")
 hframes = 4
-vframes = 14
+vframes = 15
 
 [node name="WorldDetectors" type="Node2D" parent="Facing"]
 
@@ -4603,7 +4735,6 @@ anim_player = NodePath("../SpritePlayer")
 [node name="Outputs" type="Node2D" parent="."]
 
 [node name="StateOutput" type="Label" parent="Outputs"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

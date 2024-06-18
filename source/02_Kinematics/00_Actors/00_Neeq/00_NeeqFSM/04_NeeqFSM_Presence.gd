@@ -73,7 +73,9 @@ func state_enter(new_state, old_state):
 			p.audio_player.play()
 			await get_tree().create_timer(p.jump_duration).timeout
 			p.gravity *= 10.0
-		states.combat_downthrust: p.gravity *= 5.0
+		states.combat_downthrust:
+			p.playback.start("combat_downthrust")
+			p.gravity *= 5.0
 	#Grapple
 		states.grapple_charge_still, states.grapple_charge_air, \
 		states.grapple_charge_walk, states.grapple_charge_run:

@@ -24,6 +24,11 @@ func _on_hitbox_area_entered(area):
 		"Atkbox_Moderate": damage(100)
 		"Atkbox_Strong": damage(100)
 		"Atkbox_Elite": damage(100)
+#Down Thrust
+func _on_hitbox_body_entered(body):
+	match(body.name):
+		"Neeq": if body.fsm.state == body.fsm.states.combat_downthrust:
+			body.velocity.y = body.max_jump_velocity
 #------------------------------------------------------------------------------#
 #Health Functions
 #Heal Switch

@@ -113,7 +113,8 @@ func transitions(delta):
 		#Combat Down Thrust
 		states.combat_downthrust:
 			if p.is_hurting: return states.damage_air
-			if p.wall: return states.wall_slide
+			elif p.velocity.y < 0: return states.jump
+			elif p.wall: return states.wall_slide
 			elif p.ledge: return states.ledge
 			elif p.grounded: return states.idle
 		#Combat Jump
