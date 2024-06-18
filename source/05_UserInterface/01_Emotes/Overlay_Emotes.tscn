@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8bwphf0dckcp"]
+
+[ext_resource type="Script" path="res://source/05_UserInterface/01_Emotes/Overlay_Emotes.gd" id="1_6rdc7"]
+[ext_resource type="PackedScene" uid="uid://bxbssrmhsm7ws" path="res://source/05_UserInterface/01_Emotes/wheel_panel.tscn" id="1_serrp"]
+
+[node name="Overlay_Emotes" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_6rdc7")
+
+[node name="Wheel_Panel" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Wheel_Panel2" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 0.785397
+
+[node name="Wheel_Panel3" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 1.57079
+
+[node name="Wheel_Panel4" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 2.35619
+
+[node name="Wheel_Panel5" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 3.14159
+
+[node name="Wheel_Panel6" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 3.92699
+
+[node name="Wheel_Panel7" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = 4.71238
+
+[node name="Wheel_Panel8" parent="." instance=ExtResource("1_serrp")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+rotation = -0.785397

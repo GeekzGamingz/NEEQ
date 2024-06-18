@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ryy1d8hbv1v6"]
+[gd_scene load_steps=9 format=3 uid="uid://ryy1d8hbv1v6"]
 
 [ext_resource type="PackedScene" uid="uid://ddm2fw1pp3ebs" path="res://source/05_UserInterface/_Debuggers/Menu_Debug.tscn" id="1_kn4ol"]
 [ext_resource type="PackedScene" uid="uid://byv66xuxrvg1u" path="res://source/05_UserInterface/03_Overlays/Overlay_Actions.tscn" id="2_6twbj"]
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="3_5l5l2"]
+[ext_resource type="PackedScene" uid="uid://b8bwphf0dckcp" path="res://source/05_UserInterface/01_Emotes/Overlay_Emotes.tscn" id="3_uqrha"]
 [ext_resource type="Texture2D" uid="uid://de25kmprmrr37" path="res://assets/02_Actors/00_Neeq/ProgressBarBG_Neeq.png" id="4_7v1cy"]
 [ext_resource type="Texture2D" uid="uid://c4gpie0itaj6k" path="res://assets/02_Actors/00_Neeq/ProgressBar_Neeq.png" id="5_la100"]
 [ext_resource type="Texture2D" uid="uid://cfqpy67mgb32f" path="res://assets/02_Actors/00_Neeq/ProgressBarFG_Neeq.png" id="6_fkur4"]
@@ -31,6 +32,9 @@ layout_mode = 2
 [node name="Overlay_Actions" parent="MarginContainer" instance=ExtResource("2_6twbj")]
 layout_mode = 2
 CONTROLLER = "Xbox360"
+
+[node name="Overlay_Emotes" parent="MarginContainer" instance=ExtResource("3_uqrha")]
+layout_mode = 2
 
 [node name="ProgressBars" parent="MarginContainer" instance=ExtResource("3_5l5l2")]
 layout_mode = 2
