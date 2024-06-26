@@ -31,6 +31,7 @@ func state_enter(new_state, old_state):
 				p.playback.travel("wall_slide_quick")
 			p.safe_fall.enabled = false
 			p.particles_marker.position = Vector2(7, -7)
+			p.jumping = false
 		states.fall:
 			p.playback.start("jump_fall")
 			p.wall_detector2.enabled = true
