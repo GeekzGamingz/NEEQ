@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8bwphf0dckcp"]
 
 [ext_resource type="Script" path="res://source/05_UserInterface/01_Emotes/Overlay_Emotes.gd" id="1_6rdc7"]
-[ext_resource type="PackedScene" uid="uid://bxbssrmhsm7ws" path="res://source/05_UserInterface/01_Emotes/wheel_panel.tscn" id="1_serrp"]
+[ext_resource type="PackedScene" uid="uid://bxbssrmhsm7ws" path="res://source/05_UserInterface/01_Emotes/Wheel_Panel.tscn" id="2_n5711"]
 [ext_resource type="PackedScene" uid="uid://dtofvl26nqyba" path="res://source/05_UserInterface/01_Emotes/_Emotes.tscn" id="3_cfo58"]
 
 [node name="Overlay_Emotes" type="Control"]
@@ -19,12 +19,14 @@ script = ExtResource("1_6rdc7")
 metadata/_edit_vertical_guides_ = [627.0, 655.0, 711.0, 571.0, 744.0, 730.0, 550.0, 536.0]
 metadata/_edit_horizontal_guides_ = [394.0, 406.0, 338.0, 308.0, 305.0, 492.0, 495.0]
 
-[node name="Wheel_Panel" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes" parent="." instance=ExtResource("3_cfo58")]
 position = Vector2(1, -123)
@@ -32,13 +34,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Exclaim"
 
-[node name="Wheel_Panel2" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel2" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 0.785397
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes2" parent="." instance=ExtResource("3_cfo58")]
 position = Vector2(85, -90)
@@ -46,13 +50,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Interrobang"
 
-[node name="Wheel_Panel3" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel3" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 1.57079
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes3" parent="." instance=ExtResource("3_cfo58")]
 position = Vector2(118, -10)
@@ -60,13 +66,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Love"
 
-[node name="Wheel_Panel4" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel4" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 2.35619
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes4" parent="." instance=ExtResource("3_cfo58")]
 visible = false
@@ -75,13 +83,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Exclaim"
 
-[node name="Wheel_Panel5" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel5" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 3.14159
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes5" parent="." instance=ExtResource("3_cfo58")]
 position = Vector2(1, 113)
@@ -89,13 +99,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Lick_Neeq"
 
-[node name="Wheel_Panel6" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel6" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 3.92699
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes6" parent="." instance=ExtResource("3_cfo58")]
 visible = false
@@ -104,13 +116,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Exclaim"
 
-[node name="Wheel_Panel7" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel7" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = 4.71238
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes7" parent="." instance=ExtResource("3_cfo58")]
 visible = false
@@ -119,13 +133,15 @@ scale = Vector2(2, 2)
 ui_emote = true
 emote = "Exclaim"
 
-[node name="Wheel_Panel8" parent="." instance=ExtResource("1_serrp")]
+[node name="Wheel_Panel8" parent="." instance=ExtResource("2_n5711")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 rotation = -0.785397
+metadata/_edit_vertical_guides_ = [-51.0]
+metadata/_edit_horizontal_guides_ = [-150.0, -78.0]
 
 [node name="Emotes8" parent="." instance=ExtResource("3_cfo58")]
 position = Vector2(-83, -90)
