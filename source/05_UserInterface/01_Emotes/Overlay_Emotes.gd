@@ -2,6 +2,7 @@
 extends Control
 #------------------------------------------------------------------------------#
 #Variables
+var player: CharacterBody2D
 var buttons: Array = []
 var wheel_direction: Vector2 = Vector2.ZERO
 #------------------------------------------------------------------------------#
@@ -15,15 +16,15 @@ func _ready() -> void:
 			2: button.name = "Interrobang"
 			3: button.name = "Love"
 			4: button.name = "Button #%s" % [number]
-			5: button.name = "Lick"
+			5: button.name = "Lick_Neeq"
 			6: button.name = "Button #%s" % [number]
 			7: button.name = "Button #%s" % [number]
 			8: button.name = "Question"
 		buttons.append(button)
-	print(buttons)
 #------------------------------------------------------------------------------#
 #Process
 func _process(_delta) -> void:
+	if player == null: player = G.PLAYER
 	visible = Input.is_action_pressed("action_emote")
 	if visible:
 		wheel_direction = Vector2(
@@ -40,3 +41,10 @@ func _process(_delta) -> void:
 		#Horizontal
 		elif wheel_direction.x > 0: buttons[2].grab_focus()
 		elif wheel_direction.x < 0: buttons[6].grab_focus()
+#------------------------------------------------------------------------------#
+#Input
+func _input(event):
+	if event.is_action_released("action_emote"):
+		if player.name == "Neeq":
+			for button in buttons:
+				if button.has_focus(): player.play_emote(button.name)

@@ -10,4 +10,4 @@ func _on_texture_button_mouse_entered():
 	button.grab_focus()
 #When Focused
 func _on_texture_button_focus_entered():
-	print(button.name)
+	pass

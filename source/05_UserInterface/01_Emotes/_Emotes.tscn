@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtofvl26nqyba"]
+[gd_scene load_steps=19 format=3 uid="uid://dtofvl26nqyba"]
 
 [ext_resource type="Script" path="res://source/05_UserInterface/01_Emotes/_Emotes.gd" id="1_0o0r8"]
 [ext_resource type="Texture2D" uid="uid://3rgcetr8y2ga" path="res://assets/04_UserInterface/00_Emotes/bubb-Sheet.png" id="1_q3jbj"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://blcd3tg4qytek" path="res://assets/04_UserInterface/00_Emotes/lick-Sheet.png" id="6_f8prs"]
 [ext_resource type="Texture2D" uid="uid://bmd3a4hextryv" path="res://assets/04_UserInterface/00_Emotes/generlick-Sheet.png" id="7_jcdeg"]
 [ext_resource type="Texture2D" uid="uid://bu2wjxpf4igjo" path="res://assets/04_UserInterface/00_Emotes/lubv-Sheet.png" id="8_geguq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc2r0"]
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_daw48"]
 length = 0.001
@@ -422,6 +425,12 @@ hframes = 5
 [node name="Emote" type="Sprite2D" parent="."]
 texture = ExtResource("2_nujmt")
 hframes = 5
+
+[node name="EmoteRange" type="Area2D" parent="."]
+position = Vector2(-8, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmoteRange"]
+shape = SubResource("CircleShape2D_wc2r0")
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 

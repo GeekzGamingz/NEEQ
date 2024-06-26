@@ -12,12 +12,15 @@ extends Node2D
 	"Lick_Neeq",
 	"Love") var emote: String
 #OnReady Variables
-@onready var anim_player: AnimationPlayer = $AnimationPlayers/AnimationPlayer
 @onready var chat_bubble: Sprite2D = $ChatBubble
+@onready var emote_range: CollisionShape2D = $EmoteRange/CollisionShape2D
+@onready var anim_player: AnimationPlayer = $AnimationPlayers/AnimationPlayer
 #------------------------------------------------------------------------------#
 #Ready Method
 func _ready() -> void:
 	if ui_emote == true:
+		emote_range.set_deferred("disabled", true)
+		emote_range.set_deferred("visible", false)
 		var anim_names = anim_player.get_animation_list()
 		for anim in anim_names:
 			anim_player.get_animation(anim).loop = true
