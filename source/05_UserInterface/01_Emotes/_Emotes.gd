@@ -10,7 +10,8 @@ extends Node2D
 	"Interrobang",
 	"Lick",
 	"Lick_Neeq",
-	"Love") var emote: String
+	"Love"
+	) var emote: String
 #OnReady Variables
 @onready var chat_bubble: Sprite2D = $ChatBubble
 @onready var emote_range: CollisionShape2D = $EmoteRange/CollisionShape2D

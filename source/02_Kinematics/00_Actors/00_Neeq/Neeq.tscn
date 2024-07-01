@@ -1,10 +1,9 @@
-[gd_scene load_steps=139 format=3 uid="uid://bnc03qphek87j"]
+[gd_scene load_steps=138 format=3 uid="uid://bnc03qphek87j"]
 
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/04_NeeqGrapple.gd" id="1_f1tj0"]
 [ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/00_NeeqFSM/04_NeeqFSM_Presence.gd" id="2_86ct0"]
 [ext_resource type="Texture2D" uid="uid://bm1rq02ui6pce" path="res://assets/02_Actors/00_Neeq/NeeqCompiled.png" id="3_w21ln"]
 [ext_resource type="Texture2D" uid="uid://bwcobc7deglhx" path="res://assets/02_Actors/00_Neeq/WHIP_Combat_Compiled.png" id="4_duc1e"]
-[ext_resource type="Script" path="res://source/02_Kinematics/00_Actors/00_Neeq/_NeeqEmotes.gd" id="4_v4hut"]
 [ext_resource type="PackedScene" uid="uid://bay60e4t2c8qk" path="res://source/05_UserInterface/02_ProgressBars/ProgressBars.tscn" id="6_teouf"]
 [ext_resource type="AudioStream" uid="uid://c3qwe7i708cth" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge_Inch.wav" id="7_k37hs"]
 [ext_resource type="AudioStream" uid="uid://15yjmll1fjra" path="res://assets/05_SFX/00_Neeq/Attack_JumpCharge.wav" id="7_ocf0r"]
@@ -4702,7 +4701,6 @@ target_position = Vector2(0, 48)
 
 [node name="EmotesMarker" type="Marker2D" parent="Facing/Markers"]
 position = Vector2(8, -32)
-script = ExtResource("4_v4hut")
 
 [node name="ParticlesMarker" type="Marker2D" parent="Facing/Markers"]
 

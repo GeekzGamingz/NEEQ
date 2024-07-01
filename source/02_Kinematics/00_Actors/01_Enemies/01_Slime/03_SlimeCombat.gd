@@ -11,6 +11,7 @@ var is_pooled: bool = false
 @onready var combat_detectors = $Facing/WorldDetectors/CombatDetectors
 @onready var atkbox = combat_detectors.get_node("Atkbox_Ping/CollisionShape2D")
 #------------------------------------------------------------------------------#
+#Animation Finished
 func _on_animation_tree_animation_finished(anim_name):
 	match(anim_name):
 		"drip_pool": is_pooled = true
