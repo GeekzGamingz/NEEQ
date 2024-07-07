@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://co2j78jdveds1" path="res://assets/03_Objects/03_GrapplingHook/rope.png" id="1_8y264"]
 [ext_resource type="Script" path="res://source/03_Objects/01_GrapplingHook/Grappling_Hook.gd" id="1_a173w"]
 [ext_resource type="Texture2D" uid="uid://wb0ltaby0fyt" path="res://assets/03_Objects/03_GrapplingHook/rock.png" id="2_nylmg"]
-[ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/03_Misc/GrappleArrow.png" id="4_stysx"]
+[ext_resource type="Texture2D" uid="uid://tlixn50yb0gq" path="res://assets/04_UserInterface/04_Misc/GrappleArrow.png" id="4_stysx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e63aj"]
 radius = 1.0

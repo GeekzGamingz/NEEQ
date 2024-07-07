@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlixn50yb0gq"
-path="res://.godot/imported/GrappleArrow.png-f2734eac6f40d5855e09af317f3173e3.ctex"
+uid="uid://ckhy4d3usxqut"
+path="res://.godot/imported/TalkyBox.png-493b8682c20b0535debd9291a53b6d7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/04_UserInterface/03_Misc/GrappleArrow.png"
-dest_files=["res://.godot/imported/GrappleArrow.png-f2734eac6f40d5855e09af317f3173e3.ctex"]
+source_file="res://assets/04_UserInterface/03_Dialogue/TalkyBox.png"
+dest_files=["res://.godot/imported/TalkyBox.png-493b8682c20b0535debd9291a53b6d7d.ctex"]
 
 [params]
 

@@ -1,3 +1,5 @@
+#Define Icon
+@icon("res://icon.png")
 #Inherits Actor Code
 extends Actor
 class_name NeeqMovement

@@ -430,6 +430,7 @@ hframes = 5
 position = Vector2(-8, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EmoteRange"]
+visible = false
 shape = SubResource("CircleShape2D_wc2r0")
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
